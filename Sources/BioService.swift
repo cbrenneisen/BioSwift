@@ -80,7 +80,7 @@ public class BioService {
     }
     
     public class func translate(rna: RNA) -> Protein? {
-        //TODO: finish this
+
         var stopCodon = false
         var proteinSequence = ""
         for n in stride(from: 0, to: rna.sequenceLength, by: 3){
