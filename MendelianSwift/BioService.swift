@@ -33,7 +33,8 @@ public class BioService {
         
         //AGTCCAT - AGUCCAU
         let seq = String(dna.sequence.characters.map{ $0 != "T" ? $0 : "U" })
-        return RNA(sequence: seq)
+        //RNA is guaranteed to be valid - okay to force unrwrap
+        return RNA(sequence: seq)!
         
     }
     
@@ -42,7 +43,8 @@ public class BioService {
         
         let complements = ["A": "T", "T": "A", "G": "C", "C": "G"]
         let seq = dna.sequence.characters.reversed().map({ complements[String($0)]! }).joined(separator: "")
-        return DNA(sequence: seq)
+        //guarenteed to work, so force unwrapping is fine
+        return DNA(sequence: seq)!
     }
     
     //return the DNA with the highest GC content
@@ -50,7 +52,7 @@ public class BioService {
         
         var maxGC: Float = 0.0
         var retval: DNA? = nil
-        for dna in dnaSequences {
+        for var dna in dnaSequences {
             
             let gc = dna.gcContent
             maxGC = max(maxGC, gc)
@@ -88,7 +90,10 @@ public class BioService {
         for n in stride(from: 0, to: rna.sequenceLength, by: 3){
             
             //get the current codon
-            let codon = rna.codonFrom(index: n)
+            guard let codon = rna.codonFrom(index: n) else {
+                //internal error - shouldn't happen - indicates that the sequenceLength is invalid
+                return nil
+            }
             
             guard let amino = CodonTable.shared.codonToAminoAcid(codon: codon) else {
                 //invalid codon given

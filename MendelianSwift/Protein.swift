@@ -7,10 +7,14 @@
 
 import Foundation
 
-public class Protein: BioSequence {
+public struct Protein: BioSequence {
+    
+    public var sequence: String
+    public var id: String? 
     
     //valid characters are A-Z except B,J,O,U,X,Z
-    override internal func validSequenceCharacters() -> Set<Character> {
+    public func validCharacters()-> Set<Character> {
         return Set("ACDEFGHIKLMNPQRSTVWY".characters)
     }
+
 }

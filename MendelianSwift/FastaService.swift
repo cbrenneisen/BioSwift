@@ -45,7 +45,11 @@ public class FastaService {
 
                 if (currentID != "" && currentSeq != ""){
                     //add previous
-                    allDNA.append(DNA(sequence: currentSeq, id: currentID))
+                    guard let curDNA = DNA(sequence: currentSeq, id: currentID) else {
+                        //file has an invalid DNA sequence
+                        throw FastaError.invalidSequence(seq: currentSeq)
+                    }
+                    allDNA.append(curDNA)
                 }
                     
                 //reset sequence, add ID without the preceding '>'
@@ -58,7 +62,11 @@ public class FastaService {
         }
         if (currentID != "" && currentSeq != ""){
             //add final strand - unless we had an empty file
-            allDNA.append(DNA(sequence: currentSeq, id: currentID))
+            guard let curDNA = DNA(sequence: currentSeq, id: currentID) else {
+                //file has an invalid DNA sequence
+                throw FastaError.invalidSequence(seq: currentSeq)
+            }
+            allDNA.append(curDNA)
         }
             
         return allDNA

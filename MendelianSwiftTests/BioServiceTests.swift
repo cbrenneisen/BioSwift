@@ -24,7 +24,11 @@ class BioServiceTests: XCTestCase {
     
     func testNucleobaseCount() {
 
-        let dna = DNA(sequence: "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC")
+        
+        guard let dna = DNA(sequence: "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC") else {
+            XCTFail("Invalid DNA sequence")
+            return
+        }
         
         let result = BioService.nucleobaseCount(dna: dna)
         
@@ -45,9 +49,10 @@ class BioServiceTests: XCTestCase {
     
     func testTranscribe(){
         
-        let mDNA = mnDNA(sequence: "GATC")
-        
-        let dna = DNA(sequence: "GATGGAACTTGACTACGTAAATT")
+        guard let dna = DNA(sequence: "GATGGAACTTGACTACGTAAATT") else {
+            XCTFail("Invalid DNA sequence")
+            return
+        }
         
         let rna = BioService.transcribe(dna: dna)
         
@@ -56,7 +61,10 @@ class BioServiceTests: XCTestCase {
     
     func testReverseComplement(){
 
-        let dna = DNA(sequence: "AAAACCCGGT")
+        guard let dna = DNA(sequence: "AAAACCCGGT") else {
+            XCTFail("Invalid DNA sequence")
+            return
+        }
         
         let dna2 = BioService.reverseComplement(dna: dna)
         

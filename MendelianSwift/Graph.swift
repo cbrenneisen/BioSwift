@@ -14,17 +14,17 @@ public struct Edge<T: BioSequence> {
     public let to: Vertex<T>
     
     public func print(){
-        Swift.print(" \(from.sequence) - \(to.sequence)")
+        Swift.print(" \(from.bioSequence.sequence) - \(to.bioSequence.sequence)")
     }
 }
 
 public class Vertex<T: BioSequence>: Hashable {
 
-    public let sequence: T
+    public let bioSequence: T
     public let index: Int
     
     public init(sequence: T, index: Int){
-        self.sequence = sequence
+        self.bioSequence = sequence
         self.index = index
     }
     
@@ -33,7 +33,7 @@ public class Vertex<T: BioSequence>: Hashable {
     }
     
     public static func == (lhs: Vertex<T>, rhs: Vertex<T>) -> Bool {
-        return lhs.sequence == rhs.sequence
+        return lhs.bioSequence.sequence == rhs.bioSequence.sequence
     }
 }
 
@@ -70,11 +70,11 @@ public class BioGraph<T: BioSequence> {
     
     private var vertices: [Vertex<T>]
     private var adjacencyList: [EdgeList<T>]
-//    private let bioGraphQueue = DispatchQueue(label: "mendelianSwift.BioGraph.Queue", qos: .default, attributes: .concurrent, autoreleaseFrequency: .default, target: .)
+    
+    //for thread safety
     private let bioGraphQueue = DispatchQueue(label: "com.mendelianSwift.BioGraph.Queue",
                                               attributes: .concurrent)
 
-    
     public init(){
         vertices = []
         adjacencyList = []

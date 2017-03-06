@@ -7,15 +7,31 @@
 
 import Foundation
 
-public class RNA: BioSequence {
+public struct RNA: BioSequence, Equatable, Hashable {
     
-    //valid nucleotides are A, C, G, U
-    override internal func validSequenceCharacters() -> Set<Character> {
+    public var sequence: String
+    public var id: String?
+    
+    //valid nucleobases are A, C, G, U
+    public func validCharacters()-> Set<Character> {
         return Set("ACGU".characters)
     }
     
+    public static func == (lhs: RNA, rhs: RNA) -> Bool {
+        return lhs.sequence == rhs.sequence
+    }
+    
+    public var hashValue: Int {
+        return self.sequence.hashValue
+    }
+    
     //return the codon starting at the given index
-    public func codonFrom(index:Int) -> String {
+    public func codonFrom(index: Int) -> String? {
+        
+        //error handling
+        if index > sequenceLength - 3 || index < 0{
+            return nil
+        }
         
         let startIndex = self.sequence.index(self.sequence.startIndex, offsetBy: index)
         let endIndex = self.sequence.index(self.sequence.startIndex, offsetBy: index + 3)

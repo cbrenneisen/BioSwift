@@ -221,24 +221,7 @@ class FastaServiceTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
         
-        //make sure an error is thrown for incorrect file paths
-        do {
-            
-            let testBundle = Bundle(for: type(of: self))
-            guard let filePath = testBundle.path(forResource: "incorrectFileName", ofType: "txt") else{
-                XCTFail("Invalid Fasta File Path")
-                return
-            }
-            
-            let allDNA = try FastaService.loadDNA(fastaFilePath: filePath)
-            XCTAssertEqual(allDNA.count, fasta1Sequences.count, "Did not extract all DNA sequences")
-            
-            for i in 0...allDNA.count-1{
-                XCTAssertEqual(fasta1Sequences[i], allDNA[i].sequence, "Mismatched DNA at index \(i)")
-            }
-        }catch let error {
-            print("Successfully caught error")
-        }
+        //TODO: make sure an error is thrown for incorrect file paths
         
     }
     
