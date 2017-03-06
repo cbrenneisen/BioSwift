@@ -1,15 +1,14 @@
 //
-//  MendelianSwiftTests.swift
-//  MendelianSwiftTests
+//  DnaTests.swift
+//  MendelianSwift
 //
-//  Created by Carlos Brenneisen on 3/4/17.
+//  Created by Carlos Brenneisen on 3/5/17.
 //  Copyright © 2017 carlosbrenneisen. All rights reserved.
 //
 
 import XCTest
-@testable import MendelianSwift
 
-class MendelianSwiftTests: XCTestCase {
+class DnaTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
