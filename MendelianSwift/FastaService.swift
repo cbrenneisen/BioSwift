@@ -8,14 +8,12 @@
 
 import Foundation
 
-
 public enum FastaError: Error {
     
     case missingFile(file: String)
     case parsingError
     case invalidSequence(seq: String)
 }
-
 
 public class FastaService {
 
@@ -45,7 +43,7 @@ public class FastaService {
 
                 if (currentID != "" && currentSeq != ""){
                     //add previous
-                    guard let curDNA = DNA(sequence: currentSeq, id: currentID) else {
+                    guard let curDNA = DNA(id: currentID, sequence: currentSeq) else {
                         //file has an invalid DNA sequence
                         throw FastaError.invalidSequence(seq: currentSeq)
                     }
@@ -62,13 +60,12 @@ public class FastaService {
         }
         if (currentID != "" && currentSeq != ""){
             //add final strand - unless we had an empty file
-            guard let curDNA = DNA(sequence: currentSeq, id: currentID) else {
+            guard let curDNA = DNA(id: currentID, sequence: currentSeq) else {
                 //file has an invalid DNA sequence
                 throw FastaError.invalidSequence(seq: currentSeq)
             }
             allDNA.append(curDNA)
         }
-            
         return allDNA
     }
 }

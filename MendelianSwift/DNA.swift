@@ -13,17 +13,18 @@ public struct DNA: BioSequence, Equatable, Hashable {
     public var id: String?
     
     public init?(sequence: String){
-        self.sequence = sequence
         
-        let valid = self.validCharacters()
+        let valid = DNA.validCharacters()
         for n in sequence.characters {
             if !(valid.contains(n)){
                 return nil
             }
         }
+        self.sequence = sequence
     }
     
-    public func validCharacters()-> Set<Character> {
+    //valid nucleobases are A, C, G, T
+    public static func validCharacters()-> Set<Character> {
         return Set("ACGT".characters)
     }
     
@@ -40,10 +41,10 @@ public struct DNA: BioSequence, Equatable, Hashable {
         var occurrences = 0
         for n in self.sequence.characters {
             switch String(n) {
-            case "G", "C":
-                occurrences += 1
-            default:
-                continue
+                case "G", "C":
+                    occurrences += 1
+                default:
+                    continue
             }
         }
         

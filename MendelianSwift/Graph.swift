@@ -83,15 +83,15 @@ public class BioGraph<T: BioSequence> {
     //add a new vertex to the graph and return a reference to it
     public func createVertex(sequence: T) -> Vertex<T> {
         //create vertex and add it to the list
-        var vertex: Vertex<T>?
-        bioGraphQueue.sync(flags: .barrier) {
+        var vertex: Vertex<T>!
+        bioGraphQueue.sync(flags: .barrier) { [unowned self] in
             
-            vertex = Vertex(sequence: sequence, index: vertices.count)
-            vertices.append(vertex!)
+            vertex = Vertex(sequence: sequence, index: self.vertices.count)
+            self.vertices.append(vertex)
         
             //create corresponding EdgeList
             let edgeList = EdgeList(vertex: vertex!)
-            adjacencyList.append(edgeList)
+            self.adjacencyList.append(edgeList)
         }
             
         return vertex!

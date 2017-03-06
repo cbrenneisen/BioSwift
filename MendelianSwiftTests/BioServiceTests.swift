@@ -24,7 +24,6 @@ class BioServiceTests: XCTestCase {
     
     func testNucleobaseCount() {
 
-        
         guard let dna = DNA(sequence: "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC") else {
             XCTFail("Invalid DNA sequence")
             return

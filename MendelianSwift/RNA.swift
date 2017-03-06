@@ -12,8 +12,19 @@ public struct RNA: BioSequence, Equatable, Hashable {
     public var sequence: String
     public var id: String?
     
+    public init?(sequence: String){
+        
+        let valid = RNA.validCharacters()
+        for n in sequence.characters {
+            if !(valid.contains(n)){
+                return nil
+            }
+        }
+        self.sequence = sequence
+    }
+    
     //valid nucleobases are A, C, G, U
-    public func validCharacters()-> Set<Character> {
+    public static func validCharacters()-> Set<Character> {
         return Set("ACGU".characters)
     }
     

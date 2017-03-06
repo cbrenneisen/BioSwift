@@ -12,32 +12,21 @@ public protocol BioSequence {
     var sequence: String { get set }
     var id: String? { get set }
 
-    func validCharacters()-> Set<Character>
+    //this function needs to validate the given sequence
+    init?(sequence: String)
+    
+    //needs to return valid characters for the given type (i.e: DNA returns A, C, G, T)
+    static func validCharacters()-> Set<Character>
 }
 
 //default implementations
 extension BioSequence {
     
-    public init?(sequence: String, id: String){
-        
+    public init?(id: String, sequence: String){
         self.init(sequence: sequence)
         self.id = id
     }
-    
-    public init?(sequence: String){
-        self.init(sequence: sequence)
-        self.sequence = sequence
-    
-        //validate the input based on the required 'validCharacters' function
-        let valid = self.validCharacters()
-        for n in sequence.characters {
-            if !(valid.contains(n)){
-                return nil
-            }
-        }
-        self.id = nil
-    }
-    
+
     //returns the length of the sequence
     public var sequenceLength: Int {
         return self.sequence.characters.count
