@@ -11,12 +11,14 @@ import Foundation
 public protocol BioSequence {
     var sequence: String { get set }
     var id: String? { get set }
+    var hashValue: Int { get }
 
     //this function needs to validate the given sequence
     init?(sequence: String)
     
     //needs to return valid characters for the given type (i.e: DNA returns A, C, G, T)
     static func validCharacters()-> Set<Character>
+    
 }
 
 //default implementations

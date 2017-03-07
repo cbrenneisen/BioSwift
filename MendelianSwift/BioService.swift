@@ -253,7 +253,6 @@ public class BioService {
         for dnaA in allDNA {
             for dnaB in allDNA{
                 
-                //TODO: implement equality check in DNA
                 if dnaA == dnaB {
                     continue
                 }
