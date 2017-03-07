@@ -24,6 +24,7 @@ class BioGraphTests: XCTestCase {
     func testExample() {
 
         let seqGraph = BioGraph<DNA>()
+        var edgeCount = 0
         
         guard let dna1 = DNA(sequence: "ATCCAGCT"),
               let dna2 = DNA(sequence: "GGGCAACT"),
@@ -57,6 +58,7 @@ class BioGraphTests: XCTestCase {
         seqGraph.addEdge(fromVertex: v1, toVertex: v2)
         seqGraph.addEdge(fromVertex: v1, toVertex: v3)
         seqGraph.addEdge(fromVertex: v1, toVertex: v4)
+        edgeCount += 3
         
         let vertices1 = seqGraph.getEdges(forVertex: v1)
         let dest1 = vertices1.map({ $0.to })
@@ -68,21 +70,39 @@ class BioGraphTests: XCTestCase {
         seqGraph.addEdge(fromVertex: v4, toVertex: v3)
         seqGraph.addEdge(fromVertex: v2, toVertex: v3)
         seqGraph.addEdge(fromVertex: v3, toVertex: v5)
+        edgeCount += 3
 
         let allEdges = seqGraph.getAllEdges()
         for edge in allEdges{
             edge.print()
         }
-        XCTAssertEqual(allEdges.count, 6, "Incorrect number of edges added")
+        XCTAssertEqual(allEdges.count, edgeCount, "Incorrect number of edges added")
         
+        //test vertex removal
         seqGraph.removeVertex(vertex: v3)
+        edgeCount -= 4 //three edges going to v3, one edge coming out
         let vertices2 = seqGraph.getVertices()
         XCTAssertFalse(vertices2.contains(v3), "Vertex 3 was not removed")
+        XCTAssertEqual(seqGraph.getAllEdges().count, edgeCount, "Edges going to/from Vertex 3 were not removed ")
+        
+        //test adding edges again
+        seqGraph.addEdge(fromVertex: v4, toVertex: v5)
+        seqGraph.addEdge(fromVertex: v5, toVertex: v6)
+        seqGraph.addEdge(fromVertex: v5, toVertex: v7)
+        edgeCount += 3
+        XCTAssertEqual(seqGraph.getAllEdges().count, edgeCount, "Incorrect number of edges added")
 
-        let allEdges2 = seqGraph.getAllEdges()
-        XCTAssertEqual(allEdges2.count, 2, "Edges going to/from Vertex 3 were not removed ")
-        
-        
+        //test edge removal
+        seqGraph.removeEdge(fromVertex: v5, toVertex: v6)
+        let v5Edges = seqGraph.getEdges(forVertex: v5)
+        let dest5 = v5Edges.map({ $0.to })
+        edgeCount -= 1
+        XCTAssertEqual(seqGraph.getAllEdges().count, edgeCount, "Edge was not removed")
+        XCTAssertFalse(dest5.contains(v6), "Correct edge was not removed")
+
+        //test the removal of a non-existant edge
+        seqGraph.removeEdge(fromVertex: v5, toVertex: v1)
+        XCTAssertEqual(seqGraph.getAllEdges().count, edgeCount, "Edge was incorrectly removed")
     }
     
     func testPerformanceExample() {

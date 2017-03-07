@@ -13,6 +13,11 @@ public struct Edge<T: BioSequence>: Hashable {
     public let from: Vertex<T>
     public let to: Vertex<T>
     
+    fileprivate init(from: Vertex<T>, to: Vertex<T>){
+        self.from = from
+        self.to = to
+    }
+    
     //TODO: this might be problematic if creating a set that has all the edges of the graph
     public var hashValue: Int {
         //avoid multiple edges going to the same vertex
@@ -32,7 +37,7 @@ public class Vertex<T: BioSequence>: Hashable {
 
     public let bioSequence: T
     
-    public init(sequence: T){
+    fileprivate init(sequence: T){
         self.bioSequence = sequence
     }
     
