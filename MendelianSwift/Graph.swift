@@ -1,5 +1,5 @@
 //
-//  Graph.swift
+//  BioGraph.swift
 //  BioSwift
 //
 //  Created by Carlos Brenneisen on 02/22/17.
@@ -18,7 +18,6 @@ public struct Edge<T: BioSequence>: Hashable {
         self.to = to
     }
     
-    //TODO: this might be problematic if creating a set that has all the edges of the graph
     public var hashValue: Int {
         //avoid multiple edges going to the same vertex
         return to.hashValue
@@ -37,8 +36,8 @@ public class Vertex<T: BioSequence>: Hashable {
 
     public let bioSequence: T
     
-    fileprivate init(sequence: T){
-        self.bioSequence = sequence
+    fileprivate init(bioSequence: T){
+        self.bioSequence = bioSequence
     }
     
     public var hashValue: Int {
@@ -72,7 +71,6 @@ fileprivate class EdgeList<T: BioSequence> {
                 edges.remove(e)
             }
         }
-        
         //edges = edges.filter({ $0.to == toVertex })
     }
     
@@ -80,7 +78,6 @@ fileprivate class EdgeList<T: BioSequence> {
         return edges
     }
 }
-
 
 public class BioGraph<T: BioSequence> {
     
@@ -94,47 +91,21 @@ public class BioGraph<T: BioSequence> {
         structure = [:]
     }
     
-    //returns the set of all vertices in the graph
-    public func getVertices() -> Set<Vertex<T>> {
-        
-        var vertices: Set<Vertex<T>>?
-        bioGraphQueue.sync(flags: .barrier) { [unowned self] in
-            vertices = Set(self.structure.keys)
-        }
-        return vertices!
-    }
-    
-    //returns the set of edges for a given vertex
-    public func getEdges(forVertex: Vertex<T>) -> Set<Edge<T>> {
-        
-        var edges: Set<Edge<T>>?
-        bioGraphQueue.sync(flags: .barrier) { [unowned self, unowned forVertex] in
-            edges = self.structure[forVertex]?.getEdges()
-        }
-        return edges!
-    }
-    
-    //returns all edges in the graph
-    public func getAllEdges() -> Set<Edge<T>> {
-        
-        var edges = Set<Edge<T>>()
-        bioGraphQueue.sync(flags: .barrier) { [unowned self] in
-            for eList in self.structure.values {
-                edges.formUnion(eList.getEdges())
-            }
-        }
-        return edges
-    }
+    //MARK: Vertex Functions
     
     //add a new vertex to the graph and return a reference to it
-    public func createVertex(sequence: T) -> Vertex<T> {
+    public func createVertex(bioSequence: T) -> Vertex<T> {
         //create vertex and corresponding edgelist
-        let newVertex = Vertex(sequence: sequence)
-        let newEdgeList = EdgeList(originVertex: newVertex)
-        bioGraphQueue.async(flags: .barrier) { [unowned self] in
-            //TODO: this could overwrite an existing vertex
-            //decide if we should handle this or ignore it
-            self.structure[newVertex] = newEdgeList
+        let newVertex = Vertex(bioSequence: bioSequence)
+        bioGraphQueue.sync(flags: .barrier) { [unowned self] in
+
+            if (self.structure[newVertex] != nil){
+                //duplicate vertex - don't overwrite, but do log error
+                NSLog("WARNING! Tried to add duplicate vertex: %@", bioSequence.sequence)
+            }else {
+                let newEdgeList = EdgeList(originVertex: newVertex)
+                self.structure[newVertex] = newEdgeList
+            }
         }
         
         return newVertex
@@ -167,6 +138,34 @@ public class BioGraph<T: BioSequence> {
             self.structure.removeValue(forKey: vertex)
         }
     }
+    
+    //returns the set of all vertices in the graph
+    public func getAllVertices() -> Set<Vertex<T>> {
+        
+        var vertices: Set<Vertex<T>>?
+        bioGraphQueue.sync(flags: .barrier) { [unowned self] in
+            vertices = Set(self.structure.keys)
+        }
+        return vertices!
+    }
+    
+    //returns all vertices that are directly connected to the given vertex
+    public func getDestinationVertices(fromVertex: Vertex<T>)  -> Set<Vertex<T>> {
+        var vertices: Set<Vertex<T>>?
+        bioGraphQueue.sync(flags: .barrier) { [unowned self, unowned fromVertex] in
+            if let eList = self.structure[fromVertex] {
+                //return the 'to' vertex for each of the edges of the given vertex
+                vertices = Set(eList.getEdges().map({ $0.to }))
+            }else {
+                //invalid vertex - just return an empty set
+                vertices = Set()
+            }
+        }
+        return vertices!
+
+    }
+
+    //MARK: Edge Functions
     
     //add an edge going from one vertex to another
     public func addEdge(fromVertex: Vertex<T>, toVertex: Vertex<T>) {
@@ -202,4 +201,32 @@ public class BioGraph<T: BioSequence> {
             edgeList.removeEdge(toVertex: toVertex)
         }
     }
+    
+    //returns all edges in the graph
+    public func getAllEdges() -> Set<Edge<T>> {
+        
+        var edges = Set<Edge<T>>()
+        bioGraphQueue.sync(flags: .barrier) { [unowned self] in
+            for eList in self.structure.values {
+                edges.formUnion(eList.getEdges())
+            }
+        }
+        return edges
+    }
+    
+    //returns the set of edges from a given vertex
+    public func getEdges(fromVertex: Vertex<T>) -> Set<Edge<T>> {
+        
+        var edges: Set<Edge<T>>?
+        bioGraphQueue.sync(flags: .barrier) { [unowned self, unowned fromVertex] in
+            edges = self.structure[fromVertex]?.getEdges()
+        }
+        return edges!
+    }
+    
+    //MARK: Utility Functions
+    public func removeAll(keepingCapacity: Bool) {
+        structure.removeAll(keepingCapacity: keepingCapacity)
+    }
+
 }

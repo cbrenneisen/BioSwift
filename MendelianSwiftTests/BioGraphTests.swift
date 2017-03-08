@@ -21,10 +21,11 @@ class BioGraphTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testBioGraphFunctions() {
 
         let seqGraph = BioGraph<DNA>()
         var edgeCount = 0
+        var vertexCount = 0
         
         guard let dna1 = DNA(sequence: "ATCCAGCT"),
               let dna2 = DNA(sequence: "GGGCAACT"),
@@ -37,16 +38,18 @@ class BioGraphTests: XCTestCase {
             return
         }
         
-        let v1 = seqGraph.createVertex(sequence: dna1)
-        let v2 = seqGraph.createVertex(sequence: dna2)
-        let v3 = seqGraph.createVertex(sequence: dna3)
-        let v4 = seqGraph.createVertex(sequence: dna4)
-        let v5 = seqGraph.createVertex(sequence: dna5)
-        let v6 = seqGraph.createVertex(sequence: dna6)
-        let v7 = seqGraph.createVertex(sequence: dna7)
+        let v1 = seqGraph.createVertex(bioSequence: dna1)
+        let v2 = seqGraph.createVertex(bioSequence: dna2)
+        let v3 = seqGraph.createVertex(bioSequence: dna3)
+        let v4 = seqGraph.createVertex(bioSequence: dna4)
+        let v5 = seqGraph.createVertex(bioSequence: dna5)
+        let v6 = seqGraph.createVertex(bioSequence: dna6)
+        let v7 = seqGraph.createVertex(bioSequence: dna7)
+        vertexCount += 7
 
-        let vertices = seqGraph.getVertices()
-        
+        //test vertex creation/addition
+        let vertices = seqGraph.getAllVertices()
+        XCTAssertEqual(vertices.count, vertexCount, "Did not add correct number of vertices")
         XCTAssertTrue(vertices.contains(v1), "Did not add first vertex")
         XCTAssertTrue(vertices.contains(v2), "Did not add second vertex")
         XCTAssertTrue(vertices.contains(v3), "Did not add third vertex")
@@ -55,13 +58,15 @@ class BioGraphTests: XCTestCase {
         XCTAssertTrue(vertices.contains(v6), "Did not add sixth vertex")
         XCTAssertTrue(vertices.contains(v7), "Did not add seventh vertex")
         
+        //test edge creation/addition
         seqGraph.addEdge(fromVertex: v1, toVertex: v2)
         seqGraph.addEdge(fromVertex: v1, toVertex: v3)
         seqGraph.addEdge(fromVertex: v1, toVertex: v4)
         edgeCount += 3
         
-        let vertices1 = seqGraph.getEdges(forVertex: v1)
-        let dest1 = vertices1.map({ $0.to })
+        //test via edgesFromVertex function
+        let edges1 = seqGraph.getEdges(fromVertex: v1)
+        let dest1 = edges1.map({ $0.to })
         
         XCTAssertTrue(dest1.contains(v2), "Did not add edge to second vertex")
         XCTAssertTrue(dest1.contains(v3), "Did not add edge to third vertex")
@@ -72,17 +77,20 @@ class BioGraphTests: XCTestCase {
         seqGraph.addEdge(fromVertex: v3, toVertex: v5)
         edgeCount += 3
 
+        //test via allEdges function
         let allEdges = seqGraph.getAllEdges()
-        for edge in allEdges{
-            edge.print()
-        }
+        let dest2 = allEdges.map({ $0.to })
+        XCTAssertTrue(dest2.contains(v3), "Did not add edge to second vertex")
+        XCTAssertTrue(dest2.contains(v5), "Did not add edge to third vertex")
         XCTAssertEqual(allEdges.count, edgeCount, "Incorrect number of edges added")
         
         //test vertex removal
         seqGraph.removeVertex(vertex: v3)
+        vertexCount -= 1
         edgeCount -= 4 //three edges going to v3, one edge coming out
-        let vertices2 = seqGraph.getVertices()
+        let vertices2 = seqGraph.getAllVertices()
         XCTAssertFalse(vertices2.contains(v3), "Vertex 3 was not removed")
+        XCTAssertEqual(vertices2.count, vertexCount, "Too many vertices were removed")
         XCTAssertEqual(seqGraph.getAllEdges().count, edgeCount, "Edges going to/from Vertex 3 were not removed ")
         
         //test adding edges again
@@ -94,7 +102,7 @@ class BioGraphTests: XCTestCase {
 
         //test edge removal
         seqGraph.removeEdge(fromVertex: v5, toVertex: v6)
-        let v5Edges = seqGraph.getEdges(forVertex: v5)
+        let v5Edges = seqGraph.getEdges(fromVertex: v5)
         let dest5 = v5Edges.map({ $0.to })
         edgeCount -= 1
         XCTAssertEqual(seqGraph.getAllEdges().count, edgeCount, "Edge was not removed")
@@ -103,6 +111,12 @@ class BioGraphTests: XCTestCase {
         //test the removal of a non-existant edge
         seqGraph.removeEdge(fromVertex: v5, toVertex: v1)
         XCTAssertEqual(seqGraph.getAllEdges().count, edgeCount, "Edge was incorrectly removed")
+        
+        //test the addition of a duplicate vertex
+        let _ = seqGraph.createVertex(bioSequence: dna5)
+        XCTAssertEqual(seqGraph.getAllVertices().count, vertexCount, "Vertex was incorrectly added")
+        
+        //TODO: test getDestinationVertices
     }
     
     func testPerformanceExample() {
