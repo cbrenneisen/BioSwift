@@ -116,7 +116,32 @@ class BioGraphTests: XCTestCase {
         let _ = seqGraph.createVertex(bioSequence: dna5)
         XCTAssertEqual(seqGraph.getAllVertices().count, vertexCount, "Vertex was incorrectly added")
         
-        //TODO: test getDestinationVertices
+        //test getDestinationVertices
+        let destV1 = seqGraph.getDestinationVertices(fromVertex: v3)
+        XCTAssertTrue(destV1.isEmpty, "There should be no edges for Vertex 3 because it was removed")
+        
+        let destV2 = seqGraph.getDestinationVertices(fromVertex: v1)
+        XCTAssertTrue(destV2.contains(v2), "Vertex1 should have an edge going to Vertex 2")
+        XCTAssertTrue(destV2.contains(v4), "Vertex1 should have an edge going to Vertex 4")
+        
+        _ = generateBioSequences(minLength: 4, maxLength: 10, count: 100)
+    }
+    
+    func generateBioSequences(minLength: Int, maxLength: Int, count: Int) -> Set<DNA> {
+    
+        for _ in 1...count {
+            var curDNA = ""
+            let upperBound = UInt32(maxLength - minLength)
+            let length = Int(arc4random_uniform(upperBound)) + minLength
+            let validBases = DNA.validCharacters()
+            for _ in 0...length {
+                let base = String(describing: validBases.randomObject()!)
+
+                curDNA += base
+            }
+            print(curDNA)
+        }
+        return Set()
     }
     
     func testPerformanceExample() {
