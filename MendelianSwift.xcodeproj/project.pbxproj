@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		12FE3C6B1E6E161A0030B77D /* BioGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE3C6A1E6E161A0030B77D /* BioGraphTests.swift */; };
+		12FE3C6D1E719E800030B77D /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE3C6C1E719E800030B77D /* MockService.swift */; };
+		12FE3C6F1E71A3D70030B77D /* MockServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE3C6E1E71A3D70030B77D /* MockServiceTests.swift */; };
 		494B8C701E6B4D490057030B /* MendelianSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494B8C661E6B4D490057030B /* MendelianSwift.framework */; };
 		494B8C771E6B4D490057030B /* MendelianSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 494B8C691E6B4D490057030B /* MendelianSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		494B8C841E6B4DDC0057030B /* BioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B8C801E6B4DDC0057030B /* BioService.swift */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		12FE3C6A1E6E161A0030B77D /* BioGraphTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BioGraphTests.swift; sourceTree = "<group>"; };
+		12FE3C6C1E719E800030B77D /* MockService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		12FE3C6E1E71A3D70030B77D /* MockServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockServiceTests.swift; sourceTree = "<group>"; };
 		494B8C661E6B4D490057030B /* MendelianSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MendelianSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		494B8C691E6B4D490057030B /* MendelianSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MendelianSwift.h; sourceTree = "<group>"; };
 		494B8C6A1E6B4D490057030B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				494B8C921E6B4DFB0057030B /* Graph.swift */,
 				494B8C931E6B4DFB0057030B /* MathService.swift */,
 				494B8C6A1E6B4D490057030B /* Info.plist */,
+				12FE3C6C1E719E800030B77D /* MockService.swift */,
 			);
 			path = MendelianSwift;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 				499E9AE71E6C9AF3003AD937 /* DnaTests.swift */,
 				499E9AE41E6B55FF003AD937 /* Resources */,
 				12FE3C6A1E6E161A0030B77D /* BioGraphTests.swift */,
+				12FE3C6E1E71A3D70030B77D /* MockServiceTests.swift */,
 			);
 			path = MendelianSwiftTests;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 				494B8C911E6B4DF00057030B /* Spectrometry.swift in Sources */,
 				494B8C8D1E6B4DF00057030B /* BioSequence.swift in Sources */,
 				494B8C951E6B4DFB0057030B /* MathService.swift in Sources */,
+				12FE3C6D1E719E800030B77D /* MockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12FE3C6F1E71A3D70030B77D /* MockServiceTests.swift in Sources */,
 				494B8C971E6B50250057030B /* BioServiceTests.swift in Sources */,
 				12FE3C6B1E6E161A0030B77D /* BioGraphTests.swift in Sources */,
 				499E9AE81E6C9AF3003AD937 /* DnaTests.swift in Sources */,

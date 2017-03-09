@@ -19,7 +19,7 @@ public struct Edge<T: BioSequence>: Hashable {
     }
     
     public var hashValue: Int {
-        //avoid multiple edges going to the same vertex
+        //there should only be one edge per destination vertex anyway
         return to.hashValue
     }
     
