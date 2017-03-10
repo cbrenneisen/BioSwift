@@ -25,7 +25,39 @@ public class MockService {
         }
         return retVal
     }
+
+    public class func generateRandomRNA(minLength: Int, maxLength: Int, count: Int) ->Set<RNA> {
+        
+        var retVal = Set<RNA>()
+        if minLength > maxLength || minLength < 0 || maxLength < 0 || count < 1 {
+            //error handling
+            return retVal
+        }
+        
+        for _ in 1...count {
+            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength,
+                                             validCharacters: RNA.validCharacters())
+            retVal.insert(RNA(sequence: seq)!)
+        }
+        return retVal
+    }
     
+    public class func generateRandomProtein(minLength: Int, maxLength: Int, count: Int) ->Set<Protein> {
+        
+        var retVal = Set<Protein>()
+        if minLength > maxLength || minLength < 0 || maxLength < 0 || count < 1 {
+            //error handling
+            return retVal
+        }
+        
+        for _ in 1...count {
+            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength,
+                                             validCharacters: Protein.validCharacters())
+            retVal.insert(Protein(sequence: seq)!)
+        }
+        return retVal
+    }
+
     
     private class func generateRandomSequence(minLength: Int, maxLength: Int, validCharacters: Set<Character>) -> String {
         
@@ -42,7 +74,6 @@ public class MockService {
             sequence += String(validCharacters[index])
         }
         
-
         return sequence
     }
 }

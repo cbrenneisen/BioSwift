@@ -47,7 +47,6 @@ public struct DNA: BioSequence, Equatable, Hashable {
                     continue
             }
         }
-        
         return ((Float(occurrences) / Float(self.sequence.characters.count))*100.0)
     }()
 

@@ -123,31 +123,75 @@ class BioGraphTests: XCTestCase {
         let destV2 = seqGraph.getDestinationVertices(fromVertex: v1)
         XCTAssertTrue(destV2.contains(v2), "Vertex1 should have an edge going to Vertex 2")
         XCTAssertTrue(destV2.contains(v4), "Vertex1 should have an edge going to Vertex 4")
-        
-        _ = generateBioSequences(minLength: 4, maxLength: 10, count: 100)
     }
     
-    func generateBioSequences(minLength: Int, maxLength: Int, count: Int) -> Set<DNA> {
-    
-        for _ in 1...count {
-            var curDNA = ""
-            let upperBound = UInt32(maxLength - minLength)
-            let length = Int(arc4random_uniform(upperBound)) + minLength
-            let validBases = DNA.validCharacters()
-            for _ in 0...length {
-                let base = String(describing: validBases.randomObject()!)
-
-                curDNA += base
-            }
-            print(curDNA)
+    func byChance() -> Bool {
+        if (Int(arc4random_uniform(UInt32(10))) == 1){
+            return true
         }
-        return Set()
+        return false
+    }
+    
+    func testStress(){
+        
+        let bGraph = BioGraph<DNA>()
+        let dnaSet = MockService.generateRandomDNA(minLength: 100, maxLength: 100, count: 100)
+        
+        for dna in dnaSet {
+            _ = bGraph.createVertex(bioSequence: dna)
+        }
+        
+        var edgeCount = 0
+        let vertices = bGraph.getAllVertices()
+        XCTAssertEqual(vertices.count, 100, "Incorrect number of vertices added")
+        for v1 in vertices {
+            for v2 in vertices {
+                if (!(v1==v2)) {
+                    //if we are not looking at the vertex, maybe add an edge
+                    if (byChance()){
+                        edgeCount += 1
+                        bGraph.addEdge(fromVertex: v1, toVertex: v2)
+                    }
+                }
+            }
+        }
+        XCTAssertGreaterThan(edgeCount, 0, "Something went wrong...")
+
+        let edges = bGraph.getAllEdges()
+        XCTAssertEqual(edges.count, edgeCount, "Not all Edges added")
+        
+        for edge in edges {
+            //maybe subtract an edge now
+            if (byChance()){
+                edgeCount -= 1
+                bGraph.removeEdge(fromVertex: edge.from, toVertex: edge.to)
+            }
+        }
+        let edges2 = bGraph.getAllEdges()
+        XCTAssertEqual(edges2.count, edgeCount, "Not all Edges removed")
+
+        var vertexCount = vertices.count
+        for v in vertices {
+            
+            if (byChance()) {
+                vertexCount -= 1
+                bGraph.removeVertex(vertex: v)
+                
+                let vEdges = bGraph.getEdges(fromVertex: v)
+                XCTAssertEqual(0, vEdges.count, "Did not remove vertex edges along with vertex")
+                
+            }
+        }
+
+        let vertices2 = bGraph.getAllVertices()
+        XCTAssertEqual(vertices2.count, vertexCount, "Not all Vertices removed")
+
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
-            // Put the code you want to measure the time of here.
+            
         }
     }
     

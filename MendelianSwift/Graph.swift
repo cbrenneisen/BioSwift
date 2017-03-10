@@ -221,7 +221,10 @@ public class BioGraph<T: BioSequence> {
         bioGraphQueue.sync(flags: .barrier) { [unowned self, unowned fromVertex] in
             edges = self.structure[fromVertex]?.getEdges()
         }
-        return edges!
+        if let _ = edges {
+            return edges!
+        }
+        return Set()
     }
     
     //MARK: Utility Functions
