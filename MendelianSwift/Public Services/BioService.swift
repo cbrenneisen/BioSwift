@@ -248,23 +248,46 @@ public class BioService {
             if there is a suffix in A that is equal to a prefix in B
        -The threshold specifies the minimum length to consider when creating an edge between sequences
      */
-    public func overlapGraph(allDNA: [DNA], threshold: Int){
+    public class func overlapGraph(allDNA: [DNA], threshold: Int) -> BioGraph<DNA>{
         
-        for dnaA in allDNA {
-            for dnaB in allDNA{
-                
-                if dnaA == dnaB {
-                    continue
-                }
-                
-                let left = String(dnaA.sequence.characters.suffix(threshold))
-                let right = String(dnaB.sequence.characters.prefix(threshold))
-                
-                if left == right {
-                    
-                }
-                
+        var prefixToVertices: [String: [Vertex<DNA>]] = [:]
+        let graph = BioGraph<DNA>()
+        for dna in allDNA {
+            //add a vertex for this sequence in the graph
+            let vertex = graph.createVertex(bioSequence: dna)
+            
+            //add to the list of all vertices that begin with this prefix
+            let left = String(dna.sequence.characters.prefix(threshold))
+            if let _ = prefixToVertices[left] {
+                prefixToVertices[left]!.append(vertex)
+            }else{
+                prefixToVertices[left] = [vertex]
             }
         }
+        let vertices = graph.getAllVertices()
+        for vertex in vertices {
+            //check if the right end of this sequence matches the left end of any sequence
+            let right = String(vertex.bioSequence.sequence.characters.suffix(threshold))
+            if let matches = prefixToVertices[right] {
+                //there are some matches
+                for m in matches {
+                    if m != vertex {
+                        //add the edge
+                        graph.addEdge(fromVertex: vertex, toVertex: m)
+                    }
+                }
+            }
+
+        }
+        
+        if (Constants.debugMode){
+            //output matrix
+            let edges = graph.getAllEdges()
+            for e in edges{
+                e.print()
+            }
+        }
+        
+        return graph
     }
 }

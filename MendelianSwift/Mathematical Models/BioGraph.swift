@@ -162,7 +162,6 @@ public class BioGraph<T: BioSequence> {
             }
         }
         return vertices!
-
     }
 
     //MARK: Edge Functions
@@ -225,6 +224,35 @@ public class BioGraph<T: BioSequence> {
             return edges!
         }
         return Set()
+    }
+    
+    //returns whether or not an edge exists between two BioSequences
+    public func edgeExists(fromSequence: T, toSequence: T) -> Bool {
+
+        let fromVertex = Vertex(bioSequence: fromSequence)
+        let toVertex   = Vertex(bioSequence: toSequence)
+
+        return edgeExists(fromVertex: fromVertex, toVertex: toVertex)
+    }
+    
+    //returns whether or not an edge exists between two Vertices
+    public func edgeExists(fromVertex: Vertex<T>, toVertex: Vertex<T>) -> Bool {
+        
+        var exists = false
+        bioGraphQueue.sync { [unowned self, unowned fromVertex, unowned toVertex] in
+            //get the edges for the 'fromVertex'
+            if let edgeList = self.structure[fromVertex]{
+                let edges = edgeList.getEdges()
+                for e in edges {
+                    if e.to == toVertex {
+                        //if there is an edge to the 'toVertex' return true
+                        exists = true
+                        break
+                    }
+                }
+            }
+        }
+        return exists
     }
     
     //MARK: Utility Functions

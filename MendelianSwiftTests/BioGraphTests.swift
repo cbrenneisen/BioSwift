@@ -9,16 +9,115 @@
 import XCTest
 @testable import MendelianSwift
 
+class MockBioGraph: BioGraph<DNA> {
+    
+    public override init(){
+        
+        super.init()
+        
+        guard let dna1 = DNA(sequence: "ATCCAGCT"),
+            let dna2 = DNA(sequence: "GGGCAACT"),
+            let dna3 = DNA(sequence: "ATGGATCT"),
+            let dna4 = DNA(sequence: "AAGCAACC"),
+            let dna5 = DNA(sequence: "TTGGAACT"),
+            let dna6 = DNA(sequence: "ATGCCATT"),
+            let dna7 = DNA(sequence: "ATGGCACT") else {
+                XCTFail("Invalid DNA sequence")
+                return
+        }
+        
+        _ = createVertex(bioSequence: dna1)
+        _ = createVertex(bioSequence: dna2)
+        _ = createVertex(bioSequence: dna3)
+        _ = createVertex(bioSequence: dna4)
+        _ = createVertex(bioSequence: dna5)
+        _ = createVertex(bioSequence: dna6)
+        _ = createVertex(bioSequence: dna7)
+    }
+    
+}
+
 class BioGraphTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    //test both of the edgeExists functions
+    func testEdgeExists(){
+
+        let seqGraph = MockBioGraph()
+        let vertices = Array(seqGraph.getAllVertices())
+        
+        //add some edges - make sure the graph reports that these exist and others do not
+        seqGraph.addEdge(fromVertex: vertices[0], toVertex: vertices[1])
+        seqGraph.addEdge(fromVertex: vertices[0], toVertex: vertices[3])
+        seqGraph.addEdge(fromVertex: vertices[1], toVertex: vertices[2])
+        seqGraph.addEdge(fromVertex: vertices[3], toVertex: vertices[4])
+        
+        //test via the sequence method
+        let exists1 = seqGraph.edgeExists(fromSequence: vertices[0].bioSequence,
+                                          toSequence:   vertices[1].bioSequence)
+        let exists2 = seqGraph.edgeExists(fromSequence: vertices[0].bioSequence,
+                                          toSequence:   vertices[3].bioSequence)
+        let exists3 = seqGraph.edgeExists(fromSequence: vertices[1].bioSequence,
+                                          toSequence:   vertices[2].bioSequence)
+        let exists4 = seqGraph.edgeExists(fromSequence: vertices[3].bioSequence,
+                                          toSequence:   vertices[4].bioSequence)
+        XCTAssertTrue(exists1, "Did not add edge from vertex0 to vertex1")
+        XCTAssertTrue(exists2, "Did not add edge from vertex0 to vertex3")
+        XCTAssertTrue(exists3, "Did not add edge from vertex1 to vertex2")
+        XCTAssertTrue(exists4, "Did not add edge from vertex3 to vertex4")
+        
+        //make sure its not returnining true when it shouldn't
+        let exists5 = seqGraph.edgeExists(fromSequence: vertices[0].bioSequence,
+                                          toSequence:   vertices[2].bioSequence)
+        let exists6 = seqGraph.edgeExists(fromSequence: vertices[0].bioSequence,
+                                          toSequence:   vertices[4].bioSequence)
+        let exists7 = seqGraph.edgeExists(fromSequence: vertices[1].bioSequence,
+                                          toSequence:   vertices[3].bioSequence)
+        let exists8 = seqGraph.edgeExists(fromSequence: vertices[3].bioSequence,
+                                          toSequence:   vertices[5].bioSequence)
+        XCTAssertFalse(exists5, "Reporting non existent edge")
+        XCTAssertFalse(exists6, "Reporting non existent edge")
+        XCTAssertFalse(exists7, "Reporting non existent edge")
+        XCTAssertFalse(exists8, "Reporting non existent edge")
+
+        
+        //test via the vertex method
+        let existsA = seqGraph.edgeExists(fromVertex: vertices[0],
+                                          toVertex:   vertices[1])
+        let existsB = seqGraph.edgeExists(fromVertex: vertices[0],
+                                          toVertex:   vertices[3])
+        let existsC = seqGraph.edgeExists(fromVertex: vertices[1],
+                                          toVertex:   vertices[2])
+        let existsD = seqGraph.edgeExists(fromVertex: vertices[3],
+                                          toVertex:   vertices[4])
+        XCTAssertTrue(existsA, "Did not add edge from vertex0 to vertex1")
+        XCTAssertTrue(existsB, "Did not add edge from vertex0 to vertex3")
+        XCTAssertTrue(existsC, "Did not add edge from vertex1 to vertex2")
+        XCTAssertTrue(existsD, "Did not add edge from vertex3 to vertex4")
+        
+        //make sure its not returnining true when it shouldn't
+        let existsE = seqGraph.edgeExists(fromVertex: vertices[0],
+                                          toVertex:   vertices[2])
+        let existsF = seqGraph.edgeExists(fromVertex: vertices[0],
+                                          toVertex:   vertices[4])
+        let existsG = seqGraph.edgeExists(fromVertex: vertices[1],
+                                          toVertex:   vertices[3])
+        let existsH = seqGraph.edgeExists(fromVertex: vertices[3],
+                                          toVertex:   vertices[5])
+        XCTAssertFalse(existsE, "Reporting non existent edge")
+        XCTAssertFalse(existsF, "Reporting non existent edge")
+        XCTAssertFalse(existsG, "Reporting non existent edge")
+        XCTAssertFalse(existsH, "Reporting non existent edge")
     }
     
     func testBioGraphFunctions() {
@@ -84,6 +183,23 @@ class BioGraphTests: XCTestCase {
         XCTAssertTrue(dest2.contains(v5), "Did not add edge to third vertex")
         XCTAssertEqual(allEdges.count, edgeCount, "Incorrect number of edges added")
         
+        //test via edgeExists Function
+        let exists1 = seqGraph.edgeExists(fromSequence: dna4, toSequence: dna3)
+        let exists2 = seqGraph.edgeExists(fromSequence: dna2, toSequence: dna3)
+        let exists3 = seqGraph.edgeExists(fromSequence: dna3, toSequence: dna5)
+        XCTAssertEqual(exists1, true, "Did not add edge from dna4 to dna3")
+        XCTAssertEqual(exists2, true, "Did not add edge from dna2 to dna3")
+        XCTAssertEqual(exists3, true, "Did not add edge from dna2 to dna3")
+        
+        //test via other edgeExists function
+        let existsA = seqGraph.edgeExists(fromVertex: v4, toVertex: v3)
+        let existsB = seqGraph.edgeExists(fromVertex: v2, toVertex: v3)
+        let existsC = seqGraph.edgeExists(fromVertex: v3, toVertex: v5)
+        XCTAssertEqual(existsA, true, "Did not add edge from v4 to v3")
+        XCTAssertEqual(existsB, true, "Did not add edge from v2 to v3")
+        XCTAssertEqual(existsC, true, "Did not add edge from v3 to v5")
+
+        
         //test vertex removal
         seqGraph.removeVertex(vertex: v3)
         vertexCount -= 1
@@ -144,10 +260,12 @@ class BioGraphTests: XCTestCase {
         var edgeCount = 0
         let vertices = bGraph.getAllVertices()
         XCTAssertEqual(vertices.count, 100, "Incorrect number of vertices added")
+        
+        //now add some edges randomly
         for v1 in vertices {
             for v2 in vertices {
                 if (!(v1==v2)) {
-                    //if we are not looking at the vertex, maybe add an edge
+                    //if we are not looking at the same vertex, maybe add an edge
                     if (byChance()){
                         edgeCount += 1
                         bGraph.addEdge(fromVertex: v1, toVertex: v2)
@@ -157,11 +275,12 @@ class BioGraphTests: XCTestCase {
         }
         XCTAssertGreaterThan(edgeCount, 0, "Something went wrong...")
 
+        //make sure all edges were successfully stored
         let edges = bGraph.getAllEdges()
         XCTAssertEqual(edges.count, edgeCount, "Not all Edges added")
         
+        //now remove some edges randomly
         for edge in edges {
-            //maybe subtract an edge now
             if (byChance()){
                 edgeCount -= 1
                 bGraph.removeEdge(fromVertex: edge.from, toVertex: edge.to)
@@ -170,6 +289,7 @@ class BioGraphTests: XCTestCase {
         let edges2 = bGraph.getAllEdges()
         XCTAssertEqual(edges2.count, edgeCount, "Not all Edges removed")
 
+        //now remove some vertices randomly
         var vertexCount = vertices.count
         for v in vertices {
             
@@ -179,13 +299,12 @@ class BioGraphTests: XCTestCase {
                 
                 let vEdges = bGraph.getEdges(fromVertex: v)
                 XCTAssertEqual(0, vEdges.count, "Did not remove vertex edges along with vertex")
-                
             }
         }
 
+        //test the final vertex count
         let vertices2 = bGraph.getAllVertices()
         XCTAssertEqual(vertices2.count, vertexCount, "Not all Vertices removed")
-
     }
     
     func testPerformanceExample() {
