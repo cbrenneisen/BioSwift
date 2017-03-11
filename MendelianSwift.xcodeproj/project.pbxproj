@@ -24,8 +24,8 @@
 		494D4ED41E738C420068F706 /* MathService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ED01E738C420068F706 /* MathService.swift */; };
 		494D4ED51E738C420068F706 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ED11E738C420068F706 /* MockService.swift */; };
 		494D4ED71E738C530068F706 /* Spectrometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ED61E738C530068F706 /* Spectrometry.swift */; };
-		499E9AE21E6B55F6003AD937 /* fasta1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 499E9AE01E6B55F6003AD937 /* fasta1.txt */; };
-		499E9AE31E6B55F6003AD937 /* fasta2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 499E9AE11E6B55F6003AD937 /* fasta2.txt */; };
+		494D4EDB1E74436C0068F706 /* fasta1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 494D4ED91E74436C0068F706 /* fasta1.txt */; };
+		494D4EDC1E74436C0068F706 /* fasta2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 494D4EDA1E74436C0068F706 /* fasta2.txt */; };
 		499E9AE61E6B5633003AD937 /* FastaServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E9AE51E6B5633003AD937 /* FastaServiceTests.swift */; };
 		499E9AE81E6C9AF3003AD937 /* DnaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E9AE71E6C9AF3003AD937 /* DnaTests.swift */; };
 /* End PBXBuildFile section */
@@ -61,8 +61,8 @@
 		494D4ED01E738C420068F706 /* MathService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathService.swift; path = "Public Services/MathService.swift"; sourceTree = "<group>"; };
 		494D4ED11E738C420068F706 /* MockService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockService.swift; path = "Public Services/MockService.swift"; sourceTree = "<group>"; };
 		494D4ED61E738C530068F706 /* Spectrometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spectrometry.swift; path = "Internal Services/Spectrometry.swift"; sourceTree = "<group>"; };
-		499E9AE01E6B55F6003AD937 /* fasta1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta1.txt; path = MendelianSwiftTests/fasta1.txt; sourceTree = SOURCE_ROOT; };
-		499E9AE11E6B55F6003AD937 /* fasta2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fasta2.txt; sourceTree = "<group>"; };
+		494D4ED91E74436C0068F706 /* fasta1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta1.txt; path = Resources/fasta1.txt; sourceTree = "<group>"; };
+		494D4EDA1E74436C0068F706 /* fasta2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta2.txt; path = Resources/fasta2.txt; sourceTree = "<group>"; };
 		499E9AE51E6B5633003AD937 /* FastaServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastaServiceTests.swift; sourceTree = "<group>"; };
 		499E9AE71E6C9AF3003AD937 /* DnaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,11 +121,11 @@
 		494B8C731E6B4D490057030B /* MendelianSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				494D4ED81E7443520068F706 /* Resources */,
 				494B8C761E6B4D490057030B /* Info.plist */,
 				494B8C961E6B50250057030B /* BioServiceTests.swift */,
 				499E9AE51E6B5633003AD937 /* FastaServiceTests.swift */,
 				499E9AE71E6C9AF3003AD937 /* DnaTests.swift */,
-				499E9AE41E6B55FF003AD937 /* Resources */,
 				12FE3C6A1E6E161A0030B77D /* BioGraphTests.swift */,
 				12FE3C6E1E71A3D70030B77D /* MockServiceTests.swift */,
 			);
@@ -171,11 +171,11 @@
 			name = "Public Services";
 			sourceTree = "<group>";
 		};
-		499E9AE41E6B55FF003AD937 /* Resources */ = {
+		494D4ED81E7443520068F706 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				499E9AE11E6B55F6003AD937 /* fasta2.txt */,
-				499E9AE01E6B55F6003AD937 /* fasta1.txt */,
+				494D4ED91E74436C0068F706 /* fasta1.txt */,
+				494D4EDA1E74436C0068F706 /* fasta2.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -283,8 +283,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				499E9AE21E6B55F6003AD937 /* fasta1.txt in Resources */,
-				499E9AE31E6B55F6003AD937 /* fasta2.txt in Resources */,
+				494D4EDB1E74436C0068F706 /* fasta1.txt in Resources */,
+				494D4EDC1E74436C0068F706 /* fasta2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
