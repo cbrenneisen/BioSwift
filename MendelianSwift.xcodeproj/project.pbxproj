@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12628EE11E770BD700C44EC1 /* BaseGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EE01E770BD700C44EC1 /* BaseGraph.swift */; };
 		12628EE31E77309100C44EC1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EE21E77309100C44EC1 /* Utility.swift */; };
 		12628EEB1E77433900C44EC1 /* BioGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EEA1E77433900C44EC1 /* BioGraphTests.swift */; };
 		12628EED1E77439000C44EC1 /* DnaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EEC1E77439000C44EC1 /* DnaTests.swift */; };
@@ -47,7 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12628EE01E770BD700C44EC1 /* BaseGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGraph.swift; sourceTree = "<group>"; };
 		12628EE21E77309100C44EC1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		12628EEA1E77433900C44EC1 /* BioGraphTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioGraphTests.swift; path = "Math Model Tests/BioGraphTests.swift"; sourceTree = "<group>"; };
 		12628EEC1E77439000C44EC1 /* DnaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DnaTests.swift; path = "Sequence Model Tests/DnaTests.swift"; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 				494D94181E7621E7007B416C /* Edge.swift */,
 				494D94191E7621E7007B416C /* Vertex.swift */,
 				494D941F1E762273007B416C /* EdgeList.swift */,
-				12628EE01E770BD700C44EC1 /* BaseGraph.swift */,
 			);
 			name = Graph;
 			sourceTree = "<group>";
@@ -360,7 +357,6 @@
 				494D4EC61E73894F0068F706 /* RNA.swift in Sources */,
 				494D4ED51E738C420068F706 /* MockService.swift in Sources */,
 				494D941C1E7621E7007B416C /* Vertex.swift in Sources */,
-				12628EE11E770BD700C44EC1 /* BaseGraph.swift in Sources */,
 				494D941B1E7621E7007B416C /* Edge.swift in Sources */,
 				494B8C861E6B4DDC0057030B /* Constants.swift in Sources */,
 				494D4ED41E738C420068F706 /* MathService.swift in Sources */,
