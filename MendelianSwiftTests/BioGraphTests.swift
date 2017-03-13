@@ -15,24 +15,10 @@ class MockBioGraph: BioGraph<DNA> {
         
         super.init()
         
-        guard let dna1 = DNA(sequence: "ATCCAGCT"),
-            let dna2 = DNA(sequence: "GGGCAACT"),
-            let dna3 = DNA(sequence: "ATGGATCT"),
-            let dna4 = DNA(sequence: "AAGCAACC"),
-            let dna5 = DNA(sequence: "TTGGAACT"),
-            let dna6 = DNA(sequence: "ATGCCATT"),
-            let dna7 = DNA(sequence: "ATGGCACT") else {
-                XCTFail("Invalid DNA sequence")
-                return
+        let allDNA = MockService.generateRandomDNA(minLength: 20, maxLength: 20, count: 10)
+        for dna in allDNA {
+            _ = createVertex(bioSequence: dna)
         }
-        
-        _ = createVertex(bioSequence: dna1)
-        _ = createVertex(bioSequence: dna2)
-        _ = createVertex(bioSequence: dna3)
-        _ = createVertex(bioSequence: dna4)
-        _ = createVertex(bioSequence: dna5)
-        _ = createVertex(bioSequence: dna6)
-        _ = createVertex(bioSequence: dna7)
     }
     
 }

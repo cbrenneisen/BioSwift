@@ -153,7 +153,7 @@ public class BioService {
             return nil
         }
         
-        let bases = Constants.dnaBases
+        let bases = Array(DNA.validCharacters())
         
         //initialize matrix for keeping track of occurrences
         var profile: [[Int]] = [[], [], [], []]
@@ -233,7 +233,7 @@ public class BioService {
             //output matrix
             for i in 0...bases.count-1 {
                 
-                let output = bases[i] + " " + profile[i].map({String($0)}).joined(separator: " ")
+                let output = String(bases[i]) + " " + profile[i].map({String($0)}).joined(separator: " ")
                 print (output)
                 
             }
@@ -250,7 +250,11 @@ public class BioService {
      */
     public class func overlapGraph(allDNA: [DNA], threshold: Int) -> BioGraph<DNA>{
         
+        //key:   each unique prefix
+        //value: an array of each vertex that begins with the given key
         var prefixToVertices: [String: [Vertex<DNA>]] = [:]
+        
+        //create vertices and populate dictionary
         let graph = BioGraph<DNA>()
         for dna in allDNA {
             //add a vertex for this sequence in the graph
@@ -264,6 +268,8 @@ public class BioService {
                 prefixToVertices[left] = [vertex]
             }
         }
+        
+        //create edges based on the suffix of the sequences
         let vertices = graph.getAllVertices()
         for vertex in vertices {
             //check if the right end of this sequence matches the left end of any sequence
@@ -276,15 +282,6 @@ public class BioService {
                         graph.addEdge(fromVertex: vertex, toVertex: m)
                     }
                 }
-            }
-
-        }
-        
-        if (Constants.debugMode){
-            //output matrix
-            let edges = graph.getAllEdges()
-            for e in edges{
-                e.print()
             }
         }
         
