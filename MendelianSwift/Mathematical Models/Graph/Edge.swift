@@ -12,11 +12,19 @@ public struct Edge<T: BioSequence>: Hashable {
     
     public let from: Vertex<T>
     public let to: Vertex<T>
-    private let weight: Int?
+    private var weight: Int
     
-    internal init(from: Vertex<T>, to: Vertex<T>, weight: Int?){
+    init(from: Vertex<T>, to: Vertex<T>) {
+        self.init(from: from, to: to, weight: MendelConstants.defaultEdgeWeight)
+    }
+    
+    internal init(from: Vertex<T>, to: Vertex<T>, weight: Int){
         self.from = from
         self.to = to
+        self.weight = weight
+    }
+    
+    public mutating func updateWeight(weight: Int){
         self.weight = weight
     }
     

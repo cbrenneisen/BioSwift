@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum BioGraphType {
+fileprivate enum BioGraphType {
     
     case directedUnweighted
     case directedWeighted
@@ -18,14 +18,28 @@ public enum BioGraphType {
 
 public class BioGraph<T: BioSequence> {
     
+    //MARK: Properties
+    
     private var structure: [Vertex<T>: EdgeList<T>]
-    let type: BioGraphType
+    private let type: BioGraphType
+    
+    public lazy var isDirected: Bool = {
+        return (self.type == .directedWeighted || self.type == .directedUnweighted)
+    }()
+    
+    public lazy var isWeighted: Bool = {
+        return (self.type == .directedWeighted || self.type == .undirectedWeighted)
+    }()
+
     
     //for thread safety
     private let bioGraphQueue = DispatchQueue(label: "com.mendelianSwift.BioGraph.Queue",
                                               attributes: .concurrent)
 
+    //MARK: Initializers
+    
     convenience init() {
+        //default graph is directed, unweighted, and created with no vertices
         self.init(directed: false, weighted: false, bioSequences: [])
     }
     
@@ -81,16 +95,29 @@ public class BioGraph<T: BioSequence> {
         
         bioGraphQueue.async(flags: .barrier) { [unowned self, unowned vertex] in
             
-            guard let _ = self.structure[vertex] else{
+            guard let outgoingEdges = self.structure[vertex] else{
                 //invalid vertex, nothing to do
                 return
             }
             
             //remove the reverse of all edges from the graph (edges coming in)
-            for edgeL in self.structure.values {
-                //ignore edgeList for current vertex
-                if edgeL.vertex != vertex {
-                    edgeL.removeEdge(toVertex: vertex)
+            if self.isDirected{
+                
+                //we need to go through all the other vertices and remove edges to this vertex
+                for destVertex in self.structure.keys {
+                    //ignore edgeList for current vertex
+                    if destVertex != vertex {
+                        self.structure[destVertex]?.removeEdge(toVertex: vertex)
+                    }
+                }
+            }
+            else{
+                
+                //we can simply remove the inverse of all this vertex's edges
+                let edges = outgoingEdges.getEdges()
+                for edge in edges {
+                    //remove the edge from the dest vertex to the given vertex
+                    self.structure[edge.to]?.removeEdge(toVertex: vertex)
                 }
             }
             
@@ -98,7 +125,7 @@ public class BioGraph<T: BioSequence> {
             self.structure.removeValue(forKey: vertex)
         }
     }
-    
+
     //returns the set of all vertices in the graph
     public func getAllVertices() -> Set<Vertex<T>> {
         
@@ -126,22 +153,37 @@ public class BioGraph<T: BioSequence> {
 
     //MARK: Edge Functions
     
-    //add an edge going from one vertex to another
+    //add an edge going from one vertex to another with no weight
     public func addEdge(fromVertex: Vertex<T>, toVertex: Vertex<T>) {
+        self.addEdge(fromVertex: fromVertex, toVertex: toVertex, withWeight: MendelConstants.defaultEdgeWeight)
+    }
+    
+    //add an edge going from one vertex to another with a set weight
+    public func addEdge(fromVertex: Vertex<T>, toVertex: Vertex<T>, withWeight: Int) {
         
         bioGraphQueue.async(flags: .barrier) { [unowned self] in
-
-            //grab the corresponding EdgeList
-            guard let edgeList = self.structure[fromVertex] else {
-                //invalid vertex, nothing to do
+            
+            guard let _ = self.structure[fromVertex],
+                  let _ = self.structure[toVertex] else {
+                //if either vertex is invalid, do not add
                 return
             }
             
-            //create the new edge
-            let edge = Edge(from: fromVertex, to: toVertex, weight: nil)
+            //ignore weight if the graph is not weighted
+            var weight = MendelConstants.defaultEdgeWeight
+            if self.isWeighted {
+                weight = withWeight
+            }
             
-            //add the edge to the corresponding EdgeList
-            edgeList.addEdge(edge: edge)
+            //create the new edge and add to the corresponding EdgeList
+            let edge = Edge(from: fromVertex, to: toVertex, weight: weight)
+            self.structure[fromVertex]?.addEdge(edge: edge)
+            
+            if !self.isDirected {
+                //graph is undirected so we need an edge going the other way too
+                let inverseEdge = Edge(from: toVertex, to: fromVertex, weight: weight)
+                self.structure[toVertex]?.addEdge(edge: inverseEdge)
+            }
         }
     }
     
@@ -149,28 +191,45 @@ public class BioGraph<T: BioSequence> {
     public func removeEdge(fromVertex: Vertex<T>, toVertex: Vertex<T>) {
         
         bioGraphQueue.async(flags: .barrier) { [unowned self] in
-
-            //grab the corresponding EdgeList
-            guard let edgeList = self.structure[fromVertex] else {
-                //invalid vertex, nothing to do
-                return
-            }
             
             //remove the edge that goes to the 'toVertex'
-            edgeList.removeEdge(toVertex: toVertex)
+            self.structure[fromVertex]?.removeEdge(toVertex: toVertex)
+            
+            if (!self.isDirected){
+                //if undirected, we need to remove the inverse vertex
+                self.structure[toVertex]?.removeEdge(toVertex: fromVertex)
+            }
         }
     }
     
     //returns all edges in the graph
     public func getAllEdges() -> Set<Edge<T>> {
         
-        var edges = Set<Edge<T>>()
+        var allEdges = Set<Edge<T>>()
         bioGraphQueue.sync(flags: .barrier) { [unowned self] in
-            for eList in self.structure.values {
-                edges.formUnion(eList.getEdges())
+            
+            if self.isDirected {
+                
+                //no duplicate edges, so just get the union of all edge lists
+                for eList in self.structure.values {
+                    allEdges.formUnion(eList.getEdges())
+                }
+            }else{
+                
+                //need to filter out inverse edges
+                for eList in self.structure.values {
+                    let edges = eList.getEdges()
+                    for edge in edges {
+                        let inverseEdge = Edge(from: edge.to, to: edge.from)
+                        if !edges.contains(inverseEdge){
+                            //only insert if the inverse is not found
+                            allEdges.insert(edge)
+                        }
+                    }
+                }
             }
         }
-        return edges
+        return allEdges
     }
     
     //returns the set of edges from a given vertex
@@ -219,5 +278,5 @@ public class BioGraph<T: BioSequence> {
     public func removeAll(keepingCapacity: Bool) {
         structure.removeAll(keepingCapacity: keepingCapacity)
     }
-
+    
 }

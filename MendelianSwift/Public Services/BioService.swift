@@ -229,7 +229,7 @@ public class BioService {
             consensusSeq += consensusBase
         }
         
-        if (Constants.debugMode){
+        if (MendelConstants.debugMode){
             //output matrix
             for i in 0...bases.count-1 {
                 
@@ -247,7 +247,7 @@ public class BioService {
        -An overlap graph is a directed graph that creates an edge from sequence A to sequence B
             if there is a suffix in A that is equal to a prefix in B
        -The threshold specifies the minimum length to consider when creating an edge between sequences
-     */
+    */
     public class func overlapGraph(allDNA: [DNA], threshold: Int) -> BioGraph<DNA>{
         
         //key:   each unique prefix
