@@ -57,7 +57,6 @@ public class MockService {
         }
         return retVal
     }
-
     
     private class func generateRandomSequence(minLength: Int, maxLength: Int, validCharacters: Set<Character>) -> String {
         

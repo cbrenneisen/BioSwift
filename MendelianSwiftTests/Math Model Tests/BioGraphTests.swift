@@ -10,89 +10,95 @@ import XCTest
 @testable import MendelianSwift
 
 
-
 class BioGraphTests: XCTestCase {
+    
+    var mockDNAGraphs: [MockDNAGraph] = []
+    let maxMocks = 3
     
     override func setUp() {
         super.setUp()
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        //add all combinations of graphs - without mocked edges
+        mockDNAGraphs.append(MockDNAGraph(directed: true, weighted: false, mockEdges: false))
+        mockDNAGraphs.append(MockDNAGraph(directed: true, weighted: true, mockEdges: false))
+        mockDNAGraphs.append(MockDNAGraph(directed: false, weighted: false, mockEdges: false))
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+
+        mockDNAGraphs.removeAll(keepingCapacity: true)
     }
     
-    //test both of the edgeExists functions
-    func testEdgeExists(){
+    func testEdgeFunctions(){
+        
+        for graph in mockDNAGraphs {
+            edgeFunctions(dnaGraph: graph)
+        }
+    }
+    
+    func edgeFunctions(dnaGraph: BioGraph<DNA>){
+        
+        let vertices = Array(dnaGraph.getAllVertices())
+        
+        //edges to add
+        let edges = [(0,1), (0,3), (1,2), (3,4)]
+        
+        for edge in edges {
+            //test edgeExists methods
+            
+            dnaGraph.addEdge(fromVertex: vertices[edge.0], toVertex: vertices[edge.1])
+            
+            //test via the sequence method
+            let exists1 = dnaGraph.edgeExists(fromSequence: vertices[edge.0].bioSequence,
+                                             toSequence:   vertices[edge.1].bioSequence)
+            XCTAssertTrue(exists1, "Did not add edge from \(edge.0) to \(edge.1)")
+            
+            //test via the vertex method
+            let exists2 = dnaGraph.edgeExists(fromVertex: vertices[edge.0],
+                                              toVertex:   vertices[edge.1])
 
-        let seqGraph = MockDNAGraph(directed: true,
-                                    weighted: false, mockEdges: false)
-        let vertices = Array(seqGraph.getAllVertices())
-        
-        //add some edges - make sure the graph reports that these exist and others do not
-        seqGraph.addEdge(fromVertex: vertices[0], toVertex: vertices[1])
-        seqGraph.addEdge(fromVertex: vertices[0], toVertex: vertices[3])
-        seqGraph.addEdge(fromVertex: vertices[1], toVertex: vertices[2])
-        seqGraph.addEdge(fromVertex: vertices[3], toVertex: vertices[4])
-        
-        //test via the sequence method
-        let exists1 = seqGraph.edgeExists(fromSequence: vertices[0].bioSequence,
-                                          toSequence:   vertices[1].bioSequence)
-        let exists2 = seqGraph.edgeExists(fromSequence: vertices[0].bioSequence,
-                                          toSequence:   vertices[3].bioSequence)
-        let exists3 = seqGraph.edgeExists(fromSequence: vertices[1].bioSequence,
-                                          toSequence:   vertices[2].bioSequence)
-        let exists4 = seqGraph.edgeExists(fromSequence: vertices[3].bioSequence,
-                                          toSequence:   vertices[4].bioSequence)
-        XCTAssertTrue(exists1, "Did not add edge from vertex0 to vertex1")
-        XCTAssertTrue(exists2, "Did not add edge from vertex0 to vertex3")
-        XCTAssertTrue(exists3, "Did not add edge from vertex1 to vertex2")
-        XCTAssertTrue(exists4, "Did not add edge from vertex3 to vertex4")
-        
-        //make sure its not returnining true when it shouldn't
-        let exists5 = seqGraph.edgeExists(fromSequence: vertices[0].bioSequence,
-                                          toSequence:   vertices[2].bioSequence)
-        let exists6 = seqGraph.edgeExists(fromSequence: vertices[0].bioSequence,
-                                          toSequence:   vertices[4].bioSequence)
-        let exists7 = seqGraph.edgeExists(fromSequence: vertices[1].bioSequence,
-                                          toSequence:   vertices[3].bioSequence)
-        let exists8 = seqGraph.edgeExists(fromSequence: vertices[3].bioSequence,
-                                          toSequence:   vertices[5].bioSequence)
-        XCTAssertFalse(exists5, "Reporting non existent edge")
-        XCTAssertFalse(exists6, "Reporting non existent edge")
-        XCTAssertFalse(exists7, "Reporting non existent edge")
-        XCTAssertFalse(exists8, "Reporting non existent edge")
+            XCTAssertTrue(exists2, "Did not add edge from \(edge.0) to \(edge.1)")
 
+        }
         
-        //test via the vertex method
-        let existsA = seqGraph.edgeExists(fromVertex: vertices[0],
-                                          toVertex:   vertices[1])
-        let existsB = seqGraph.edgeExists(fromVertex: vertices[0],
-                                          toVertex:   vertices[3])
-        let existsC = seqGraph.edgeExists(fromVertex: vertices[1],
-                                          toVertex:   vertices[2])
-        let existsD = seqGraph.edgeExists(fromVertex: vertices[3],
-                                          toVertex:   vertices[4])
-        XCTAssertTrue(existsA, "Did not add edge from vertex0 to vertex1")
-        XCTAssertTrue(existsB, "Did not add edge from vertex0 to vertex3")
-        XCTAssertTrue(existsC, "Did not add edge from vertex1 to vertex2")
-        XCTAssertTrue(existsD, "Did not add edge from vertex3 to vertex4")
-        
-        //make sure its not returnining true when it shouldn't
-        let existsE = seqGraph.edgeExists(fromVertex: vertices[0],
-                                          toVertex:   vertices[2])
-        let existsF = seqGraph.edgeExists(fromVertex: vertices[0],
-                                          toVertex:   vertices[4])
-        let existsG = seqGraph.edgeExists(fromVertex: vertices[1],
-                                          toVertex:   vertices[3])
-        let existsH = seqGraph.edgeExists(fromVertex: vertices[3],
-                                          toVertex:   vertices[5])
-        XCTAssertFalse(existsE, "Reporting non existent edge")
-        XCTAssertFalse(existsF, "Reporting non existent edge")
-        XCTAssertFalse(existsG, "Reporting non existent edge")
-        XCTAssertFalse(existsH, "Reporting non existent edge")
+        if (!dnaGraph.isDirected){
+            //if undirected, make sure the inverse edges are present
+            
+            for edge in edges {
+
+                //test via the sequence method
+                let exists1 = dnaGraph.edgeExists(fromSequence: vertices[edge.1].bioSequence,
+                                                  toSequence:   vertices[edge.0].bioSequence)
+                XCTAssertTrue(exists1, "Did not add edge from \(edge.1) to \(edge.0)")
+                
+                //test via the vertex method
+                let exists2 = dnaGraph.edgeExists(fromVertex: vertices[edge.1],
+                                                  toVertex:   vertices[edge.0])
+                
+                XCTAssertTrue(exists2, "Did not add edge from \(edge.1) to \(edge.0)")
+            }
+        }else{
+            //if directed, make sure the inverse edges are NOT present
+            
+            for edge in edges {
+                
+                //test via the sequence method
+                let exists1 = dnaGraph.edgeExists(fromSequence: vertices[edge.1].bioSequence,
+                                                  toSequence:   vertices[edge.0].bioSequence)
+                XCTAssertFalse(exists1, "Improperly added edge from \(edge.1) to \(edge.0)")
+                
+                //test via the vertex method
+                let exists2 = dnaGraph.edgeExists(fromVertex: vertices[edge.1],
+                                                  toVertex:   vertices[edge.0])
+                
+                XCTAssertFalse(exists2, "Improperly added edge from \(edge.1) to \(edge.0)")
+            }
+
+        }
     }
     
     func testBioGraphFunctions() {
