@@ -287,4 +287,53 @@ public class BioService {
         
         return graph
     }
+    
+    //returns the longest common subsequence of all given DNA
+    public class func longestSharedMotif(allDNA: [DNA]) -> String? {
+        
+        guard let subjectDNA = allDNA.last else {
+            return ""
+        }
+        
+        var left = 0
+        var right = subjectDNA.sequenceLength + 1
+        
+        while left + 1 < right {
+            
+            let mid = ((left + right) / 2)
+            
+            if let _ = commonSubstring(subjectDNA: subjectDNA, allDNA: allDNA, length: mid){
+                left = mid
+            }else{
+                right = mid
+            }
+            
+        }
+        
+        return commonSubstring(subjectDNA: subjectDNA, allDNA: allDNA, length: left)
+    }
+    
+    //helper function for the above method
+    private class func commonSubstring(subjectDNA: DNA, allDNA: [DNA], length: Int) -> String?{
+        
+        for left in 0...(subjectDNA.sequenceLength - length + 1){
+            
+            let substring = subjectDNA.getSubSequence(start: left, end: left+length)
+            
+            var exists = true
+            for d in allDNA {
+                
+                if !d.sequence.contains(substring) {
+                    exists = false
+                    break
+                }
+            }
+            if (exists){
+                return substring
+            }
+        }
+        return nil
+    }
 }
+
+

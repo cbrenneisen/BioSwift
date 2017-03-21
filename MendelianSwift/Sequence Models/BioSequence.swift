@@ -40,4 +40,18 @@ extension BioSequence {
         let n = sequence.characters[nIndex]
         return n
     }
+    
+    //returns the subsequence starting with 'start' and ending with (and including) 'end'
+    public func getSubSequence(start: Int, end: Int) -> String {
+        let range = Range(start...end)
+        let startIndex = index(from: range.lowerBound)
+        let endIndex = index(from: range.upperBound)
+        return self.sequence.substring(with: startIndex..<endIndex)
+    }
+
+    //helper function for the above
+    private func index(from: Int) -> String.Index {
+        return self.sequence.index(self.sequence.startIndex, offsetBy: from)
+    }
+
 }

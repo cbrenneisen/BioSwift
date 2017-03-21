@@ -46,7 +46,8 @@ class BioGraphTests: XCTestCase {
         
         //edges to add
         let edges = [(0,1), (0,3), (1,2), (3,4)]
-        
+
+        //test edge additions
         for edge in edges {
             //test edgeExists methods
             
@@ -65,6 +66,7 @@ class BioGraphTests: XCTestCase {
 
         }
         
+        //test inverse additions
         if (!dnaGraph.isDirected){
             //if undirected, make sure the inverse edges are present
             
@@ -96,10 +98,74 @@ class BioGraphTests: XCTestCase {
                                                   toVertex:   vertices[edge.0])
                 
                 XCTAssertFalse(exists2, "Improperly added edge from \(edge.1) to \(edge.0)")
+                
+            }
+        }
+        
+        //test edge removal
+        for edge in edges {
+
+            dnaGraph.removeEdge(fromVertex: vertices[edge.0], toVertex: vertices[edge.1])
+            
+            //test via the sequence method
+            let exists1 = dnaGraph.edgeExists(fromSequence: vertices[edge.0].bioSequence,
+                                              toSequence:   vertices[edge.1].bioSequence)
+            XCTAssertFalse(exists1, "Did not remove edge from \(edge.1) to \(edge.0)")
+            
+            //test via the vertex method
+            let exists2 = dnaGraph.edgeExists(fromVertex: vertices[edge.0],
+                                              toVertex:   vertices[edge.1])
+            
+            XCTAssertFalse(exists2, "Did not remove edge from \(edge.0) to \(edge.1)")
+            
+            if (!dnaGraph.isDirected){
+                //test that the inverse edges were removed too
+                
+                //test via the sequence method
+                let exists3 = dnaGraph.edgeExists(fromSequence: vertices[edge.1].bioSequence,
+                                                  toSequence:   vertices[edge.0].bioSequence)
+                XCTAssertFalse(exists3, "Improperly added edge from \(edge.1) to \(edge.0)")
+                
+                //test via the vertex method
+                let exists4 = dnaGraph.edgeExists(fromVertex: vertices[edge.1],
+                                                  toVertex:   vertices[edge.0])
+                XCTAssertTrue(exists4, "Did not add edge from \(edge.1) to \(edge.0)")
             }
 
         }
+        
+        let finalEdges = dnaGraph.getAllEdges()
+        XCTAssertEqual(finalEdges.count, 0, "Did not remove all edges")
     }
+    
+    func testVertexFunctions(){
+        
+        for graph in mockDNAGraphs {
+            vertexFunctions(dnaGraph: graph)
+        }
+    }
+
+    func vertexFunctions(dnaGraph: BioGraph<DNA>){
+        
+        //test vertex addition
+        let testDNA = MockService.generateRandomDNA(minLength: 20, maxLength: 20, count: 10)
+        var vertices: [Vertex<DNA>] = []
+        
+        for dna in testDNA {
+            
+            let v = dnaGraph.createVertex(bioSequence: dna)
+            XCTAssertEqual(v.bioSequence, dna, "Vertex bioSequence should equal biosequence \(dna.sequence)")
+            vertices.append(v)
+        }
+        
+        let addedVertices = dnaGraph.getAllVertices()
+        for v in vertices {
+            XCTAssertTrue(addedVertices.contains(v), "Should have added vertex \(v.bioSequence)")
+        }
+        
+        
+    }
+
     
     func testBioGraphFunctions() {
 
