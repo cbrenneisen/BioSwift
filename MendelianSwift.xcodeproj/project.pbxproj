@@ -14,6 +14,7 @@
 		12628EF21E77439A00C44EC1 /* FastaServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EEF1E77439A00C44EC1 /* FastaServiceTests.swift */; };
 		12628EF31E77439A00C44EC1 /* MockServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EF01E77439A00C44EC1 /* MockServiceTests.swift */; };
 		12628EF51E7743F400C44EC1 /* MockGraphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EF41E7743F400C44EC1 /* MockGraphs.swift */; };
+		12B057681E8EB49300BECD7A /* BioSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B057671E8EB49300BECD7A /* BioSequenceTests.swift */; };
 		494B8C701E6B4D490057030B /* MendelianSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494B8C661E6B4D490057030B /* MendelianSwift.framework */; };
 		494B8C771E6B4D490057030B /* MendelianSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 494B8C691E6B4D490057030B /* MendelianSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		494B8C861E6B4DDC0057030B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B8C821E6B4DDC0057030B /* Constants.swift */; };
@@ -53,6 +54,7 @@
 		12628EEF1E77439A00C44EC1 /* FastaServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastaServiceTests.swift; path = "Service Tests/FastaServiceTests.swift"; sourceTree = "<group>"; };
 		12628EF01E77439A00C44EC1 /* MockServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockServiceTests.swift; path = "Service Tests/MockServiceTests.swift"; sourceTree = "<group>"; };
 		12628EF41E7743F400C44EC1 /* MockGraphs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockGraphs.swift; path = "Mock Objects/MockGraphs.swift"; sourceTree = "<group>"; };
+		12B057671E8EB49300BECD7A /* BioSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioSequenceTests.swift; path = "Sequence Model Tests/BioSequenceTests.swift"; sourceTree = "<group>"; };
 		494B8C661E6B4D490057030B /* MendelianSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MendelianSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		494B8C691E6B4D490057030B /* MendelianSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MendelianSwift.h; sourceTree = "<group>"; };
 		494B8C6A1E6B4D490057030B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		12628EE51E7730BD00C44EC1 /* Sequence Model Tests */ = {
 			isa = PBXGroup;
 			children = (
+				12B057671E8EB49300BECD7A /* BioSequenceTests.swift */,
 				12628EEC1E77439000C44EC1 /* DnaTests.swift */,
 			);
 			name = "Sequence Model Tests";
@@ -379,6 +382,7 @@
 				12628EED1E77439000C44EC1 /* DnaTests.swift in Sources */,
 				12628EF11E77439A00C44EC1 /* BioServiceTests.swift in Sources */,
 				12628EEB1E77433900C44EC1 /* BioGraphTests.swift in Sources */,
+				12B057681E8EB49300BECD7A /* BioSequenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

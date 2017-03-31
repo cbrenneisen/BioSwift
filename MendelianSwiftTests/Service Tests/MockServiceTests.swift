@@ -37,7 +37,6 @@ class MockServiceTests: XCTestCase {
     }
     
     func testDNAEdgeCases() {
-        //0 = DNA, 0 = RNA, 0 = Protein
         
         let dnaSet1 = MockService.generateRandomDNA(minLength: -1, maxLength: 7, count: 10)
         XCTAssertEqual(dnaSet1.count, 0, "Generation should not have run")

@@ -13,16 +13,17 @@ class DnaTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        continueAfterFailure = false
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+
         super.tearDown()
     }
     
+    //test that valid sequences result in a DNA object and that invalid ones do not
     func testInit() {
-        //test that valid sequences result in a DNA object and the invalid ones do not
         
         if let _ = DNA(sequence: "ACGGGUA"),
            let _ = DNA(sequence: "TTT9dnzW"),
@@ -52,13 +53,52 @@ class DnaTests: XCTestCase {
             XCTFail("Did not accept valid sequences")
             return
         }
-        XCTAssertEqual(dnaA1, dnaA2, "Equality Function does not work")
-        XCTAssertEqual(dnaB1, dnaB1, "Equality Function does not work")
+        XCTAssertEqual(dnaA1, dnaA2, "These strands should be equal")
+        XCTAssertEqual(dnaB1, dnaB1, "These strands should be equal")
         
-        XCTAssertNotEqual(dnaA1, dnaB1, "Equality Function does not work")
-        XCTAssertNotEqual(dnaA2, dnaB2, "Equality Function does not work")
-        XCTAssertNotEqual(dnaA1, dnaB2, "Equality Function does not work")
-        XCTAssertNotEqual(dnaA2, dnaB1, "Equality Function does not work")
+        XCTAssertNotEqual(dnaA1, dnaB1, "These strands should NOT be equal")
+        XCTAssertNotEqual(dnaA2, dnaB2, "These strands should NOT be equal")
+        XCTAssertNotEqual(dnaA1, dnaB2, "These strands should NOT be equal")
+        XCTAssertNotEqual(dnaA2, dnaB1, "These strands should NOT be equal")
+    }
+    
+    //test equality via randomly generated strands of DNA
+    func testEqualityRandom(){
+        
+        let allDNA = MockService.generateRandomDNA(minLength: 20, maxLength: 20, count: 20)
+        
+        for dna in allDNA {
+            
+            //test duplicate dna
+            guard let copyDNA = DNA(sequence: dna.sequence) else {
+                XCTFail("This should not happen")
+                return
+            }
+            XCTAssertEqual(dna, copyDNA, "These strands should be equal")
+
+            let reversedSeq = String(dna.sequence.characters.reversed())
+            
+            //skip if the strand is miraculously the same from front to back
+            if reversedSeq == dna.sequence {
+                continue
+            }
+            
+            guard let reverseDNA = DNA(sequence: reversedSeq) else {
+                XCTFail("This should not happen")
+                return
+            }
+            
+            XCTAssertNotEqual(dna, reverseDNA, "These strands should not be equal")
+        }
+    }
+    
+    func testHash(){
+        let allDNA = MockService.generateRandomDNA(minLength: 20, maxLength: 20, count: 20)
+        
+        for dna in allDNA {
+            
+            XCTAssertEqual(dna.hashValue, dna.sequence.hashValue, "Hash value should be equal to sequence hash value")
+        }
     }
     
     func testGCContent(){
