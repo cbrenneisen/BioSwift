@@ -276,7 +276,10 @@ public class BioGraph<T: BioSequence> {
     
     //MARK: Utility Functions
     public func removeAll(keepingCapacity: Bool) {
-        structure.removeAll(keepingCapacity: keepingCapacity)
+        
+        bioGraphQueue.async { [unowned self] in
+            self.structure.removeAll(keepingCapacity: keepingCapacity)
+        }
     }
     
 }

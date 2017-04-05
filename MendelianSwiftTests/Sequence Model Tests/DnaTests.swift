@@ -102,15 +102,34 @@ class DnaTests: XCTestCase {
     }
     
     func testGCContent(){
-        let seq = "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTT" +
-                  "CAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
-        guard var dna = DNA(sequence: seq) else {
-                XCTFail("Did not accept valid sequences")
+        
+        //ensure that GC content returns 0 if no G or C
+        let seq1 = "ATATATTATTTTAAAATATA"
+        guard var dna1 = DNA(sequence: seq1) else {
+            XCTFail("Did not accept valid sequence")
+            return
+        }
+        
+        XCTAssertEqual(dna1.gcContent, 0, "There should be no GC content")
+        
+        //ensure that GC content returns 100 if all G or C
+        let seq2 = "GGGGCGCGCGCGCCCCCCCGCGC"
+        guard var dna2 = DNA(sequence: seq2) else {
+            XCTFail("Did not accept valid sequence")
+            return
+        }
+        XCTAssertEqual(dna2.gcContent, 100.0, "This should be 100% GC content")
+        
+        //ensure more complex GC content
+        let seq3 = "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTT" +
+                   "CAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
+        guard var dna3 = DNA(sequence: seq3) else {
+                XCTFail("Did not accept valid sequence")
                 return
         }
         
-        XCTAssertEqual(dna.gcContent, 60.919540, "GC Content not computed correctly")
-        XCTAssertEqualWithAccuracy(dna.gcContent, 60.919540, accuracy: 0.000005)
+        XCTAssertEqualWithAccuracy(dna3.gcContent, 60.919540, accuracy: 0.000005,
+                                   "GC Content not computed correctly")
     }
     
     func testPerformanceExample() {
