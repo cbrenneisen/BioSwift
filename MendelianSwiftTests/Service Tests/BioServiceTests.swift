@@ -14,7 +14,6 @@ class BioServiceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
     }
     
     override func tearDown() {
@@ -92,12 +91,9 @@ class BioServiceTests: XCTestCase {
         XCTAssertTrue(exists1, "There should be an edge from dna1 to dna2")
         XCTAssertTrue(exists2, "There should be an edge from dna1 to dna4")
         XCTAssertTrue(exists3, "There should be an edge from dna2 to dna3")
-
-        
     }
     
-    func testGCContent(){
-        
+    func testGCContent() {
 //        let allDNA = FastaService.loadDNA(fastaFile: "fasta1")
 //        let dna = BioService.highestGCContent(dnaSequences: allDNA)
 //        if let d = dna {
