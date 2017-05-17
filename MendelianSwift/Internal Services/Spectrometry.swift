@@ -1,6 +1,6 @@
 //
 //  Spectrometry.swift
-//  BioSwift
+//  MendelianSwift
 //
 //  Created by Carlos Brenneisen on 01/21/17.
 //  Copyright © 2017 CarlosBrenneisen. All rights reserved.

@@ -33,6 +33,21 @@ class BioGraphTests: XCTestCase {
         mockDNAGraphs.removeAll(keepingCapacity: true)
     }
     
+    func testRemoval(){
+        
+        for graph in mockDNAGraphs {
+            graph.removeAll(keepingCapacity: true)
+            
+            let vertices = graph.getAllVertices()
+            XCTAssertEqual(vertices.count, 0, "Vertices should be removed")
+            
+            let edges = graph.getAllEdges()
+            XCTAssertEqual(edges.count, 0, "Edges should be removed")
+        }
+        
+        
+    }
+    
     func testEdgeFunctions(){
         
         for graph in mockDNAGraphs {

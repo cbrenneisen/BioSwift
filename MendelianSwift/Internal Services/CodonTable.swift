@@ -1,12 +1,12 @@
 import Foundation
 
-internal class CodonTable {
+internal final class CodonTable {
     
     static let shared = CodonTable()
     
     private init(){}
     
-    //returns the amino acid that corresponds to an amino acid
+    //returns the amino acid that corresponds to a codon
     public func codonToAminoAcid(codon: String) -> String?{
         return table[codon]
     }
