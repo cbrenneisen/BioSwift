@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BioService {
+final public class BioService {
     
     //given a DNA strand, return a dictionary containing the count of each base
     public class func nucleobaseCount(dna: DNA) -> [String: Int]{
@@ -35,7 +35,6 @@ public class BioService {
         let seq = String(dna.sequence.characters.map{ $0 != "T" ? $0 : "U" })
         //RNA is guaranteed to be valid - okay to force unrwrap
         return RNA(sequence: seq)!
-        
     }
     
     //given a DNA strand, return the reverse complement
@@ -307,7 +306,6 @@ public class BioService {
             }else{
                 right = mid
             }
-            
         }
         
         return commonSubstring(subjectDNA: subjectDNA, allDNA: allDNA, length: left)
@@ -334,6 +332,60 @@ public class BioService {
         }
         return nil
     }
+    
+    //TODO: should this accept Strings or DNA objects - and is this the most efficient way to do this?
+    public class func splice(dna: DNA, introns: [String]) -> Protein? {
+    
+        var exons = dna.sequence
+        for intron in introns {
+            
+            guard let range =  exons.range(of: intron) else{
+                //intron is not found - could mean invalid intron sequence
+                return nil
+            }
+            exons = exons.replacingOccurrences(of: intron, with: "", options: .literal, range: range)
+        }
+        
+        guard let spliced = DNA(sequence: exons) else {
+            return nil
+        }
+        
+        let protein = translate(rna: transcribe(dna: spliced))
+        return protein
+    }
+    
+    public class func splicedMotif(dna: DNA, motif: DNA) -> (Int, Int, Int)?{
+        
+        var x = 0
+        var y = 0
+        var z = 0
+
+        for i in 0...dna.sequenceLength-1   {
+            
+            if x == 0 {
+                if dna.getBase(index: i) == motif.getBase(index: 0) {
+                    x = i + 1
+                }
+            }
+            else if y == 0 {
+                if dna.getBase(index: i) == motif.getBase(index: 1) {
+                    y = i + 1
+                }
+            }
+            else {
+                if dna.getBase(index: i) == motif.getBase(index: 2) {
+                    z = i + 1
+                    break
+                }
+            }
+        }
+        if z != 0 {
+            //if we found all characters, return the correct indices
+            return (x, y, z)
+        }
+        return nil
+    }
+    
 }
 
 

@@ -7,7 +7,7 @@
 //
 import Foundation
 
-public class MathService {
+final public class MathService {
     
     // Standard fibonacci sequence
     public class func fibonacci(n: Int) -> Int {

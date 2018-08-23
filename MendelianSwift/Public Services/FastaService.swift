@@ -15,7 +15,7 @@ public enum FastaError: Error {
     case invalidSequence(seq: String)
 }
 
-public class FastaService {
+final public class FastaService {
 
     //reads in a FASTA file and returns an array of DNA objects
     public class func loadDNA(fastaFilePath: String) throws -> [DNA]{

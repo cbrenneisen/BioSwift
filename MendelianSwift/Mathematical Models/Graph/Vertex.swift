@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Vertex<T: BioSequence>: Hashable {
+final public class Vertex<T: BioSequence>: Hashable {
     
     public let bioSequence: T
     

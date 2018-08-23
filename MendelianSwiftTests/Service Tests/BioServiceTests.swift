@@ -43,7 +43,6 @@ class BioServiceTests: XCTestCase {
         XCTAssertEqual(c, 12, "Incorrect number of Cytosine")
         XCTAssertEqual(g, 17, "Incorrect number of Guanine")
         XCTAssertEqual(t, 21, "Incorrect number of Thymine")
-
     }
     
     func testTranscribe(){
@@ -93,6 +92,70 @@ class BioServiceTests: XCTestCase {
         XCTAssertTrue(exists2, "There should be an edge from dna1 to dna4")
         XCTAssertTrue(exists3, "There should be an edge from dna2 to dna3")
 
+        
+    }
+    
+    func testSplice(){
+        /*
+        let seq = "ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCAT" +
+                  "ATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG"
+        guard let subjectDNA = DNA(sequence: seq) else {
+            XCTFail("Invalid DNA sequence")
+            return
+        }
+        let introns = ["ATCGGTCGAA", "ATCGGTCGAGCGTGT"]
+        
+        guard let protein = BioService.splice(dna: subjectDNA, introns: introns) else {
+            XCTFail("Method call failed")
+            return
+        }
+        print(protein.sequence)*/
+        
+        let seq = "ATGCTAATTCGAGGTGACTTGACAAACTGCCCCTACCAGAGTCCCATAACATGTTTCCCT" +
+        "CGGGCGACACGGGTAACGGCGCTTCGGCACGTAAGGATAAATTTCTATACGCGATAATAT" +
+        "CGAGAGTAACTCGTATTTGCTCCGGCGCAACTAGGACACAACTTCGCGTAGCAACTCGCA" +
+        "TGTGAGTAGCTTTTGAGAGGTTGGACATGTGTTCGAAGTGCATGACTCGGTTATTGACAG" +
+        "CGCTTATTATATCATGGTGGCGCGTAGCAGTTTCGCCACTCTCGAGGCGGGCCGAGCCCA" +
+        "ATCCTTTTCTTGCGGATCGTCATTGCCTGCCTGCGCCTCGATATCTGGCATGGAAAGGTG" +
+        "AATCACCAGGCTCGCCATGCCGCGTTGAAGAGTTTGCCGCAGCATGCAATTACCCGTGAT" +
+        "CGGGCGACACCGCGGAATTAGAGTATTTGGCATTATTTACCCGCAGCGGATGATTTGGTT" +
+        "GTGGCCCGGTCGAATTAATATCACCAGGTTGTTCCAAAATGCCTTAGGCATGGACGCACT" +
+        "TAAATCGTTTACTCCAGCCCGGTACACTAATTGCTCGGCAACCATGAACAAGTGAATACC" +
+        "GTTGCTTGCCGAGTGAACGCTACGAGGCCTTCACACATCTTCCACTCTATGAACTCTATT" +
+        "GCCGACTGATACGGCACCCTGCGGGTTATGAGCGCCGGTGTTGTTGCAATACTGTTATGT" +
+        "TTCTCCCGTAGTGCTACCAAACAAGGGGCAGTTCTGCCGACTTTCGCGGTCCTGTAAGCA" +
+        "CGTTTACACGCTAAGTCGTCTAAGAGCGAAGCCACGGGCAAATGACTCTCAAGAACCCGA" +
+        "GCGTTCAACTGCGCACATTTGTCTTCGTTAATCGGAAGTTTGTTACGTTACGAAGAGTAA" +
+        "GCCACAGGGTATCGTTCGCGCGTGTAACAATCGTGGCTTTGGTTAG"
+        guard let subjectDNA = DNA(sequence: seq) else {
+            XCTFail("Invalid DNA sequence")
+            return
+        }
+        let introns = ["TTGTTACGTTACGAAGAGTAAGCCACAGGGTATCGTTCGCGCG", "TGTTGCAATACTGTTATGTTTCTCCCGTAGTGCTACCAAAC",
+                       "GGAAAGGTGAA", "CAACTGCGCACAT", "ACTCGCATGTGAGTAGCTTTTGAGAGGTT",
+                       "TATACGCGATAATATCGAGAGTAACTCGTATT", "TACCAGAGTCCCATAACATGTTTCCCT", "TGATCGGGCGACACCGCGGA",
+                       "ATCATGGTGGCGCGTAGCAGTTTCGCCACTCTCGAGGCGGG", "CGGCAACCATGAA", "ATTAATATCACCAGGTTGTTCCAAAATGCCTTAGGCATGGACG", "TCACACATCTTCCACTCTATGAACTCTATTGCCGACTGATACGGCAC", "TACACGCTAAGTCGTCTAAGAG"]
+        
+        guard let protein = BioService.splice(dna: subjectDNA, introns: introns) else {
+            XCTFail("Method call failed")
+            return
+        }
+        print(protein.sequence)
+        
+        //TODO: add assertion here 
+    }
+    
+    func testslicedMotif(){
+        
+        guard let dna = DNA(sequence: "ACGTACGTGACG"), let motif = DNA(sequence: "GTA") else {
+            return
+        }
+        
+        guard let indices = BioService.splicedMotif(dna: dna, motif: motif) else {
+            return
+        }
+        
+        print(indices)
         
     }
     

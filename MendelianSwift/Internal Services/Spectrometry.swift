@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Spectrometry {
+final public class Spectrometry {
     
     static fileprivate let monoisotopicTable: [String: Float] = [
         "A":   71.03711,

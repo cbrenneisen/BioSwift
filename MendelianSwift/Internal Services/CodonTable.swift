@@ -1,6 +1,6 @@
 import Foundation
 
-internal class CodonTable {
+final internal class CodonTable {
     
     static let shared = CodonTable()
     

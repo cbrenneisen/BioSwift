@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MockService {
+final public class MockService {
     
     public class func generateRandomDNA(minLength: Int, maxLength: Int, count: Int) ->Set<DNA> {
         

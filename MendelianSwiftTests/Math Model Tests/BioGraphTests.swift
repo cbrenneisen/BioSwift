@@ -9,7 +9,6 @@
 import XCTest
 @testable import MendelianSwift
 
-
 class BioGraphTests: XCTestCase {
     
     var mockDNAGraphs: [MockDNAGraph] = []
