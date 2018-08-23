@@ -47,6 +47,6 @@ public struct RNA: BioSequence, Equatable, Hashable {
         let startIndex = self.sequence.index(self.sequence.startIndex, offsetBy: index)
         let endIndex = self.sequence.index(self.sequence.startIndex, offsetBy: index + 3)
         
-        return self.sequence[startIndex..<endIndex]
+        return String(self.sequence[startIndex..<endIndex])
     }
 }
