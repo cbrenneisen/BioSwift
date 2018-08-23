@@ -15,7 +15,7 @@ public struct Protein: BioSequence, Equatable, Hashable {
     public init?(sequence: String) {
         
         let valid = Protein.validCharacters()
-        for n in sequence.characters {
+        for n in sequence {
             if !(valid.contains(n)){
                 return nil
             }
@@ -25,7 +25,7 @@ public struct Protein: BioSequence, Equatable, Hashable {
 
     //valid characters are A-Z except B,J,O,U,X,Z
     public static func validCharacters()-> Set<Character> {
-        return Set("ACDEFGHIKLMNPQRSTVWY".characters)
+        return Set("ACDEFGHIKLMNPQRSTVWY")
     }
     
     public static func == (lhs: Protein, rhs: Protein) -> Bool {

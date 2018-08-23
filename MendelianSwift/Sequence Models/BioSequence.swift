@@ -31,13 +31,13 @@ extension BioSequence {
 
     //returns the length of the sequence
     public var sequenceLength: Int {
-        return self.sequence.characters.count
+        return self.sequence.count
     }
     
     //returns a base at a given position
     public func getBase (index: Int) -> Character {
         let nIndex = sequence.index(sequence.startIndex, offsetBy: index)
-        let n = sequence.characters[nIndex]
+        let n = sequence[nIndex]
         return n
     }
     
@@ -46,7 +46,7 @@ extension BioSequence {
         let range = Range(start...end)
         let startIndex = index(from: range.lowerBound)
         let endIndex = index(from: range.upperBound)
-        return self.sequence.substring(with: startIndex..<endIndex)
+        return String(self.sequence[startIndex..<endIndex])
     }
 
     //helper function for the above

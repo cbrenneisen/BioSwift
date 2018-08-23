@@ -15,7 +15,7 @@ public struct RNA: BioSequence, Equatable, Hashable {
     public init?(sequence: String){
         
         let valid = RNA.validCharacters()
-        for n in sequence.characters {
+        for n in sequence {
             if !(valid.contains(n)){
                 return nil
             }
@@ -25,7 +25,7 @@ public struct RNA: BioSequence, Equatable, Hashable {
     
     //valid nucleobases are A, C, G, U
     public static func validCharacters()-> Set<Character> {
-        return Set("ACGU".characters)
+        return Set("ACGU")
     }
     
     public static func == (lhs: RNA, rhs: RNA) -> Bool {
@@ -47,6 +47,6 @@ public struct RNA: BioSequence, Equatable, Hashable {
         let startIndex = self.sequence.index(self.sequence.startIndex, offsetBy: index)
         let endIndex = self.sequence.index(self.sequence.startIndex, offsetBy: index + 3)
         
-        return self.sequence[startIndex..<endIndex]
+        return String(self.sequence[startIndex..<endIndex])
     }
 }
