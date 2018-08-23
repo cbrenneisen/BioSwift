@@ -16,7 +16,7 @@ final public class BioService {
         //valid nucleobases
         var bases = ["A": 0, "C": 0, "G": 0, "T": 0]
         
-        for n in dna.sequence.characters {
+        for n in dna.sequence {
             
             guard let b = bases[String(n)] else {
                 //nucleotide could potentially be invalid
@@ -32,7 +32,7 @@ final public class BioService {
     public class func transcribe(dna: DNA) -> RNA {
         
         //AGTCCAT - AGUCCAU
-        let seq = String(dna.sequence.characters.map{ $0 != "T" ? $0 : "U" })
+        let seq = String(dna.sequence.map{ $0 != "T" ? $0 : "U" })
         //RNA is guaranteed to be valid - okay to force unrwrap
         return RNA(sequence: seq)!
     }
@@ -41,7 +41,7 @@ final public class BioService {
     public class func reverseComplement(dna: DNA) -> DNA {
         
         let complements = ["A": "T", "T": "A", "G": "C", "C": "G"]
-        let seq = dna.sequence.characters.reversed().map({ complements[String($0)]! }).joined(separator: "")
+        let seq = dna.sequence.reversed().map({ complements[String($0)]! }).joined(separator: "")
         //guarenteed to work, so force unwrapping is fine
         return DNA(sequence: seq)!
     }
@@ -260,7 +260,7 @@ final public class BioService {
             let vertex = graph.createVertex(bioSequence: dna)
             
             //add to the list of all vertices that begin with this prefix
-            let left = String(dna.sequence.characters.prefix(threshold))
+            let left = String(dna.sequence.prefix(threshold))
             if let _ = prefixToVertices[left] {
                 prefixToVertices[left]!.append(vertex)
             }else{
@@ -272,7 +272,7 @@ final public class BioService {
         let vertices = graph.getAllVertices()
         for vertex in vertices {
             //check if the right end of this sequence matches the left end of any sequence
-            let right = String(vertex.bioSequence.sequence.characters.suffix(threshold))
+            let right = String(vertex.bioSequence.sequence.suffix(threshold))
             if let matches = prefixToVertices[right] {
                 //there are some matches
                 for m in matches {

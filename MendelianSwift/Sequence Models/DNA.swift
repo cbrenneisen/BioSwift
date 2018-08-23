@@ -15,7 +15,7 @@ public struct DNA: BioSequence, Equatable, Hashable {
     public init?(sequence: String){
         
         let valid = DNA.validCharacters()
-        for n in sequence.characters {
+        for n in sequence {
             if !(valid.contains(n)){
                 return nil
             }
@@ -25,7 +25,7 @@ public struct DNA: BioSequence, Equatable, Hashable {
     
     //valid nucleobases are A, C, G, T
     public static func validCharacters()-> Set<Character> {
-        return Set("ACGT".characters)
+        return Set("ACGT")
     }
     
     public static func == (lhs: DNA, rhs: DNA) -> Bool {
@@ -39,7 +39,7 @@ public struct DNA: BioSequence, Equatable, Hashable {
     //returns the gc content of the DNA
     public lazy var gcContent: Float = {
         var occurrences = 0
-        for n in self.sequence.characters {
+        for n in self.sequence {
             switch String(n) {
                 case "G", "C":
                     occurrences += 1
@@ -47,7 +47,7 @@ public struct DNA: BioSequence, Equatable, Hashable {
                     continue
             }
         }
-        return ((Float(occurrences) / Float(self.sequence.characters.count))*100.0)
+        return ((Float(occurrences) / Float(self.sequence.count))*100.0)
     }()
 
 }

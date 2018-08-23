@@ -38,7 +38,7 @@ final public class FastaService {
         //iterate through entire file, line by line
         for line in lines {
                 
-            if String(line.characters.prefix(1)) == ">" {
+            if String(line.prefix(1)) == ">" {
                 //new DNA sequence
 
                 if (currentID != "" && currentSeq != ""){
@@ -52,7 +52,7 @@ final public class FastaService {
                     
                 //reset sequence, add ID without the preceding '>'
                 currentSeq = ""
-                currentID = String(line.characters.suffix(line.characters.count-1))
+                currentID = String(line.suffix(line.count-1))
             }else{
                 //add onto current DNA sequence
                 currentSeq += line
