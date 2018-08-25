@@ -33,6 +33,7 @@
 		494D941B1E7621E7007B416C /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D94181E7621E7007B416C /* Edge.swift */; };
 		494D941C1E7621E7007B416C /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D94191E7621E7007B416C /* Vertex.swift */; };
 		494D94201E762273007B416C /* EdgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D941F1E762273007B416C /* EdgeList.swift */; };
+		9194A921213191B800C1E696 /* Array+DNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194A920213191B800C1E696 /* Array+DNA.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		494D94181E7621E7007B416C /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edge.swift; path = "Mathematical Models/Graph/Edge.swift"; sourceTree = "<group>"; };
 		494D94191E7621E7007B416C /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vertex.swift; path = "Mathematical Models/Graph/Vertex.swift"; sourceTree = "<group>"; };
 		494D941F1E762273007B416C /* EdgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EdgeList.swift; path = "Mathematical Models/Graph/EdgeList.swift"; sourceTree = "<group>"; };
+		9194A920213191B800C1E696 /* Array+DNA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+DNA.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				494B8C691E6B4D490057030B /* MendelianSwift.h */,
 				494B8C821E6B4DDC0057030B /* Constants.swift */,
 				494B8C6A1E6B4D490057030B /* Info.plist */,
+				9194A922213191BD00C1E696 /* Extensions */,
 			);
 			path = MendelianSwift;
 			sourceTree = "<group>";
@@ -233,6 +236,14 @@
 				494D941F1E762273007B416C /* EdgeList.swift */,
 			);
 			name = Graph;
+			sourceTree = "<group>";
+		};
+		9194A922213191BD00C1E696 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9194A920213191B800C1E696 /* Array+DNA.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				494D4EC61E73894F0068F706 /* RNA.swift in Sources */,
 				494D4ED51E738C420068F706 /* MockService.swift in Sources */,
 				494D941C1E7621E7007B416C /* Vertex.swift in Sources */,
+				9194A921213191B800C1E696 /* Array+DNA.swift in Sources */,
 				494D941B1E7621E7007B416C /* Edge.swift in Sources */,
 				494B8C861E6B4DDC0057030B /* Constants.swift in Sources */,
 				494D4ED41E738C420068F706 /* MathService.swift in Sources */,

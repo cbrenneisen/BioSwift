@@ -27,15 +27,7 @@ public struct RNA: BioSequence, Equatable, Hashable {
     public static func validCharacters()-> Set<Character> {
         return Set("ACGU")
     }
-    
-    public static func == (lhs: RNA, rhs: RNA) -> Bool {
-        return lhs.sequence == rhs.sequence
-    }
-    
-    public var hashValue: Int {
-        return self.sequence.hashValue
-    }
-    
+            
     //return the codon starting at the given index
     public func codonFrom(index: Int) -> String? {
         

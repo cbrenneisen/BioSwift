@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct DNA: BioSequence, Equatable, Hashable {
-    
+public struct DNA: BioSequence {
+
     public var sequence: String
     public var id: String?
     
@@ -27,27 +27,52 @@ public struct DNA: BioSequence, Equatable, Hashable {
     public static func validCharacters()-> Set<Character> {
         return Set("ACGT")
     }
-    
-    public static func == (lhs: DNA, rhs: DNA) -> Bool {
-        return lhs.sequence == rhs.sequence
-    }
+}
 
-    public var hashValue: Int {
-        return self.sequence.hashValue
+public extension DNA {
+    
+    /**
+        A map containing the complement of each nucleobase
+    */
+    internal static var complements: [Character: String] {
+        return ["A": "T", "T": "A", "G": "C", "C": "G"]
     }
     
-    //returns the gc content of the DNA
-    public lazy var gcContent: Float = {
+    /**
+        Computes and returns the gc content of the DNA
+    */
+    public var gcContent: Float {
         var occurrences = 0
-        for n in self.sequence {
-            switch String(n) {
-                case "G", "C":
-                    occurrences += 1
-                default:
-                    continue
+        sequence.forEach() {
+            switch $0 {
+            case "G", "C":
+                occurrences += 1
+            default:
+                break
             }
         }
-        return ((Float(occurrences) / Float(self.sequence.count))*100.0)
-    }()
-
+        return ((Float(occurrences) / Float(sequence.count))*100.0)
+    }
+    
+    /**
+        Creates a new RNA object by transcribing the DNA
+    */
+    public func transcribe() -> RNA {
+        let seq = String(sequence.map{ $0 != "T" ? $0 : "U" })
+        // - RNA is guaranteed to be valid - okay to force unrwrap
+        return RNA(sequence: seq)!
+    }
+    
+    /**
+        Creates and returns the reverse complement of the DNA
+    */
+    public func reverseComplement() -> DNA {
+        
+        let seq = sequence.reversed().compactMap{ x in
+            DNA.complements[x]
+        }.joined(separator: "")
+        
+        //guarenteed to work, so force unwrapping is fine
+        return DNA(sequence: seq)!
+    }
 }

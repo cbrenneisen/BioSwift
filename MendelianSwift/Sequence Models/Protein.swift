@@ -26,13 +26,5 @@ public struct Protein: BioSequence, Equatable, Hashable {
     //valid characters are A-Z except B,J,O,U,X,Z
     public static func validCharacters()-> Set<Character> {
         return Set("ACDEFGHIKLMNPQRSTVWY")
-    }
-    
-    public static func == (lhs: Protein, rhs: Protein) -> Bool {
-        return lhs.sequence == rhs.sequence
-    }
-    
-    public var hashValue: Int {
-        return self.sequence.hashValue
-    }
+    }        
 }

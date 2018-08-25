@@ -7,8 +7,8 @@
 
 import Foundation
 
-//required implementations
-public protocol BioSequence {
+public protocol BioSequence: Hashable {
+    
     var sequence: String { get set }
     var id: String? { get set }
     var hashValue: Int { get }
@@ -18,11 +18,18 @@ public protocol BioSequence {
     
     //needs to return valid characters for the given type (i.e: DNA returns A, C, G, T)
     static func validCharacters()-> Set<Character>
-    
 }
 
 //default implementations
 extension BioSequence {
+    
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        return lhs.sequence == rhs.sequence
+    }
+
+    public var hashValue: Int {
+        return sequence.hashValue
+    }
     
     public init?(id: String, sequence: String){
         self.init(sequence: sequence)
@@ -35,7 +42,7 @@ extension BioSequence {
     }
     
     //returns a base at a given position
-    public func getBase (index: Int) -> Character {
+    public func getBase(index: Int) -> Character {
         let nIndex = sequence.index(sequence.startIndex, offsetBy: index)
         let n = sequence[nIndex]
         return n
@@ -53,5 +60,4 @@ extension BioSequence {
     private func index(from: Int) -> String.Index {
         return self.sequence.index(self.sequence.startIndex, offsetBy: from)
     }
-
 }

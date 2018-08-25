@@ -45,24 +45,7 @@ final public class BioService {
         //guarenteed to work, so force unwrapping is fine
         return DNA(sequence: seq)!
     }
-    
-    //return the DNA with the highest GC content
-    public class func highestGCContent(dnaSequences: [DNA]) -> DNA? {
-        
-        var maxGC: Float = 0.0
-        var retval: DNA? = nil
-        for var dna in dnaSequences {
-            
-            let gc = dna.gcContent
-            maxGC = max(maxGC, gc)
-            if maxGC == gc {
-                retval = dna
-            }
-        }
-        
-        return retval
-    }
- 
+     
     //return the number of different bases between two DNA strands
     public class func hammingDistance(dna1: DNA, dna2: DNA) -> Int {
     
