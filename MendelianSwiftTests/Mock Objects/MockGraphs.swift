@@ -122,9 +122,9 @@ class MockGraphTests: XCTestCase {
         XCTAssertEqual(dnaGraph1.getAllEdges().count, 0,
                        "Should not have created edges")
         for v in vertices1{
-            XCTAssertGreaterThanOrEqual(v.bioSequence.sequenceLength, minLength,
+            XCTAssertGreaterThanOrEqual(v.bioSequence.length, minLength,
                                         "Sequence should be at least as long as the minimum length")
-            XCTAssertLessThanOrEqual(v.bioSequence.sequenceLength, minLength,
+            XCTAssertLessThanOrEqual(v.bioSequence.length, minLength,
                                         "Sequence should not be longer than the maximum length")
         }
         

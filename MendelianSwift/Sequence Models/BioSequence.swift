@@ -21,7 +21,7 @@ public protocol BioSequence: Hashable {
 }
 
 //default implementations
-extension BioSequence {
+public extension BioSequence {
     
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.sequence == rhs.sequence
@@ -37,7 +37,7 @@ extension BioSequence {
     }
 
     //returns the length of the sequence
-    public var sequenceLength: Int {
+    public var length: Int {
         return self.sequence.count
     }
     

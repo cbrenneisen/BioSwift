@@ -28,86 +28,49 @@ final public class BioService {
         return bases
     }
     
-    //given a DNA strand, return the transcribed RNA strand
-    public class func transcribe(dna: DNA) -> RNA {
-        
-        //AGTCCAT - AGUCCAU
-        let seq = String(dna.sequence.map{ $0 != "T" ? $0 : "U" })
-        //RNA is guaranteed to be valid - okay to force unrwrap
-        return RNA(sequence: seq)!
-    }
-    
-    //given a DNA strand, return the reverse complement
-    public class func reverseComplement(dna: DNA) -> DNA {
-        
-        let complements = ["A": "T", "T": "A", "G": "C", "C": "G"]
-        let seq = dna.sequence.reversed().map({ complements[String($0)]! }).joined(separator: "")
-        //guarenteed to work, so force unwrapping is fine
-        return DNA(sequence: seq)!
-    }
-     
-    //return the number of different bases between two DNA strands
-    public class func hammingDistance(dna1: DNA, dna2: DNA) -> Int {
-    
-        if (dna1.sequenceLength != dna2.sequenceLength) {
-            //sequences need to be the same length
-            return 0
-        }
-        
-        var difference = 0
-        for i in 0...dna1.sequenceLength-1 {
-            if dna1.getBase(index: i) != dna2.getBase(index: i) {
-                difference += 1
-            }
-        }
-        
-        return difference
-    }
-    
-    //translate an RNA sequence into a protein sequence
-    public class func translate(rna: RNA) -> Protein? {
-
-        var stopCodon = false
-        var proteinSequence = ""
-        for n in stride(from: 0, to: rna.sequenceLength, by: 3){
-            
-            //get the current codon
-            guard let codon = rna.codonFrom(index: n) else {
-                //internal error - shouldn't happen - indicates that the sequenceLength is invalid
-                return nil
-            }
-            
-            guard let amino = CodonTable.shared.codonToAminoAcid(codon: codon) else {
-                //invalid codon given
-                return nil
-            }
-            
-            if amino == "Stop"{
-                //end of sequence
-                stopCodon = true
-                break
-            }
-            proteinSequence += amino
-        }
-        
-        if !stopCodon {
-            //invalid sequence - there must be a stop codon
-            return nil
-        }
-        
-        return Protein(sequence: proteinSequence)
-    }
+//    //translate an RNA sequence into a protein sequence
+//    public class func translate(rna: RNA) -> Protein? {
+//        var stopCodon = false
+//        var proteinSequence = ""
+//        for n in stride(from: 0, to: rna.sequenceLength, by: 3){
+//
+//            //get the current codon
+//            guard let codon = rna.codonFrom(index: n) else {
+//                //internal error - shouldn't happen - indicates that the sequenceLength is invalid
+//                return nil
+//            }
+//
+//            guard let amino = CodonTable.shared.codonToAminoAcid(codon: codon) else {
+//                //invalid codon given
+//                return nil
+//            }
+//
+//            if amino == "Stop"{
+//                //end of sequence
+//                stopCodon = true
+//                break
+//            }
+//            proteinSequence += amino
+//        }
+//
+//        if !stopCodon {
+//            //invalid sequence - there must be a stop codon
+//            return nil
+//        }
+//
+//        return Protein(sequence: proteinSequence)
+//    }
     
     //returns the starting index of all locations of subDNA found in baseDNA
     public class func motifLocations(baseDNA: DNA, subDNA: DNA) -> [Int] {
         
         var locations: [Int] = []
-        for i in 0...baseDNA.sequenceLength-1{
+        for i in 0...baseDNA.length-1{
             
             //get the current base of baseDNA
 
             var match = true
-            for j in 0...subDNA.sequenceLength-1 {
+            for j in 0...subDNA.length-1 {
                 
                 //check 1 by 1 if there is an occurrence of subDNA
                 let amino1 = baseDNA.getBase(index: i+j)
@@ -131,7 +94,7 @@ final public class BioService {
     //restriction: each sequence must be the same length
     public class func consensusDNA(allDNA: [DNA]) -> DNA? {
         
-        guard let length = allDNA.first?.sequenceLength else {
+        guard let length = allDNA.first?.length else {
             return nil
         }
         
@@ -150,12 +113,12 @@ final public class BioService {
         
         for dna in allDNA {
             
-            if dna.sequenceLength != length {
+            if dna.length != length {
                 print("Consensus Error - Not all sequences are the same length")
                 return nil
             }
             
-            for index in 0...dna.sequenceLength-1 {
+            for index in 0...dna.length-1 {
                 
                 let base = dna.getBase(index: index)
                 
@@ -278,7 +241,7 @@ final public class BioService {
         }
         
         var left = 0
-        var right = subjectDNA.sequenceLength + 1
+        var right = subjectDNA.length + 1
         
         while left + 1 < right {
             
@@ -297,7 +260,7 @@ final public class BioService {
     //helper function for the above method
     private class func commonSubstring(subjectDNA: DNA, allDNA: [DNA], length: Int) -> String?{
         
-        for left in 0...(subjectDNA.sequenceLength - length + 1){
+        for left in 0...(subjectDNA.length - length + 1){
             
             let substring = subjectDNA.getSubSequence(start: left, end: left+length)
             
@@ -333,7 +296,7 @@ final public class BioService {
             return nil
         }
         
-        let protein = translate(rna: transcribe(dna: spliced))
+        let protein = spliced.transcribe().translate()
         return protein
     }
     
@@ -343,7 +306,7 @@ final public class BioService {
         var y = 0
         var z = 0
 
-        for i in 0...dna.sequenceLength-1   {
+        for i in 0...dna.length-1   {
             
             if x == 0 {
                 if dna.getBase(index: i) == motif.getBase(index: 0) {

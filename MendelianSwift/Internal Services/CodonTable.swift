@@ -1,25 +1,24 @@
+
 import Foundation
 
-final internal class CodonTable {
-    
-    static let shared = CodonTable()
+final internal class Codon {
     
     private init(){}
     
     //returns the amino acid that corresponds to an amino acid
-    public func codonToAminoAcid(codon: String) -> String?{
+    static func codonToAminoAcid(codon: String) -> String?{
         return table[codon]
     }
     
     //returns all possible codons that correspond to an amino acid
-    public func aminoAcidToCodons(aminoAcid: String) -> [String]? {
+    static func aminoAcidToCodons(aminoAcid: String) -> [String]? {
         return reversedTable[aminoAcid]
     }
     
-    private lazy var reversedTable: [String: [String]] = {
+    static var reversedTable: [String: [String]] = {
         var result: [String: [String]] = [:]
         
-        for (k,v) in self.table {
+        Codon.table.forEach() { (k, v) in
             
             var list: [String]
             if result[v] == nil {
@@ -34,7 +33,7 @@ final internal class CodonTable {
         return result
     }()
     
-    private lazy var table: [String: String] = {
+    static var table: [String: String] = {
         return  ["UUU": "F",
                  "CUU": "L",
                  "AUU": "I",

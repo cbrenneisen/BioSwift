@@ -31,7 +31,7 @@ class MockServiceTests: XCTestCase {
         XCTAssertEqual(dnaSet.count, num, "Did not generate the correct number of DNA")
         
         for dna in dnaSet {
-            XCTAssertTrue((dna.sequenceLength >= minL && dna.sequenceLength <= maxL),
+            XCTAssertTrue((dna.length >= minL && dna.length <= maxL),
                           "Incorrect DNA length was generated")
         }
     }
@@ -61,7 +61,7 @@ class MockServiceTests: XCTestCase {
         
         for dna in dnaSet6 {
             
-            XCTAssertEqual(dna.sequenceLength, controlledLength, "Incorrect DNA length was generated")
+            XCTAssertEqual(dna.length, controlledLength, "Incorrect DNA length was generated")
             print(dna.sequence)
         }
         
@@ -72,9 +72,9 @@ class MockServiceTests: XCTestCase {
         let dnaSet7 = MockService.generateRandomDNA(minLength: minL,
                                                     maxLength: maxL, count: 1000)
         for dna in dnaSet7 {
-            XCTAssertTrue((dna.sequenceLength >= minL && dna.sequenceLength <= maxL),
+            XCTAssertTrue((dna.length >= minL && dna.length <= maxL),
                           "Incorrect DNA length was generated")
-            switch(dna.sequenceLength){
+            switch(dna.length){
                 case minL:
                     counts.0 += 1
                     break
@@ -101,7 +101,7 @@ class MockServiceTests: XCTestCase {
         XCTAssertEqual(rnaSet.count, num, "Did not generate the correct number of RNA")
         
         for rna in rnaSet {
-            XCTAssertTrue((rna.sequenceLength >= minL && rna.sequenceLength <= maxL),
+            XCTAssertTrue((rna.length >= minL && rna.length <= maxL),
                           "Incorrect RNA length was generated")
         }
     }
@@ -130,7 +130,7 @@ class MockServiceTests: XCTestCase {
         XCTAssertEqual(rnaSet6.count, 100, "Generation should have created 100 RNA strands")
         
         for rna in rnaSet6 {
-            XCTAssertEqual(rna.sequenceLength, controlledLength, "Incorrect RNA length was generated")
+            XCTAssertEqual(rna.length, controlledLength, "Incorrect RNA length was generated")
         }
         
         //test that the min, middle, and max lengths all occur
@@ -140,9 +140,9 @@ class MockServiceTests: XCTestCase {
         let rnaSet7 = MockService.generateRandomRNA(minLength: minL,
                                                     maxLength: maxL, count: 1000)
         for rna in rnaSet7 {
-            XCTAssertTrue((rna.sequenceLength >= minL && rna.sequenceLength <= maxL),
+            XCTAssertTrue((rna.length >= minL && rna.length <= maxL),
                           "Incorrect RNA length was generated")
-            switch(rna.sequenceLength){
+            switch(rna.length){
                 case minL:
                     counts.0 += 1
                     break
@@ -169,7 +169,7 @@ class MockServiceTests: XCTestCase {
         XCTAssertEqual(proteinSet.count, num, "Did not generate the correct number of Protein")
         
         for protein in proteinSet {
-            XCTAssertTrue((protein.sequenceLength >= minL && protein.sequenceLength <= maxL),
+            XCTAssertTrue((protein.length >= minL && protein.length <= maxL),
                           "Incorrect Protein length was generated")
         }
     }
@@ -198,7 +198,7 @@ class MockServiceTests: XCTestCase {
         XCTAssertEqual(proteinSet6.count, 100, "Generation should have created 100 Protein strands")
         
         for protein in proteinSet6 {
-            XCTAssertEqual(protein.sequenceLength, controlledLength, "Incorrect Protein length was generated")
+            XCTAssertEqual(protein.length, controlledLength, "Incorrect Protein length was generated")
         }
         
         //test that the min, middle, and max lengths all occur
@@ -208,9 +208,9 @@ class MockServiceTests: XCTestCase {
         let proteinSet7 = MockService.generateRandomProtein(minLength: minL,
                                                             maxLength: maxL, count: 1000)
         for protein in proteinSet7 {
-            XCTAssertTrue((protein.sequenceLength >= minL && protein.sequenceLength <= maxL),
+            XCTAssertTrue((protein.length >= minL && protein.length <= maxL),
                           "Incorrect Protein length was generated")
-            switch(protein.sequenceLength){
+            switch(protein.length){
                 case minL:
                     counts.0 += 1
                     break
