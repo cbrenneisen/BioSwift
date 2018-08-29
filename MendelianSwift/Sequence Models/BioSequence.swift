@@ -13,15 +13,18 @@ public protocol BioSequence: Hashable {
     var id: String? { get set }
     var hashValue: Int { get }
 
-    //this function needs to validate the given sequence
-    init?(sequence: String)
+    init?(id: String?, sequence: String)
     
-    //needs to return valid characters for the given type (i.e: DNA returns A, C, G, T)
-    static func validCharacters()-> Set<Character>
+//    //needs to return valid characters for the given type (i.e: DNA returns A, C, G, T)
+//    static func validCharacters()-> Set<Character>
 }
 
 //default implementations
 public extension BioSequence {
+    
+    public init?(sequence: String){
+        self.init(id: nil, sequence: sequence)
+    }
     
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.sequence == rhs.sequence

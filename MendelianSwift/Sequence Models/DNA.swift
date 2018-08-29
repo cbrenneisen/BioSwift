@@ -7,20 +7,18 @@
 
 import Foundation
 
-public struct DNA: BioSequence {
-
+public struct DNA: NucleicAcid {
+    
     public var sequence: String
     public var id: String?
     
-    public init?(sequence: String){
+    public init?(id: String?, sequence: String){
         
-        let valid = DNA.validCharacters()
-        for n in sequence {
-            if !(valid.contains(n)){
-                return nil
-            }
+        guard DNA.isValid(sequence: sequence) else {
+            return nil
         }
         self.sequence = sequence
+        self.id = id
     }
     
     //valid nucleobases are A, C, G, T

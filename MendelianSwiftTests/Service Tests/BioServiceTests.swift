@@ -52,7 +52,7 @@ class BioServiceTests: XCTestCase {
             return
         }
         
-        let rna = BioService.transcribe(dna: dna)
+        let rna = dna.transcribe()
         
         XCTAssertEqual(rna.sequence, "GAUGGAACUUGACUACGUAAAUU", "DNA was not transcribed properly")
     }
@@ -64,7 +64,7 @@ class BioServiceTests: XCTestCase {
             return
         }
         
-        let dna2 = BioService.reverseComplement(dna: dna)
+        let dna2 = dna.reverseComplement()
         
         XCTAssertEqual(dna2.sequence, "ACCGGGTTTT", "DNA was not transcribed properly")
     }

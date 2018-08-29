@@ -7,20 +7,19 @@
 
 import Foundation
 
-public struct RNA: BioSequence, Equatable, Hashable {
+public struct RNA: NucleicAcid {
     
     public var sequence: String
     public var id: String?
     
-    public init?(sequence: String){
+    public init?(id: String?, sequence: String){
         
-        let valid = RNA.validCharacters()
-        for n in sequence {
-            if !(valid.contains(n)){
-                return nil
-            }
+        guard RNA.isValid(sequence: sequence) else {
+            return nil
         }
+        
         self.sequence = sequence
+        self.id = id
     }
     
     //valid nucleobases are A, C, G, U

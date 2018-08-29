@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct Protein: BioSequence, Equatable, Hashable {
+public struct Protein: BioSequence {
     
     public var sequence: String
     public var id: String?
     
-    public init?(sequence: String) {
+    public init?(id: String?, sequence: String) {
         
         let valid = Protein.validCharacters()
         for n in sequence {
@@ -20,6 +20,7 @@ public struct Protein: BioSequence, Equatable, Hashable {
                 return nil
             }
         }
+        self.id = id
         self.sequence = sequence
     }
 
