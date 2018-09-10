@@ -21,6 +21,6 @@ final public class Vertex<T: BioSequence>: Hashable {
     }
     
     public static func == (lhs: Vertex<T>, rhs: Vertex<T>) -> Bool {
-        return lhs.bioSequence.sequence == rhs.bioSequence.sequence
+        return lhs.bioSequence.sequenceString == rhs.bioSequence.sequenceString
     }
 }

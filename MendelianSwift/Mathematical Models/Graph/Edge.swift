@@ -38,6 +38,6 @@ public struct Edge<T: BioSequence>: Hashable {
     }
     
     public func print(){
-        Swift.print("\(from.bioSequence.sequence) - \(to.bioSequence.sequence)")
+        Swift.print("\(from.bioSequence.sequenceString) - \(to.bioSequence.sequenceString)")
     }
 }

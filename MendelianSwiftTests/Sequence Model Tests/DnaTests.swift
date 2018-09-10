@@ -14,6 +14,7 @@ class DnaTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
     
     override func tearDown() {
@@ -21,29 +22,36 @@ class DnaTests: XCTestCase {
         super.tearDown()
     }
     
-    func testInit() {
-        //test that valid sequences result in a DNA object and the invalid ones do not
-        
+    /**
+        Test that invalid strings do not result in valid DNA objects
+    */
+    func testInvalidInit() {
         if let _ = DNA(sequence: "ACGGGUA"),
            let _ = DNA(sequence: "TTT9dnzW"),
            let _ = DNA(sequence: "ACDEFGHIKLMNPQRSTVWY") {
             XCTFail("Invalid Sequences accepted")
         }
-        
-        guard let _ = DNA(sequence: "ATCCAGCT"),
-              let _ = DNA(sequence: "ATCCAGCT"),
-              let _ = DNA(sequence: "ATGGATCT"),
-              let _ = DNA(sequence: "AAGCAACC"),
-              let _ = DNA(sequence: "TTGGAACT"),
-              let _ = DNA(sequence: "ATGCCATT"),
-              let _ = DNA(sequence: "ATGCCATT") else {
+    }
+    
+    /**
+        Test that valid strings can be used to create DNA objects
+    */
+    func testValidInit(){
+        guard
+            let _ = DNA(sequence: "ATCCAGCT"),
+            let _ = DNA(sequence: "ATCCAGCT"),
+            let _ = DNA(sequence: "ATGGATCT"),
+            let _ = DNA(sequence: "AAGCAACC"),
+            let _ = DNA(sequence: "TTGGAACT"),
+            let _ = DNA(sequence: "ATGCCATT"),
+            let _ = DNA(sequence: "ATGCCATT") else {
                 XCTFail("Did not accept valid sequences")
                 return
         }
     }
     
+    
     func testEquality(){
-
         guard let dnaA1 = DNA(sequence: "ATCCAGCT"),
               let dnaA2 = DNA(sequence: "ATCCAGCT"),
               let dnaB1 = DNA(sequence: "ATGCCATT"),
@@ -64,13 +72,13 @@ class DnaTests: XCTestCase {
     func testGCContent(){
         let seq = "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTT" +
                   "CAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
-        guard var dna = DNA(sequence: seq) else {
+        guard let dna = DNA(sequence: seq) else {
                 XCTFail("Did not accept valid sequences")
                 return
         }
         
         XCTAssertEqual(dna.gcContent, 60.919540, "GC Content not computed correctly")
-        XCTAssertEqualWithAccuracy(dna.gcContent, 60.919540, accuracy: 0.000005)
+        XCTAssertEqual(dna.gcContent, 60.919540, accuracy: 0.000005)
     }
     
     func testPerformanceExample() {

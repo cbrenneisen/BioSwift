@@ -215,7 +215,7 @@ class FastaServiceTests: XCTestCase {
             XCTAssertEqual(allDNA.count, fasta1Sequences.count, "Did not extract all DNA sequences")
             
             for i in 0...allDNA.count-1{
-                XCTAssertEqual(fasta1Sequences[i], allDNA[i].sequence, "Mismatched DNA at index \(i)")
+                XCTAssertEqual(fasta1Sequences[i], allDNA[i].sequenceString, "Mismatched DNA at index \(i)")
             }
         }catch let error {
             XCTFail(error.localizedDescription)

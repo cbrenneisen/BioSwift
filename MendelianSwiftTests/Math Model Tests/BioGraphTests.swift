@@ -153,7 +153,7 @@ class BioGraphTests: XCTestCase {
         for dna in testDNA {
             
             let v = dnaGraph.createVertex(bioSequence: dna)
-            XCTAssertEqual(v.bioSequence, dna, "Vertex bioSequence should equal biosequence \(dna.sequence)")
+            XCTAssertEqual(v.bioSequence, dna, "Vertex bioSequence should equal biosequence \(dna.sequenceString)")
             vertices.append(v)
         }
         

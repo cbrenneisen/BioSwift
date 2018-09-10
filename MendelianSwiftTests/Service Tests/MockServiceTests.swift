@@ -62,7 +62,7 @@ class MockServiceTests: XCTestCase {
         for dna in dnaSet6 {
             
             XCTAssertEqual(dna.length, controlledLength, "Incorrect DNA length was generated")
-            print(dna.sequence)
+            print(dna.sequenceString)
         }
         
         //test that the min, middle, and max lengths all occur

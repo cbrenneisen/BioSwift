@@ -7,23 +7,14 @@
 
 import Foundation
 
-public struct DNA: NucleicAcid {
+public struct DNA: BioSequence {
     
-    public var sequence: String
+    public var sequence: [DNA.Base]
     public var id: String?
-    
-    public init?(id: String?, sequence: String){
-        
-        guard DNA.isValid(sequence: sequence) else {
-            return nil
-        }
+
+    public init(id: String?, sequence: [Base]){
         self.sequence = sequence
         self.id = id
-    }
-    
-    //valid nucleobases are A, C, G, T
-    public static func validCharacters()-> Set<Character> {
-        return Set("ACGT")
     }
 }
 
@@ -54,7 +45,7 @@ public extension DNA {
     */
     public var gcContent: Float {
         var occurrences = 0
-        sequence.forEach() {
+        sequenceString.forEach() {
             switch $0 {
             case "G", "C":
                 occurrences += 1
@@ -62,23 +53,15 @@ public extension DNA {
                 break
             }
         }
-        return ((Float(occurrences) / Float(sequence.count))*100.0)
+        return ((Float(occurrences) / Float(sequenceString.count))*100.0)
     }
     
-    /**
-     Returns the count of all bases in the DNA object
-     */
-    public var baseCount: [Base: Int] {
-        return sequence.reduce(into: [Base: Int]()){
-            $0[Base(unsafeFrom: $1), default: 0] += 1
-        }
-    }
     
     /**
         Creates a new RNA object by transcribing the DNA
     */
     public func transcribe() -> RNA {
-        let seq = String(sequence.map{ $0 != "T" ? $0 : "U" })
+        let seq = String(sequenceString.map{ $0 != "T" ? $0 : "U" })
         // - RNA is guaranteed to be valid - okay to force unrwrap
         return RNA(sequence: seq)!
     }
@@ -88,7 +71,7 @@ public extension DNA {
     */
     public func reverseComplement() -> DNA {
         
-        let seq = sequence.reversed().compactMap{ x in
+        let seq = sequenceString.reversed().compactMap{ x in
             DNA.complements[x]
         }.joined(separator: "")
         
@@ -109,7 +92,7 @@ public extension DNA {
         
         // - count the number of bases that are different between both sequences
         var difference = 0
-        zip(sequence, otherDNA.sequence).forEach() {
+        zip(sequenceString, otherDNA.sequenceString).forEach() {
             if $0 != $1 {
                 difference += 1
             }

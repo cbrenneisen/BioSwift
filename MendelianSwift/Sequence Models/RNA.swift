@@ -7,26 +7,16 @@
 
 import Foundation
 
-public struct RNA: NucleicAcid {
+public struct RNA: BioSequence  {
     
-    public var sequence: String
+    public var sequence: [Base]
     public var id: String?
     
-    public init?(id: String?, sequence: String){
-        
-        guard RNA.isValid(sequence: sequence) else {
-            return nil
-        }
-        
+    public init(id: String?, sequence: [Base]){
         self.sequence = sequence
         self.id = id
     }
-    
-    //valid nucleobases are A, C, G, U
-    public static func validCharacters()-> Set<Character> {
-        return Set("ACGU")
-    }
-            
+
     //return the codon starting at the given index
     public func codonFrom(index: Int) -> String? {
         
@@ -35,10 +25,10 @@ public struct RNA: NucleicAcid {
             return nil
         }
         
-        let startIndex = self.sequence.index(self.sequence.startIndex, offsetBy: index)
-        let endIndex = self.sequence.index(self.sequence.startIndex, offsetBy: index + 3)
+        let startIndex = self.sequenceString.index(self.sequenceString.startIndex, offsetBy: index)
+        let endIndex = self.sequenceString.index(self.sequenceString.startIndex, offsetBy: index + 3)
         
-        return String(self.sequence[startIndex..<endIndex])
+        return String(self.sequenceString[startIndex..<endIndex])
     }
 
 }
@@ -50,7 +40,7 @@ public extension RNA {
      Creates a new Protein object by translating the RNA
      */
     public func transcribe() -> RNA {
-        let seq = String(sequence.map{ $0 != "T" ? $0 : "U" })
+        let seq = String(sequenceString.map{ $0 != "T" ? $0 : "U" })
         // - RNA is guaranteed to be valid - okay to force unrwrap
         return RNA(sequence: seq)!
     }
@@ -59,9 +49,9 @@ public extension RNA {
         Get the codon at the specified index - no checks for out of bounds
     */
     internal func codonUnsafe(at index: Int) -> String {
-        let startIndex = sequence.index(self.sequence.startIndex, offsetBy: index)
-        let endIndex = sequence.index(self.sequence.startIndex, offsetBy: index + 3)
-        return String(sequence[startIndex..<endIndex])
+        let startIndex = sequenceString.index(self.sequenceString.startIndex, offsetBy: index)
+        let endIndex = sequenceString.index(self.sequenceString.startIndex, offsetBy: index + 3)
+        return String(sequenceString[startIndex..<endIndex])
     }
     
     /**
@@ -91,7 +81,4 @@ public extension RNA {
         // - if no stop codon was found, sequence is invalid
         return nil
     }
-    
-    
 }
-

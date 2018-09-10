@@ -75,7 +75,7 @@ public class BioGraph<T: BioSequence> {
 
             if (self.structure[newVertex] != nil){
                 //duplicate vertex - don't overwrite, but do log error
-                NSLog("WARNING! Tried to add duplicate vertex: %@", bioSequence.sequence)
+                NSLog("WARNING! Tried to add duplicate vertex: %@", bioSequence.sequenceString)
             }else {
                 let newEdgeList = EdgeList(originVertex: newVertex)
                 self.structure[newVertex] = newEdgeList

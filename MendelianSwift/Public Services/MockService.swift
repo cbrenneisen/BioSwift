@@ -18,11 +18,10 @@ final public class MockService {
             return retVal
         }
         
-        for _ in 1...count {
-            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength,
-                                             validCharacters: DNA.validCharacters())
-            retVal.insert(DNA(sequence: seq)!)
-        }
+//        for _ in 1...count {
+//            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength, validCharacters: DNA.validCharacters())
+//            retVal.insert(DNA(sequence: seq)!)
+//        }
         return retVal
     }
 
@@ -34,11 +33,11 @@ final public class MockService {
             return retVal
         }
         
-        for _ in 1...count {
-            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength,
-                                             validCharacters: RNA.validCharacters())
-            retVal.insert(RNA(sequence: seq)!)
-        }
+//        for _ in 1...count {
+//            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength,
+//                                             validCharacters: RNA.validCharacters())
+//            retVal.insert(RNA(sequence: seq)!)
+//        }
         return retVal
     }
     
@@ -50,11 +49,11 @@ final public class MockService {
             return retVal
         }
         
-        for _ in 1...count {
-            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength,
-                                             validCharacters: Protein.validCharacters())
-            retVal.insert(Protein(sequence: seq)!)
-        }
+//        for _ in 1...count {
+//            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength,
+//                                             validCharacters: Protein.validCharacters())
+//            retVal.insert(Protein(sequence: seq)!)
+//        }
         return retVal
     }
     

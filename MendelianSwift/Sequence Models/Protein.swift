@@ -9,23 +9,13 @@ import Foundation
 
 public struct Protein: BioSequence {
     
-    public var sequence: String
+    public typealias Base = AminoAcid
+    
+    public var sequence: [Base]
     public var id: String?
     
-    public init?(id: String?, sequence: String) {
-        
-        let valid = Protein.validCharacters()
-        for n in sequence {
-            if !(valid.contains(n)){
-                return nil
-            }
-        }
-        self.id = id
+    public init(id: String?, sequence: [Base]){
         self.sequence = sequence
+        self.id = id
     }
-
-    //valid characters are A-Z except B,J,O,U,X,Z
-    public static func validCharacters()-> Set<Character> {
-        return Set("ACDEFGHIKLMNPQRSTVWY")
-    }        
 }

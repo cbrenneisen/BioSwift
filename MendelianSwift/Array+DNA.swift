@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension Array where Element == DNA {
     
     var highestGCContent: DNA? {

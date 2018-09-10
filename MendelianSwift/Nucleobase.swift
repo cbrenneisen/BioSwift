@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Nucleobase {
+public protocol Nucleobase: Hashable {
     
     init?(from char: Character)
     static var all: [Self] { get }
@@ -17,6 +17,10 @@ public protocol Nucleobase {
 //TODO: add case iterable in Swift 4.2
 public extension Nucleobase {
     
+    public var string: String {
+        return String(describing: self)
+    }
+        
     /**
      Creates a Nucleobase from a one-letter string
     */
@@ -25,7 +29,25 @@ public extension Nucleobase {
         guard letter.count == 1, let base = letter.first else {
             return nil
         }
+        
         self.init(from: base)
+    }
+    
+    /**
+     Creates a sequence from the given string
+    */
+    public static func sequence(from string: String) -> [Self]?{
+        var sequence: [Self] = []
+        
+        // - try to create bases for each character in the string
+        for char in string {
+            guard let base = Self(from: char) else {
+                print("Invalid character \(char) passed for creation of base \(String(describing: Self.self))")
+                return nil
+            }
+            sequence.append(base)
+        }
+        return sequence
     }
 }
 
