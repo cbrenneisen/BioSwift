@@ -12,6 +12,11 @@ public struct RNA: BioSequence  {
     public var sequence: [Base]
     public var id: String?
     
+    /**
+     Create a new RNA object
+     - parameter id: the identifier of the sequence
+     - parameter sequence: a series of valid nucleobases that make up the sequence
+     */
     public init(id: String?, sequence: [Base]){
         self.sequence = sequence
         self.id = id

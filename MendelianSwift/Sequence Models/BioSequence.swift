@@ -17,19 +17,41 @@ public protocol BioSequence: Hashable {
     var id: String? { get set }
 
     init(id: String?, sequence: [Base])
-    
-//    //needs to return valid characters for the given type (i.e: DNA returns A, C, G, T)
-//    static func validCharacters()-> Set<Character>
 }
 
-//default implementations
+// MARK: - Hashable Conformance
 public extension BioSequence {
     
-    //MARK: - Initializers
+    /**
+     The hash value of the sequence
+    */
+    public var hashValue: Int {
+        return sequenceString.hashValue
+    }
+    
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        return lhs.sequenceString == rhs.sequenceString
+    }
+}
+
+//MARK: - Initializers
+public extension BioSequence {
+    
+    /**
+     Create a new sequence object
+     - parameter sequence: a series of valid elements that make up the sequence
+     */
     public init(sequence: [Base]) {
         self.init(id: nil, sequence: sequence)
     }
     
+    //MARK: Failable
+    
+    /**
+     Create a sequence from a raw string. Returns nil if the string is invalid
+     - parameter id: the idenfitifer of the sequence
+     - parameter sequence: the series of characters representing the sequence
+     */
     public init?(id: String?, sequence: String) {
         guard let seq = Base.sequence(from: sequence) else {
             return nil
@@ -38,33 +60,66 @@ public extension BioSequence {
         self.init(id: id, sequence: seq)
     }
     
+    /**
+     Create a sequence from a raw string. Returns nil if the string is invalid
+     - parameter sequence: the series of characters representing the sequence
+     */
     public init?(sequence: String){
         self.init(id: nil, sequence: sequence)
     }
+    
+    /**
+     Create a sequence from a raw text file
+     - parameter contentsOfFile: The path of the file
+    */
+    public init?(contentsOfFile file: String){
+        
+        //let bundle = Bundle.main
+        let path = Bundle.main.path(forResource: file, ofType: "txt")!
+        
+        guard let string = String(fromFile: path) else{
+            print("Error creating sequence from file \(file)")
+            return nil
+        }
+        self.init(id: nil, sequence: string)
+    }
+}
 
-    public var sequenceString: String {
-        return sequence.map{ $0.string }.reduce("", +)
-    }
+//MARK: - Subscripts
+public extension BioSequence {
     
-    public static func ==(lhs: Self, rhs: Self) -> Bool {
-        return lhs.sequenceString == rhs.sequenceString
-    }
-
-    public var hashValue: Int {
-        return sequenceString.hashValue
-    }
-    
-    //returns the length of the sequence
-    public var length: Int {
-        return self.sequence.count
-    }
-    
+    /**
+     Returns the base at the given position
+     - parameter index: the position of the desired base
+     */
     subscript (index: Int) -> Base {
         return sequence[index]
     }
     
+    /**
+     Returns the bases at the specified range
+     - parameter range: the range specifying the desired indices
+     */
     subscript (range: CountableRange<Int>) -> [Base] {
         return Array(sequence[range.lowerBound..<range.upperBound])
+    }
+}
+
+//MARK: - Computed Properties
+public extension BioSequence {
+    
+    /**
+     Raw string value of the sequence
+    */
+    public var sequenceString: String {
+        return sequence.map{ $0.string }.reduce("", +)
+    }
+    
+    /**
+     The length of the sequence
+    */
+    public var length: Int {
+        return self.sequence.count
     }
     
     /**
@@ -75,6 +130,10 @@ public extension BioSequence {
             $0[$1, default: 0] += 1
         }
     }
+}
+
+//MARK: - Functions
+public extension BioSequence {
     
     /**
         Returns the starting index of all instances of the sub sequence
@@ -85,6 +144,7 @@ public extension BioSequence {
         (0...(length-1)-subSeq.length).forEach(){ i in
     
             var match = true
+            
             for (j, base2) in subSeq.sequence.enumerated() {
                 // - make sure the bases are equal
                 guard self[i+j] == base2 else {
@@ -113,6 +173,9 @@ public extension BioSequence {
 //        return self.sequenceString.index(self.sequenceString.startIndex, offsetBy: from)
 //    }
     
+    /**
+     
+    */
     public static func isValid(sequence: String) -> Bool {
         // go through every character and confirm that they can be converted
         for letter in sequence {

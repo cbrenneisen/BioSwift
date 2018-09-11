@@ -25,6 +25,9 @@ extension Array where Element: BioSequence{
         }
     }
     
+    /**
+        Validate the min, max, and count arguments that are provided
+    */
     private static func validate(min: Int, max: Int, count: Int){
         if min > max || min < 0 || max < 0 || count < 0 {
             //TODO: elaborate

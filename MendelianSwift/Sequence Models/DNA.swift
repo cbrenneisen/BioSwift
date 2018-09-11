@@ -11,7 +11,12 @@ public struct DNA: BioSequence {
     
     public var sequence: [DNA.Base]
     public var id: String?
-
+    
+    /**
+     Create a new DNA object
+     - parameter id: the identifier of the sequence
+     - parameter sequence: a series of valid nucleobases that make up the sequence
+     */
     public init(id: String?, sequence: [Base]){
         self.sequence = sequence
         self.id = id
@@ -45,15 +50,15 @@ public extension DNA {
     */
     public var gcContent: Float {
         var occurrences = 0
-        sequenceString.forEach() {
+        sequence.forEach() {
             switch $0 {
-            case "G", "C":
+            case .G, .C:
                 occurrences += 1
             default:
                 break
             }
         }
-        return ((Float(occurrences) / Float(sequenceString.count))*100.0)
+        return ((Float(occurrences) / Float(length))*100.0)
     }
     
     
@@ -61,25 +66,18 @@ public extension DNA {
         Creates a new RNA object by transcribing the DNA
     */
     public func transcribe() -> RNA {
-        let seq = String(sequenceString.map{ $0 != "T" ? $0 : "U" })
-        // - RNA is guaranteed to be valid - okay to force unrwrap
-        return RNA(sequence: seq)!
+        let seq = sequence.map{ $0.transcribed }
+        return RNA(id: id, sequence: seq)
     }
     
     /**
         Creates and returns the reverse complement of the DNA
     */
     public func reverseComplement() -> DNA {
-        
-        let seq = sequenceString.reversed().compactMap{ x in
-            DNA.complements[x]
-        }.joined(separator: "")
-        
-        //guarenteed to work, so force unwrapping is fine
-        return DNA(sequence: seq)!
+        let seq = sequence.reversed().map{ $0.complement }
+        return DNA(id: id, sequence: seq)
     }
 
-    
     /**
         Returns the Hamming Distance between this and another DNA
     */

@@ -15,10 +15,10 @@ public enum FastaError: Error {
     case invalidSequence(seq: String)
 }
 
-final public class FastaService {
+final internal class FastaService {
 
     //reads in a FASTA file and returns an array of DNA objects
-    public class func loadDNA(fastaFilePath: String) throws -> [DNA]{
+    internal class func loadDNA(fastaFilePath: String) throws -> [DNA]{
         
         var data: String?
         do {
