@@ -17,9 +17,10 @@ let vertexCount = 20
 class MockDNAGraph: BioGraph<DNA> {
     
     public init(directed: Bool, weighted: Bool, mockEdges: Bool){
-        
-        let allDNA = MockService.generateRandomDNA(minLength: minLength,
-                                                   maxLength: maxLength, count: vertexCount)
+
+        let allDNA = [DNA].random(min: minLength, max: maxLength, count: vertexCount)
+//        let allDNA = MockService.generateRandomDNA(minLength: minLength,
+//                                                   maxLength: maxLength, count: vertexCount)
         super.init(directed: directed, weighted: weighted, bioSequences: Array(allDNA))
         
         let vertices = self.getAllVertices()

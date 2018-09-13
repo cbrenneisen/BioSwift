@@ -132,7 +132,24 @@ public extension BioSequence {
     }
 }
 
-//MARK: - Functions
+//MARK: - Static Functions
+public extension BioSequence {
+    
+    /**
+     
+    */
+    public static func isValid(sequence: String) -> Bool {
+        // go through every character and confirm that they can be converted
+        for letter in sequence {
+            if Base(from: letter) == nil {
+                return false
+            }
+        }
+        return true
+    }
+}
+
+//MARK: - Instance Functions
 public extension BioSequence {
     
     /**
@@ -165,33 +182,4 @@ public extension BioSequence {
         }
         return locations
     }
-    
-//
-//    //returns the subsequence starting with 'start' and ending with (and including) 'end'
-//    public func getSubSequence(start: Int, end: Int) -> String {
-//        let range = Range(start...end)
-//        let startIndex = index(from: range.lowerBound)
-//        let endIndex = index(from: range.upperBound)
-//        return String(self.sequenceString[startIndex..<endIndex])
-//    }
-
-//    //helper function for the above
-//    private func index(from: Int) -> String.Index {
-//        return self.sequenceString.index(self.sequenceString.startIndex, offsetBy: from)
-//    }
-    
-    /**
-     
-    */
-    public static func isValid(sequence: String) -> Bool {
-        // go through every character and confirm that they can be converted
-        for letter in sequence {
-            if Base(from: letter) == nil {
-                return false
-            }
-        }
-        return true
-    }
 }
-
-

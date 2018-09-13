@@ -10,20 +10,20 @@ import Foundation
 
 final public class MockService {
     
-    public class func generateRandomDNA(minLength: Int, maxLength: Int, count: Int) ->Set<DNA> {
-        
-        var retVal = Set<DNA>()
-        if minLength > maxLength || minLength < 0 || maxLength < 0 || count < 1 {
-            //error handling
-            return retVal
-        }
-        
-//        for _ in 1...count {
-//            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength, validCharacters: DNA.validCharacters())
-//            retVal.insert(DNA(sequence: seq)!)
+//    public class func generateRandomDNA(minLength: Int, maxLength: Int, count: Int) ->Set<DNA> {
+//        
+//        var retVal = Set<DNA>()
+//        if minLength > maxLength || minLength < 0 || maxLength < 0 || count < 1 {
+//            //error handling
+//            return retVal
 //        }
-        return retVal
-    }
+//        
+////        for _ in 1...count {
+////            let seq = generateRandomSequence(minLength: minLength, maxLength: maxLength, validCharacters: DNA.validCharacters())
+////            retVal.insert(DNA(sequence: seq)!)
+////        }
+//        return retVal
+//    }
 
     public class func generateRandomRNA(minLength: Int, maxLength: Int, count: Int) ->Set<RNA> {
         

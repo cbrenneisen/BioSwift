@@ -19,8 +19,9 @@ extension Array where Element: BioSequence{
         - parameter count: number of sequences to generate
     */
     static func random(min: Int, max: Int, count: Int) -> [Element]{
-        validate(min: min, max: max, count: count)
-        return (0..<count).map{ _ in
+        guard validate(min, max, count) else { return [] }
+        
+        return (0..<count).compactMap{ _ in
             return Element.random(min: min, max: max)
         }
     }
@@ -28,11 +29,9 @@ extension Array where Element: BioSequence{
     /**
         Validate the min, max, and count arguments that are provided
     */
-    private static func validate(min: Int, max: Int, count: Int){
-        if min > max || min < 0 || max < 0 || count < 0 {
-            //TODO: elaborate
-            fatalError("Invalid argument")
-        }
+    private static func validate(_ min: Int, _ max: Int, _ count: Int) -> Bool {
+        // - all of these must hold true
+        return (min <= max && min > 0 && max > 0 && count > 0)
     }
 }
 
@@ -43,10 +42,10 @@ extension BioSequence {
         - parameter min: the guaranteed minimum length (inclusive)
         - parameter max: the guaranteed maximum length (inclusive)
     */
-    static func random(min: Int, max: Int) -> Self {
-        validate(min: min, max: max)
+    static func random(min: Int, max: Int) -> Self? {
+        guard validate(min, max) else { return nil }
         
-        let randomLength = Int(arc4random_uniform(UInt32((maxLength-minLength) + 1))) + minLength
+        let randomLength = Int(arc4random_uniform(UInt32((max-min) + 1))) + min
         let seq: [Self.Base] = (0..<randomLength).map { _ in
             //randomly grab characters from the given set and append them to the sequence
             let randomIndex = Int(arc4random_uniform(UInt32(Self.Base.all.count)))
@@ -58,10 +57,8 @@ extension BioSequence {
     /**
         Validate the min and max arguments that are provided
     */
-    private static func validate(min: Int, max: Int){
-        if min > max || min < 0 || max < 0 {
-            //TODO: elaborate
-            fatalError("Invalid argument")
-        }
+    private static func validate(_ min: Int, _ max: Int) -> Bool {
+        // - all of these must hold true
+        return (min <= max && min > 0 && max > 0)
     }
 }

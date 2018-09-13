@@ -61,7 +61,6 @@ public extension DNA {
         return ((Float(occurrences) / Float(length))*100.0)
     }
     
-    
     /**
         Creates a new RNA object by transcribing the DNA
     */
@@ -96,5 +95,21 @@ public extension DNA {
             }
         }
         return 0
+    }
+    
+    /**
+        Create a protein object by transcribing and translating its exons
+        - parameter introns: The subsequences to remove before transcribing and translating
+     */
+    public func splice(with introns: [[DNA.Base]]) -> Protein? {
+        
+        var exons = sequence
+        introns.forEach(){ intron in
+            if let index = exons.index(of: intron){
+                exons.removeSubrange(index..<intron.count)
+            }
+        }
+        
+        return DNA(sequence: exons).transcribe().translate()
     }
 }

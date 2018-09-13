@@ -217,51 +217,51 @@ final public class BioService {
     
     //returns the longest common subsequence of all given DNA
 //    public class func longestSharedMotif(allDNA: [DNA]) -> String? {
-//        
+//
 //        guard let subjectDNA = allDNA.last else {
 //            return ""
 //        }
-//        
+//
 //        var left = 0
 //        var right = subjectDNA.length + 1
-//        
+//
 //        while left + 1 < right {
-//            
+//
 //            let mid = ((left + right) / 2)
-//            
+//
 //            if let _ = commonSubstring(subjectDNA: subjectDNA, allDNA: allDNA, length: mid){
 //                left = mid
 //            }else{
 //                right = mid
 //            }
 //        }
-//        
+//
 //        return commonSubstring(subjectDNA: subjectDNA, allDNA: allDNA, length: left)
 //    }
     
     
-    //TODO: should this accept Strings or DNA objects - and is this the most efficient way to do this?
-    public class func splice(dna: DNA, introns: [String]) -> Protein? {
+//    //TODO: should this accept Strings or DNA objects - and is this the most efficient way to do this?
+//    public class func splice(dna: DNA, introns: [String]) -> Protein? {
+//
+//        var exons = dna.sequenceString
+//        for intron in introns {
+//
+//            guard let range =  exons.range(of: intron) else{
+//                //intron is not found - could mean invalid intron sequence
+//                return nil
+//            }
+//            exons = exons.replacingOccurrences(of: intron, with: "", options: .literal, range: range)
+//        }
+//
+//        guard let spliced = DNA(sequence: exons) else {
+//            return nil
+//        }
+//
+//        let protein = spliced.transcribe().translate()
+//        return protein
+//    }
     
-        var exons = dna.sequenceString
-        for intron in introns {
-            
-            guard let range =  exons.range(of: intron) else{
-                //intron is not found - could mean invalid intron sequence
-                return nil
-            }
-            exons = exons.replacingOccurrences(of: intron, with: "", options: .literal, range: range)
-        }
-        
-        guard let spliced = DNA(sequence: exons) else {
-            return nil
-        }
-        
-        let protein = spliced.transcribe().translate()
-        return protein
-    }
-    
-    public class func splicedMotif(dna: DNA, motif: DNA) -> (Int, Int, Int)?{
+    public class func splicedMotif(dna: DNA, motif: DNA) -> (Int, Int, Int)? {
         
         var x = 0
         var y = 0

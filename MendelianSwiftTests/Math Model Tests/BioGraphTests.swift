@@ -147,7 +147,7 @@ class BioGraphTests: XCTestCase {
     func vertexFunctions(dnaGraph: BioGraph<DNA>){
         
         //test vertex addition
-        let testDNA = MockService.generateRandomDNA(minLength: 20, maxLength: 20, count: 10)
+        let testDNA = [DNA].random(min: 20, max: 20, count: 10)
         var vertices: [Vertex<DNA>] = []
         
         for dna in testDNA {
@@ -290,7 +290,7 @@ class BioGraphTests: XCTestCase {
     func testStress(){
         
         let bGraph = BioGraph<DNA>()
-        let dnaSet = MockService.generateRandomDNA(minLength: 100, maxLength: 100, count: 100)
+        let dnaSet = [DNA].random(min: 100, max: 100, count: 100)
         
         for dna in dnaSet {
             _ = bGraph.createVertex(bioSequence: dna)
