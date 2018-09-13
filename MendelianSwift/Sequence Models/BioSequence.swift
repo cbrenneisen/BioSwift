@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol BioSequence: Hashable {
+public protocol BioSequence: Hashable, SequenceFileReaderInjected {
 
     associatedtype Base: Nucleobase
     
@@ -29,6 +29,9 @@ public extension BioSequence {
         return sequenceString.hashValue
     }
     
+    /**
+     Compare two sequences
+    */
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.sequenceString == rhs.sequenceString
     }
@@ -74,10 +77,7 @@ public extension BioSequence {
     */
     public init?(contentsOfFile file: String){
         
-        //let bundle = Bundle.main
-        let path = Bundle.main.path(forResource: file, ofType: "txt")!
-        
-        guard let string = String(fromFile: path) else{
+        guard let string = Self.fileReader.string(from: file) else{
             print("Error creating sequence from file \(file)")
             return nil
         }
@@ -134,6 +134,13 @@ public extension BioSequence {
 
 //MARK: - Functions
 public extension BioSequence {
+    
+    /**
+     Returns true if the other sequence is a subsequence of the base sequence
+    */
+    public func contains(_ subsequence: Self) -> Bool {
+        return sequence.contains(subsequence.sequence)
+    }
     
     /**
         Returns the starting index of all instances of the sub sequence

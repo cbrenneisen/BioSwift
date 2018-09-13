@@ -50,10 +50,12 @@ final class DNA_InitTests: XCTestCase {
     }
     
     func testFileInit(){
+        InjectionMap.set(fileReader: TestSequenceFileReader())
+        
         guard let dna = DNA(contentsOfFile: "dna1") else {
             XCTFail("Did not accept valid sequences")
             return
         }
-        XCTAssertEqual(dna.sequenceString, "d")
+        XCTAssertEqual(dna.length, 947, "Sequence should be read in its entirety")
     }
 }

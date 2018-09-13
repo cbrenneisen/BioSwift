@@ -22,5 +22,5 @@ extension Array where Element == DNA {
             }
         }
         return dna
-    }
+    }    
 }
