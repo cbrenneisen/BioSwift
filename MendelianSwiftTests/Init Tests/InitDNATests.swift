@@ -9,17 +9,7 @@
 import XCTest
 @testable import MendelianSwift
 
-final class DNA_InitTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+final class InitDNATests: MendelianTestCase {
     
     /**
      Test that invalid strings do not result in valid DNA objects
@@ -49,13 +39,15 @@ final class DNA_InitTests: XCTestCase {
         }
     }
     
+    /**
+     Test that valid files can be used to create DNA objects
+    */
     func testFileInit(){
-        InjectionMap.set(fileReader: TestSequenceFileReader())
-        
         guard let dna = DNA(contentsOfFile: "dna1") else {
             XCTFail("Did not accept valid sequences")
             return
         }
+        
         XCTAssertEqual(dna.length, 947, "Sequence should be read in its entirety")
     }
 }

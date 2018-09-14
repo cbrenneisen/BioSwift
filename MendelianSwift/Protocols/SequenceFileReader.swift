@@ -16,12 +16,11 @@ protocol SequenceFileReader {
 extension SequenceFileReader {
     
     /**
-     Returns the raw text for a given file using the file reader's bundle
+     Returns the raw (trimmed) text for a given file using the file reader's bundle
      - parameter file: the name of the file
      - parameter type: the file extension
      */
     func string(from file: String, type: String = "txt") -> String? {
-        
         // - get the path of the file
         guard let path = path(for: file, type: type) else { return nil }
         
@@ -31,6 +30,25 @@ extension SequenceFileReader {
             return nil
         }
         return string
+    }
+    
+    /**
+     Returns an array of strings corresponding to the FASTA format
+     An ID string will begin with '>' and contain the ID
+     Each preceding string will contain the next part of the current sequence until another id is found
+     - parameter file: the name of the file
+     - parameter type: the file extension
+    */
+    func fastaStrings(from file: String, type: String = "txt") -> [String] {
+        // - get the path of the file
+        guard let path = path(for: file, type: type) else { return [] }
+
+        // - get the strings of the file
+        guard let strings = String(fromFile: path)?.components(separatedBy: .newlines) else{
+            print("Could not read text from file '\(file)' with extension '\(type)'")
+            return []
+        }
+        return strings
     }
     
     /**
@@ -46,3 +64,4 @@ extension SequenceFileReader {
         return path
     }
 }
+

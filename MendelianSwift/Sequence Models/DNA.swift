@@ -73,6 +73,7 @@ public extension DNA {
         Creates and returns the reverse complement of the DNA
     */
     public func reverseComplement() -> DNA {
+        print(sequenceString)
         let seq = sequence.reversed().map{ $0.complement }
         return DNA(id: id, sequence: seq)
     }

@@ -29,3 +29,4 @@ internal extension SequenceFileReaderInjected {
         return InjectionMap.fileReader
     }
 }
+
