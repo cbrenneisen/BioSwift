@@ -49,6 +49,15 @@ public extension Nucleobase {
         }
         return sequence
     }
+    
+    /**
+     Initialize an empty dictionary to begin counting bases
+    */
+    public static var counts: [Self: Int] {
+        return Self.all.reduce(into: [Self: Int]()){
+            $0[$1] = 0
+        }
+    }
 }
 
 internal extension Nucleobase {

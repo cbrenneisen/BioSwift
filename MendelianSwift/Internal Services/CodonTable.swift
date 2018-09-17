@@ -1,7 +1,7 @@
 
 import Foundation
 
-final internal class Codon {
+final internal class CodonX {
     
     private init(){}
     
@@ -18,7 +18,7 @@ final internal class Codon {
     static var reversedTable: [String: [String]] = {
         var result: [String: [String]] = [:]
         
-        Codon.table.forEach() { (k, v) in
+        CodonX.table.forEach() { (k, v) in
             
             var list: [String]
             if result[v] == nil {

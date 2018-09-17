@@ -50,4 +50,13 @@ final class InitDNATests: MendelianTestCase {
         
         XCTAssertEqual(dna.length, 947, "Sequence should be read in its entirety")
     }
+    
+    /**
+     Test that fasta files can be used to create DNA objects
+    */
+    func testFastaInit(){
+        let dna = DNA.from(fasta: "fasta1")
+        XCTAssertEqual(dna.count, 10, "All sequences should be read")
+    }
+
 }

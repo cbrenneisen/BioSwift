@@ -8,8 +8,7 @@
 
 import Foundation
 
-final class BioSequenceFileReader: SequenceFileReader {
+final internal class BioSequenceFileReader: SequenceFileReader {
     
     var bundle: Bundle = Bundle.main
-    
 }

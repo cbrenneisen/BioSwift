@@ -85,3 +85,110 @@ public enum AminoAcid: String, Nucleobase {
         }
     }
 }
+
+
+extension AminoAcid {
+
+    /**
+        Create an Amino Acid from a Codon. Returns nilif given a STOP codon
+        - parameter codon: The codon to convert to an Amino Acid
+    */
+    init?(from codon: Codon) {
+        
+        switch codon {
+            
+        //MARK: F
+        case (.U, .U, .U), (.U, .U, .C):
+            self = .F
+            
+        // MARK: L
+        case (.U, .U, .A), (.U, .U, .G), (.C, .U, .U), (.C, .U, .C), (.C, .U, .A), (.C, .U, .G):
+            self = .L
+            
+        // MARK: S
+        case (.U, .C, .U), (.U, .C, .A), (.U, .C, .G), (.U, .C, .C):
+            self = .S
+            
+        // MARK: Y
+        case (.U, .A, .U), (.U, .A, .C):
+            self = .Y
+            
+        //MARK: C
+        case (.U, .G, .U), (.U, .G, .C):
+            self = .C
+            
+        //MARK: W
+        case (.U, .G, .G):
+            self = .W
+
+        // MARK: P
+        case (.C, .C, .U), (.C, .C, .C), (.C, .C, .A), (.C, .C, .G):
+            self = .P
+            
+        // MARK: H
+        case (.C, .A, .U), (.C, .A, .C):
+            self = .H
+
+        //MARK: Q
+        case (.C, .A, .A), (.C, .A, .G):
+            self = .Q
+           
+        //MARK: R
+        case (.C, .G, .U), (.C, .G, .C), (.C, .G, .A), (.C, .G, .G), (.A, .G, .A), (.A, .G, .G):
+            self = .R
+            
+        //MARK: I
+        case (.A, .U, .U), (.A, .U, .C), (.A, .U, .A):
+            self = .I
+        
+        //MARK: M
+        case (.A, .U, .G):
+            self = .M
+            
+        //MARK: T
+        case (.A, .C, .U), (.A, .C, .C), (.A, .C, .A), (.A, .C, .G):
+            self = .T
+            
+        //MARK: N
+        case (.A, .A, .U), (.A, .A, .C):
+            self = .N
+            
+        // - K
+        case (.A, .A, .A), (.A, .A, .G):
+            self = .K
+            
+        // - S
+        case (.A, .G, .U), (.A, .G, .C):
+            self = .S
+            
+        // - V
+        case (.G, .U, .U), (.G, .U, .C), (.G, .U, .A), (.G, .U, .G):
+            self = .V
+        
+        // - A
+        case (.G, .C, .U), (.G, .C, .C), (.G, .C, .A), (.G, .C, .G):
+            self = .A
+        
+        // - D
+        case (.G, .A, .U), (.G, .A, .C):
+            self = .D
+            
+        // - E
+        case (.G, .A, .A), (.G, .A, .G):
+            self = .E
+            
+        // - G
+        case (.G, .G, .U), (.G, .G, .C), (.G, .G, .A), (.G, .G, .G):
+            self = .G
+        
+        // - STOP
+        case (.U, .A, .A), (.U, .A, .G), (.U, .G, .A):
+            return nil
+        }
+    }
+    
+}
+
+
+
+

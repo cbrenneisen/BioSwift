@@ -40,16 +40,7 @@ public struct RNA: BioSequence  {
 
 //MARK: - Instance Properties and Functions
 public extension RNA {
-    
-    /**
-     Creates a new Protein object by translating the RNA
-     */
-    public func transcribe() -> RNA {
-        let seq = String(sequenceString.map{ $0 != "T" ? $0 : "U" })
-        // - RNA is guaranteed to be valid - okay to force unrwrap
-        return RNA(sequence: seq)!
-    }
-    
+        
     /**
         Get the codon at the specified index - no checks for out of bounds
     */
@@ -71,19 +62,18 @@ public extension RNA {
     /**
         Translates the RNA into a Protein object
     */
-    func translate() -> Protein? {
-        var proteinSequence = ""
+    func translate() -> Protein {
+        
+        var seq: [AminoAcid] = []
         for n in stride(from: 0, to: length, by: 3){
-            let codon = codonUnsafe(at: n)
-            guard let aa = Codon.codonToAminoAcid(codon: codon) else {
-                continue
+            let codon = (self[n], self[n+1], self[n+2])
+            guard let aa = AminoAcid(from: codon) else {
+                // - STOP Codon found
+                break
             }
-            if aa.uppercased() == "STOP" {
-                return Protein(sequence: proteinSequence)
-            }
-            proteinSequence +=  aa
+            
+            seq.append(aa)
         }
-        // - if no stop codon was found, sequence is invalid
-        return nil
+        return Protein(id: id, sequence: seq)
     }
 }

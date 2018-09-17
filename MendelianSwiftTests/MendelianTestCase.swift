@@ -14,12 +14,9 @@ class MendelianTestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         InjectionMap.set(fileReader: TestSequenceFileReader())
-        
     }
     
     override func tearDown() {
         super.tearDown()
-        
-        
     }
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Codon = (RNA.Base, RNA.Base, RNA.Base)
+
 public extension RNA {
     
     public enum Base: String, Nucleobase {
