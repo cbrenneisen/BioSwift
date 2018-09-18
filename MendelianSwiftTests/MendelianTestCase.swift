@@ -20,11 +20,39 @@ class MendelianTestCase: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-}
-
-extension MendelianTestCase {
     
-    func XCTAssert<T>(_ item: T, existsIn set: Set<T>){
+    /**
+     Asserts that the string representation of the sequence is found in the list
+     - parameter needle: The sequence to seach for
+     - parameter haystack: The list of possible matches for the sequence
+     */
+    func XCTAssert<T: BioSequence>(_ needle: T, existsIn haystack: String...){
+        XCTAssert(needle.sequenceString, existsIn: haystack)
+    }
+    
+    /**
+     Asserts that an object is found in the given list
+     - parameter needle: The item to seach for
+     - parameter haystack: The list of possible matches for the item
+     */
+    func XCTAssert<T: Equatable>(_ needle: T, existsIn haystack: T...){
+        XCTAssert(needle, existsIn: haystack)
+    }
+    
+    /**
+     Asserts that an object is found in the given list
+     - parameter needle: The item to seach for
+     - parameter haystack: The list of possible matches for the item
+     */
+    private func XCTAssert<T: Equatable>(_ needle: T, existsIn haystack: [T]){
+        var found = false
+        for item in haystack {
+            if needle == item {
+                found = true
+                break
+            }
+        }
         
+        XCTAssertTrue(found, "Needle must exist in the haystack")
     }
 }

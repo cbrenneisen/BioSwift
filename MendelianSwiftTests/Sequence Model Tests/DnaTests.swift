@@ -51,7 +51,7 @@ final class DnaTests: MendelianTestCase {
             return
         }
         
-//        XCTAssertEqual(shared.sequenceString, "AC")
+        XCTAssert(shared, existsIn: "AC", "CA", "TA")
     }
 
 }
