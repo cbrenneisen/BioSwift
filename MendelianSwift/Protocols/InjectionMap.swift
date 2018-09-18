@@ -10,10 +10,15 @@ import Foundation
 
 final internal class InjectionMap{
     
+    private(set) static var debugMode: Bool = false
     fileprivate static var fileReader: SequenceFileReader = BioSequenceFileReader()
     
     static func set(fileReader: SequenceFileReader){
         InjectionMap.fileReader = fileReader
+    }
+    
+    static func set(debugMode: Bool){
+        InjectionMap.debugMode = debugMode
     }
 }
 

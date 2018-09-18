@@ -39,7 +39,7 @@ extension Array where Element: BioSequence {
     //helper function for the above method
     private func commonSubstring(subject: Element, length: Int) -> Element? {
         
-        for left in 0...(subject.length - length + 1){
+        for left in 0...(subject.length - length){
             
             let substring = subject[left..<left+length]
             //let substring = subject.getSubSequence(start: left, end: left+length)
@@ -52,7 +52,7 @@ extension Array where Element: BioSequence {
                 }
             }
             if (exists){
-                //                return substring
+                return Element(sequence: substring)
             }
         }
         return nil

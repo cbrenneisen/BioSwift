@@ -42,4 +42,16 @@ final class DnaTests: MendelianTestCase {
         
         XCTAssertEqual(consensus.sequenceString, "ATGCAACT")
     }
+    
+    func testLongestSharedMotif(){
+        let allDNA = [DNA].test(fasta: "fasta4", ext: "txt", expected: 3)
+        
+        guard let shared = allDNA.longestSharedMotif else {
+            XCTFail("Could not find a shared motif")
+            return
+        }
+        
+//        XCTAssertEqual(shared.sequenceString, "AC")
+    }
+
 }

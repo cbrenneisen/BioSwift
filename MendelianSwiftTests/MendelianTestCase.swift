@@ -14,9 +14,17 @@ class MendelianTestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         InjectionMap.set(fileReader: TestSequenceFileReader())
+        InjectionMap.set(debugMode: true)
     }
     
     override func tearDown() {
         super.tearDown()
+    }
+}
+
+extension MendelianTestCase {
+    
+    func XCTAssert<T>(_ item: T, existsIn set: Set<T>){
+        
     }
 }
