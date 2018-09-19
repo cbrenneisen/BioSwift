@@ -40,34 +40,41 @@ public struct RNA: BioSequence  {
 
 //MARK: - Instance Properties and Functions
 public extension RNA {
-        
+    
     /**
-        Get the codon at the specified index - no checks for out of bounds
-    */
-    internal func codonUnsafe(at index: Int) -> String {
-        let startIndex = sequenceString.index(self.sequenceString.startIndex, offsetBy: index)
-        let endIndex = sequenceString.index(self.sequenceString.startIndex, offsetBy: index + 3)
-        return String(sequenceString[startIndex..<endIndex])
+     Get the codon at the specified index - returns nil if there are not enough bases at this location
+     - parameter index: the starting index of the first base of the codon
+     */
+    public func codon(at index: Int) -> Codon? {
+        guard index <= length - 3 else { return nil }
+        return (self[index], self[index+1], self[index+2])
     }
     
     /**
-        Returns an array of 3-Character strings representing the codons of the RNA
+     Get the codon at the specified index - no checks for out of bounds
+     - parameter index: the starting index of the first base of the codon
     */
-    var codons: [String] {
+    internal func codon(unsafeAt index: Int) -> Codon {
+        return (self[index], self[index+1], self[index+2])
+    }
+    
+    /**
+     The current sequence as a sequence of codons
+    */
+    public var codons: [Codon] {
         return stride(from: 0, to: length, by: 3).map(){
-            return codonUnsafe(at: $0)
+            return codon(unsafeAt: $0)
         }
     }
     
     /**
         Translates the RNA into a Protein object
     */
-    func translate() -> Protein {
+    public func translate() -> Protein {
         
         var seq: [AminoAcid] = []
         for n in stride(from: 0, to: length, by: 3){
-            let codon = (self[n], self[n+1], self[n+2])
-            guard let aa = AminoAcid(from: codon) else {
+            guard let aa = AminoAcid(from: self.codon(unsafeAt: n)) else {
                 // - STOP Codon found
                 break
             }

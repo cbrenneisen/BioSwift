@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias Codon = (RNA.Base, RNA.Base, RNA.Base)
+public typealias Codon = (RNA.Base, RNA.Base, RNA.Base)
 
 public extension RNA {
     
