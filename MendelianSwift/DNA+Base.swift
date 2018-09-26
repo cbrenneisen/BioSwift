@@ -36,15 +36,6 @@ public extension DNA {
         }
         
         /**
-            Returns all Nucleobases for DNA
-        */
-        // TODO: - replace with Case Iterable in Swift 4.2
-
-        public static var all: [Base] {
-            return [.A, .C, .G, .T]
-        }
-        
-        /**
          Returns the equivalent RNA nucleobase
         */
         public var transcribed: RNA.Base {

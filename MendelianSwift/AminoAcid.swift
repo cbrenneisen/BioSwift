@@ -33,11 +33,6 @@ public enum AminoAcid: String, Nucleobase {
     case Y = "Tyrosine"
     case V = "Valine"
     
-    //MARK: - Protocol Requirements
-    public static var all: [AminoAcid] {
-        return [.A, .R, .N, .D, .C, .E, .Q, .G, .H, .I, .L, .K, .M, .F, .P, .S, .T, .W, .Y, .V]
-    }
-    
     public init?(from char: Character) {
         switch char {
         case "A":
@@ -90,7 +85,7 @@ public enum AminoAcid: String, Nucleobase {
 extension AminoAcid {
 
     /**
-        Create an Amino Acid from a Codon. Returns nilif given a STOP codon
+        Create an Amino Acid from a Codon. Returns nil if given a STOP codon
         - parameter codon: The codon to convert to an Amino Acid
     */
     init?(from codon: Codon) {

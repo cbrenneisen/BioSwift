@@ -18,15 +18,7 @@ public extension RNA {
         case C = "cytosine"
         case G = "guanine"
         case U = "uracil"
-        
-        /**
-         Returns all Nucleobases for RNA
-         TODO: - replace with Case Iterable in Swift 4.2
-        */
-        public static var all: [RNA.Base] {
-            return [.A, .C, .G, .U]
-        }
-        
+                
         /**
          Creates a Nucleobase from a character
          */

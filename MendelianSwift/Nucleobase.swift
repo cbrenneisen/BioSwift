@@ -8,17 +8,25 @@
 
 import Foundation
 
-public protocol Nucleobase: Hashable {
+public protocol Nucleobase: Hashable, CaseIterable {
     
     init?(from char: Character)
-    static var all: [Self] { get }
 }
 
-//TODO: add case iterable in Swift 4.2
 public extension Nucleobase {
     
+    /**
+     Raw string representation of the Nucleobase
+    */
     public var string: String {
         return String(describing: self)
+    }
+    
+    /**
+     An array containing one of each possible base
+    */
+    public static var all: [Self] {
+        return Self.allCases.map{ $0 }
     }
         
     /**
@@ -69,3 +77,4 @@ internal extension Nucleobase {
         self.init(from: char)!
     }
 }
+
