@@ -24,3 +24,13 @@ public struct Protein: BioSequence {
         self.id = id
     }
 }
+
+extension Protein {
+    
+    /**
+     Calculates the weight of the protein by using the monoisotopic mass of each Amino Acid
+    */
+    var weight: Float {
+        return sequence.map{ $0.monoisotopicMass }.reduce(0, +)
+    }
+}

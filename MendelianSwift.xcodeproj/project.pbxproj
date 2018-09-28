@@ -54,7 +54,6 @@
 		494D4ED21E738C420068F706 /* BioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ECE1E738C420068F706 /* BioService.swift */; };
 		494D4ED31E738C420068F706 /* FastaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ECF1E738C420068F706 /* FastaService.swift */; };
 		494D4ED41E738C420068F706 /* MathService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ED01E738C420068F706 /* MathService.swift */; };
-		494D4ED71E738C530068F706 /* Spectrometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ED61E738C530068F706 /* Spectrometry.swift */; };
 		494D4EDB1E74436C0068F706 /* fasta1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 494D4ED91E74436C0068F706 /* fasta1.txt */; };
 		494D4EDC1E74436C0068F706 /* fasta2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 494D4EDA1E74436C0068F706 /* fasta2.txt */; };
 		494D941A1E7621E7007B416C /* BioGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D94171E7621E7007B416C /* BioGraph.swift */; };
@@ -132,7 +131,6 @@
 		494D4ECE1E738C420068F706 /* BioService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioService.swift; path = "Public Services/BioService.swift"; sourceTree = "<group>"; };
 		494D4ECF1E738C420068F706 /* FastaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastaService.swift; path = "Public Services/FastaService.swift"; sourceTree = "<group>"; };
 		494D4ED01E738C420068F706 /* MathService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathService.swift; path = "Public Services/MathService.swift"; sourceTree = "<group>"; };
-		494D4ED61E738C530068F706 /* Spectrometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spectrometry.swift; path = "Internal Services/Spectrometry.swift"; sourceTree = "<group>"; };
 		494D4ED91E74436C0068F706 /* fasta1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta1.txt; path = Resources/fasta1.txt; sourceTree = "<group>"; };
 		494D4EDA1E74436C0068F706 /* fasta2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta2.txt; path = Resources/fasta2.txt; sourceTree = "<group>"; };
 		494D94171E7621E7007B416C /* BioGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioGraph.swift; path = "Mathematical Models/Graph/BioGraph.swift"; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 		494D4ECA1E738B0F0068F706 /* Internal Services */ = {
 			isa = PBXGroup;
 			children = (
-				494D4ED61E738C530068F706 /* Spectrometry.swift */,
 				04AD366621494F04006662CE /* BioSequenceFileReader.swift */,
 			);
 			name = "Internal Services";
@@ -594,7 +591,6 @@
 				494D4EC31E73894F0068F706 /* BioSequence.swift in Sources */,
 				494D4ED21E738C420068F706 /* BioService.swift in Sources */,
 				494D941A1E7621E7007B416C /* BioGraph.swift in Sources */,
-				494D4ED71E738C530068F706 /* Spectrometry.swift in Sources */,
 				494D4EC41E73894F0068F706 /* DNA.swift in Sources */,
 				04AD3685214C0A88006662CE /* BioSequence+Hashable.swift in Sources */,
 				04AD367221499D8F006662CE /* Array+SharedMotif.swift in Sources */,
