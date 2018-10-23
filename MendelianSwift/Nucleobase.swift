@@ -48,7 +48,7 @@ public extension Nucleobase {
         var sequence: [Self] = []
         
         // - try to create bases for each character in the string
-        for char in string {
+        for char in string.uppercased() {
             guard let base = Self(from: char) else {
                 print("Invalid character \(char) passed for creation of base \(String(describing: Self.self))")
                 return nil

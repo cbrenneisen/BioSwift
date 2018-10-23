@@ -9,7 +9,7 @@
 import Foundation
 
 public extension BioSequence {
-    
+        
     /**
      Returns true if the other sequence is a subsequence of the base sequence
      */

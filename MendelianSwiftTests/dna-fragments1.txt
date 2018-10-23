@@ -1,0 +1,10 @@
+>seq1
+catgc
+>seq2
+ctaagt
+>seq3
+gcta
+>seq4
+ttca
+>seq5
+atgcatc

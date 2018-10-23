@@ -39,7 +39,7 @@ public extension BioSequence {
     public init?(id: String?, sequence: String) {
         
         guard let seq = Base.sequence(from: sequence) else {
-            print("Could ")
+            print("Could not create sequence from base")
             return nil
         }
         
