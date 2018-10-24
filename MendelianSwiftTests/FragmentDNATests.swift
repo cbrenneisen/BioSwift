@@ -13,7 +13,7 @@ final class FragmentDNATests: MendelianTestCase {
     
     /**
      Test that we can get the super sequence of a small dataset
-     */
+    */
     func testFragmentsEasy1(){
         
         let allDNA = [DNA].test(fasta: "dna-fragments1")

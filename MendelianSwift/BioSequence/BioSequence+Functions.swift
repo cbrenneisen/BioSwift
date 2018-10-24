@@ -17,6 +17,10 @@ public extension BioSequence {
         return sequence.contains(subsequence.sequence)
     }
     
+    public static func permutations(length: Int) -> [[Self.Base]] {
+        return SequenceGenerator.permutations(of: Self.Base.all, length: length)
+    }
+    
     /**
      Returns the starting index of all instances of the sub sequence
      */

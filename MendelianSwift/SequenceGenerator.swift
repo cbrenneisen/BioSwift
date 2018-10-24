@@ -10,19 +10,21 @@ import Foundation
 
 final internal class SequenceGenerator {
     
-    class func permutations(of alphabet: [Character], length: Int) -> [String]{
-        //TODO: - finish this
-        //start with first char - find all permutations where every other char is the next one
-        var allPermutations: [String] = []
-//        alphabet.enumerated().forEach(){ i, val in
-//            let minus = 
-//            let alpha = alphabet - [$0]
-//            allPermutations += permutations(of: alphabet, using: [$0], length: length)
-//        }
-        return []
+    static func permutations(of alphabet: String, length: Int, using seed: String = "") -> [String] {
+        
+        let strings: [Character] = alphabet.map{ $0 }
+        let input: [Character] = seed.map{ $0 }
+        return permutations(of: strings, length: length, using: input).map{ String($0) }
     }
     
-    private class func permutations(of alphabet: [Character], using seq: [Character], length: Int) -> [String]{
-        return []
+    
+    static func permutations<T>(of alphabet: [T], length: Int, using seed: [T] = []) -> [[T]] {
+        if seed.count == length { return [seed] }
+        var result: [[T]] = []
+        alphabet.enumerated().forEach(){ i, val in
+            let current = seed + [val]
+            result += permutations(of: alphabet, length: length, using: current)
+        }
+        return result
     }
 }
