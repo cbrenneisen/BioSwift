@@ -31,7 +31,6 @@ public class BioGraph<T: BioSequence> {
         return (self.type == .directedWeighted || self.type == .undirectedWeighted)
     }()
 
-    
     //for thread safety
     private let bioGraphQueue = DispatchQueue(label: "com.mendelianSwift.BioGraph.Queue",
                                               attributes: .concurrent)

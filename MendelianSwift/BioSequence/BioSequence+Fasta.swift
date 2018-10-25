@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension BioSequence {
+public extension BioSequence {
     
     /**
      Create an array of sequence objects from the text of a FASTA file
      - parameter file: the complete path to the file
      */
-    static func from(fasta file: String) -> [Self] {
+    public static func from(fasta file: String) -> [Self] {
         
         let lines = Self.fileReader.fastaStrings(from: file)
         

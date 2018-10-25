@@ -10,7 +10,7 @@ import Foundation
 
 internal extension String {
     
-    var trimmed: String {
+    internal var trimmed: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

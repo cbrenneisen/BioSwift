@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension BioSequence {
+public extension BioSequence {
     
     /**
      Generate a random sequence
      - parameter min: the guaranteed minimum length (inclusive)
      - parameter max: the guaranteed maximum length (inclusive)
      */
-    static func random(min: Int, max: Int) -> Self? {
+    public static func random(min: Int, max: Int) -> Self? {
         guard validate(min, max) else { return nil }
         
         let randomLength = Int(arc4random_uniform(UInt32((max-min) + 1))) + min

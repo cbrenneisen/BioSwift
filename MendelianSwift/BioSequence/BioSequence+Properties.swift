@@ -8,7 +8,6 @@
 
 import Foundation
 
-//MARK: - Computed Properties
 public extension BioSequence {
     
     /**

@@ -14,7 +14,7 @@ internal extension String {
      Create a string from a file
      - parameter file: The path of the file
     */
-    init?(fromFile file: String){
+    internal init?(fromFile file: String){
         //var data: String?
         do {
             self = try String(contentsOfFile: file, encoding: .utf8)

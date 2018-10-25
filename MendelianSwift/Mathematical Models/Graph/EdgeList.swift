@@ -8,7 +8,7 @@
 
 import Foundation
 
-final internal class EdgeList<T: BioSequence> {
+final public class EdgeList<T: BioSequence> {
     
     private var edges: Set<Edge<T>>
     public weak var vertex: Vertex<T>?

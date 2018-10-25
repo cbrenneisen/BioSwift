@@ -13,7 +13,7 @@ protocol SequenceFileReader {
     var bundle: Bundle { get }
 }
 
-extension SequenceFileReader {
+internal extension SequenceFileReader {
     
     /**
      Returns the raw (trimmed) text for a given file using the file reader's bundle

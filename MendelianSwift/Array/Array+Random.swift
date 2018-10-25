@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Array where Element: BioSequence{
+public extension Array where Element: BioSequence{
     
     /**
      Create an array of randomly generated sequences
@@ -16,7 +16,7 @@ extension Array where Element: BioSequence{
      - parameter max: guaranteed maximum length of each sequence (inclusive)
      - parameter count: number of sequences to generate
      */
-    static func random(min: Int, max: Int, count: Int) -> [Element]{
+    public static func random(min: Int, max: Int, count: Int) -> [Element]{
         guard validate(min, max, count) else { return [] }
         
         return (0..<count).compactMap{ _ in
