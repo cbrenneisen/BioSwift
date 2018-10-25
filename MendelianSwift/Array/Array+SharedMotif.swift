@@ -8,12 +8,12 @@
 
 import Foundation
 
-extension Array where Element: BioSequence {
+public extension Array where Element: BioSequence {
     
     /**
-     Returns the longest common sequence of all objects
-     */
-    var longestSharedMotif: Element? {
+     The longest common subsequence of all sequence objects
+    */
+    public var longestSharedMotif: Element? {
         
         guard let subject = last else { return nil }
         
@@ -34,13 +34,19 @@ extension Array where Element: BioSequence {
         return commonSubstring(subject: subject, length: left)
     }
 
-    //helper function for the above method
+    /**
+     The longest substring of the sequence that is found in the rest of the collection
+     
+     - parameter subject: The sequence for which to search for substrings
+     - parameter length: the maximum length to search for
+     
+     - returns: the longest common subsequence, if one exists
+    */
     private func commonSubstring(subject: Element, length: Int) -> Element? {
         
         for left in 0...(subject.length - length){
             
             let substring = subject[left..<left+length]
-            //let substring = subject.getSubSequence(start: left, end: left+length)
             
             var exists = true
             for d in self {
@@ -55,6 +61,4 @@ extension Array where Element: BioSequence {
         }
         return nil
     }
-    
-    
 }

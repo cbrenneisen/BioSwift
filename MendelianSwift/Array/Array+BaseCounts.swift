@@ -12,7 +12,9 @@ import Foundation
 public extension Array where Element: BioSequence {
     
     /**
-     Returns an array of dictionaries consisting of the number of times a character occurs at a specified index. All sequences must be the same length
+     Calculates the number of times a character occurs at a specified index across all sequences in the collection.
+     All sequences must be the same length.
+     - Returns: An array of dictionaries consisting of the number of times a character occurs at a specified index
     */
     public func getBaseSums() -> [BaseCounts]? {
         

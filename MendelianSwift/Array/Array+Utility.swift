@@ -11,7 +11,7 @@ import Foundation
 internal extension Array {
     
     /**
-     Returns an array without the specified element
+     Copy an array without the specified element
      - parameter index: The index of the element to remove
      - returns: a new array without the specified element
     */
@@ -20,5 +20,18 @@ internal extension Array {
         _ = result.remove(at: index)
         return result
     }
-    
 }
+
+internal extension Array where Element == String {
+    
+    /**
+     Prints out the contents of an array to the console.
+     Used for debugging
+    */
+    internal func printOut(){
+        forEach(){
+            print($0)
+        }
+    }
+}
+

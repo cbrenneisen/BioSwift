@@ -18,7 +18,6 @@
 		04AA8E76217E17B700BF195C /* FragmentDNATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E75217E17B700BF195C /* FragmentDNATests.swift */; };
 		04AA8E7A217E192800BF195C /* dna-fragments2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04AA8E79217E192800BF195C /* dna-fragments2.txt */; };
 		04AA8E7C217E1AFA00BF195C /* dna-fragments1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04AA8E7B217E1AFA00BF195C /* dna-fragments1.txt */; };
-		04AA8E7E217E1DCE00BF195C /* Array+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E7D217E1DCE00BF195C /* Array+Debug.swift */; };
 		04AA8E80217F63AE00BF195C /* dna-fragments3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04AA8E7F217F63AE00BF195C /* dna-fragments3.txt */; };
 		04AA8E82217F646F00BF195C /* dna-fragments3-answer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04AA8E81217F646F00BF195C /* dna-fragments3-answer.txt */; };
 		04AA8E84217F69C200BF195C /* Array+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E83217F69C200BF195C /* Array+Utility.swift */; };
@@ -78,9 +77,9 @@
 		916B972E214C27C4005C7910 /* EqualityRNATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916B972D214C27C4005C7910 /* EqualityRNATests.swift */; };
 		916B9730214C27D4005C7910 /* EqualityProteinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916B972F214C27D4005C7910 /* EqualityProteinTests.swift */; };
 		917FC5D8213C0BF900370CC3 /* AminoAcid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917FC5D7213C0BF900370CC3 /* AminoAcid.swift */; };
-		9194A921213191B800C1E696 /* Array+GCContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194A920213191B800C1E696 /* Array+GCContent.swift */; };
+		9194A921213191B800C1E696 /* Collection+GCContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194A920213191B800C1E696 /* Collection+GCContent.swift */; };
 		9194A9242132D51F00C1E696 /* DNA+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194A9232132D51F00C1E696 /* DNA+Base.swift */; };
-		91F941B0217BD2BC00D42831 /* Array+AssembleFragments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F941AF217BD2BC00D42831 /* Array+AssembleFragments.swift */; };
+		91F941B0217BD2BC00D42831 /* Array+Genomes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F941AF217BD2BC00D42831 /* Array+Genomes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +104,6 @@
 		04AA8E75217E17B700BF195C /* FragmentDNATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FragmentDNATests.swift; sourceTree = "<group>"; };
 		04AA8E79217E192800BF195C /* dna-fragments2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dna-fragments2.txt"; sourceTree = "<group>"; };
 		04AA8E7B217E1AFA00BF195C /* dna-fragments1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dna-fragments1.txt"; sourceTree = "<group>"; };
-		04AA8E7D217E1DCE00BF195C /* Array+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Debug.swift"; sourceTree = "<group>"; };
 		04AA8E7F217F63AE00BF195C /* dna-fragments3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dna-fragments3.txt"; sourceTree = "<group>"; };
 		04AA8E81217F646F00BF195C /* dna-fragments3-answer.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dna-fragments3-answer.txt"; sourceTree = "<group>"; };
 		04AA8E83217F69C200BF195C /* Array+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utility.swift"; sourceTree = "<group>"; };
@@ -168,9 +166,9 @@
 		916B972D214C27C4005C7910 /* EqualityRNATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualityRNATests.swift; sourceTree = "<group>"; };
 		916B972F214C27D4005C7910 /* EqualityProteinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualityProteinTests.swift; sourceTree = "<group>"; };
 		917FC5D7213C0BF900370CC3 /* AminoAcid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AminoAcid.swift; sourceTree = "<group>"; };
-		9194A920213191B800C1E696 /* Array+GCContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+GCContent.swift"; sourceTree = "<group>"; };
+		9194A920213191B800C1E696 /* Collection+GCContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+GCContent.swift"; sourceTree = "<group>"; };
 		9194A9232132D51F00C1E696 /* DNA+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DNA+Base.swift"; sourceTree = "<group>"; };
-		91F941AF217BD2BC00D42831 /* Array+AssembleFragments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AssembleFragments.swift"; sourceTree = "<group>"; };
+		91F941AF217BD2BC00D42831 /* Array+Genomes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Genomes.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +253,14 @@
 			path = Nucleobase;
 			sourceTree = "<group>";
 		};
+		04AA8E8B218216A600BF195C /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9194A920213191B800C1E696 /* Collection+GCContent.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
 		04AD365A2146C0E5006662CE /* DNA */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,15 +292,13 @@
 		04AD367021499D39006662CE /* Array */ = {
 			isa = PBXGroup;
 			children = (
-				91F941AF217BD2BC00D42831 /* Array+AssembleFragments.swift */,
 				04D79E7B2151330C00D4D1F8 /* Array+BaseCounts.swift */,
-				04EA3442213EE27E00AF88E3 /* Array+Consensus.swift */,
-				04AA8E7D217E1DCE00BF195C /* Array+Debug.swift */,
-				9194A920213191B800C1E696 /* Array+GCContent.swift */,
-				04AD367121499D8F006662CE /* Array+SharedMotif.swift */,
 				04AD3673214AA355006662CE /* Array+Contains.swift */,
-				04AD367B214C0635006662CE /* Array+Random.swift */,
+				04EA3442213EE27E00AF88E3 /* Array+Consensus.swift */,
+				91F941AF217BD2BC00D42831 /* Array+Genomes.swift */,
 				04AA8E73217E155C00BF195C /* Array+Overlap.swift */,
+				04AD367B214C0635006662CE /* Array+Random.swift */,
+				04AD367121499D8F006662CE /* Array+SharedMotif.swift */,
 				04AA8E83217F69C200BF195C /* Array+Utility.swift */,
 			);
 			path = Array;
@@ -508,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				04AD367021499D39006662CE /* Array */,
+				04AA8E8B218216A600BF195C /* Collection */,
 				04AD367F214C091B006662CE /* BioSequence */,
 				04AA8E8A217FA4FA00BF195C /* Nucleobase */,
 				04AD366C214952DA006662CE /* String */,
@@ -639,7 +644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04AD366021483764006662CE /* String+File.swift in Sources */,
-				91F941B0217BD2BC00D42831 /* Array+AssembleFragments.swift in Sources */,
+				91F941B0217BD2BC00D42831 /* Array+Genomes.swift in Sources */,
 				04AD3687214C11E8006662CE /* BioSequence+Functions.swift in Sources */,
 				044226D62134A234000CBEBC /* RNA+Base.swift in Sources */,
 				04AA8E84217F69C200BF195C /* Array+Utility.swift in Sources */,
@@ -649,7 +654,6 @@
 				04AA8E72217E0F1C00BF195C /* BioSequence+Addition.swift in Sources */,
 				04AD367C214C0635006662CE /* Array+Random.swift in Sources */,
 				494D4ED31E738C420068F706 /* FastaService.swift in Sources */,
-				04AA8E7E217E1DCE00BF195C /* Array+Debug.swift in Sources */,
 				04D79E7C2151330C00D4D1F8 /* Array+BaseCounts.swift in Sources */,
 				04AD3689214C1270006662CE /* BioSequence+Properties.swift in Sources */,
 				494D4EC51E73894F0068F706 /* Protein.swift in Sources */,
@@ -665,7 +669,7 @@
 				04C811BD2136D880007DEF54 /* Nucleobase.swift in Sources */,
 				04AD3683214C09A0006662CE /* BioSequence+Subscripts.swift in Sources */,
 				494D941C1E7621E7007B416C /* Vertex.swift in Sources */,
-				9194A921213191B800C1E696 /* Array+GCContent.swift in Sources */,
+				9194A921213191B800C1E696 /* Collection+GCContent.swift in Sources */,
 				494D941B1E7621E7007B416C /* Edge.swift in Sources */,
 				494B8C861E6B4DDC0057030B /* Constants.swift in Sources */,
 				494D4ED41E738C420068F706 /* MathService.swift in Sources */,

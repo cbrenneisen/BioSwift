@@ -8,13 +8,13 @@
 
 import Foundation
 
-public extension Array where Element: BioSequence {
+public extension Collection where Element: BioSequence {
     
     /**
      Calculate the smallest possible super sequence of the array
      - Returns: The super sequence, if one exists
     */
-    public func assembleFragments() -> Element? {
+    public func assembleGenomes() -> Element? {
         
         // base case - an empty array has no super sequence
         guard count > 0 else { return nil }
@@ -30,6 +30,10 @@ public extension Array where Element: BioSequence {
 
 fileprivate extension Array {
     
+    /**
+     Calculate the smallest possible super sequence of the array of bases
+     - Returns: The super sequence
+     */
     fileprivate mutating func shortestSuperSequence<T: Nucleobase>()->[T] where Element == [T] {
        
         var length = count

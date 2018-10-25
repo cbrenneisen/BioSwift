@@ -8,6 +8,7 @@
 
 import Foundation
 
+// A codon is defined as three RNA Bases
 public typealias Codon = (RNA.Base, RNA.Base, RNA.Base)
 
 public extension RNA {
@@ -21,7 +22,7 @@ public extension RNA {
                 
         /**
          Creates a Nucleobase from a character
-         */
+        */
         public init?(from char: Character){
             switch char {
             case "A":

@@ -20,8 +20,6 @@ public extension Array where Element: BioSequence {
         // - get the number of times a base occurs at each index
         guard let consensus = getBaseSums() else { return nil }
         
-        consensus.debugCount()
-        
         // - get a valid sequence for the given base counts
         return consensus.getSequence()
     }

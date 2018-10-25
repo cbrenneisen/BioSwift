@@ -14,7 +14,7 @@ internal extension Array where Element: Nucleobase {
      Calculates the smallest possible super sequence of this and another sequence
      - parameter other: The sequence to compare against
      
-     - Returns: A tuple where element 0 is the length of the overlap 
+     - returns: A tuple where element 0 is the length of the overlap 
                 and element 1 is the combined sequence using this overlap
     */
     internal func maxOverlap(with other: [Element]) -> (Int, [Element]) {

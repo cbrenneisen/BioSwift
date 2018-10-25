@@ -33,6 +33,9 @@ public enum AminoAcid: String, Nucleobase {
     case Y = "Tyrosine"
     case V = "Valine"
     
+    /**
+     Creates an Amino Acid from a character
+    */
     public init?(from char: Character) {
         switch char {
         case "A":
@@ -270,8 +273,8 @@ extension AminoAcid {
 extension AminoAcid {
     
     /**
-     Returns the monoisotopic mass of the Amino Acid
-     */
+     The monoisotopic mass of the Amino Acid
+    */
     var monoisotopicMass: Float{
         switch self {
         case .A:

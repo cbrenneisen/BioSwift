@@ -11,18 +11,20 @@ import Foundation
 internal extension Array where Element : Equatable {
     
     /**
-     Returns true if this sequence contains the subsequence (in order)
+     Check if this sequence contains the subsequence (in order)
      - parameter subsequence: The sub array to search for
+     - returns: True if the sequence is found
      */
-    func contains(_ subsequence: [Element]) -> Bool {
+    internal func contains(_ subsequence: [Element]) -> Bool {
         return (index(of: subsequence) != nil)
     }
     
     /**
-     Returns the starting index of a subsequence, in order, if one exists
+     Find the starting index of a sub array, in order
      - parameter subsequence: The sub array to search for
+     - returns: The index of the sub array, if it is found
     */
-    func index(of subsequence: [Element]) -> Int? {
+    internal func index(of subsequence: [Element]) -> Int? {
         
         // - subsequence cannot be larger than the base array
         guard subsequence.count <= self.count else { return nil }

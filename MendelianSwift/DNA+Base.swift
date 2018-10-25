@@ -36,7 +36,7 @@ public extension DNA {
         }
         
         /**
-         Returns the equivalent RNA nucleobase
+          The equivalent RNA nucleobase
         */
         public var transcribed: RNA.Base {
             switch self {

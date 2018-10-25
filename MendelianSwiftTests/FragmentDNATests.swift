@@ -18,7 +18,7 @@ final class FragmentDNATests: MendelianTestCase {
         
         let allDNA = [DNA].test(fasta: "dna-fragments1")
         
-        guard let seq = allDNA.assembleFragments() else {
+        guard let seq = allDNA.assembleGenomes() else {
             XCTFail("No super sequence was found")
             return
         }
@@ -33,7 +33,7 @@ final class FragmentDNATests: MendelianTestCase {
         
         let allDNA = [DNA].test(fasta: "dna-fragments2")
         
-        guard let seq = allDNA.assembleFragments() else {
+        guard let seq = allDNA.assembleGenomes() else {
             XCTFail("No super sequence was found")
             return
         }
@@ -49,7 +49,7 @@ final class FragmentDNATests: MendelianTestCase {
         let allDNA = [DNA].test(fasta: "dna-fragments3")
         let answer = DNA.test(file: "dna-fragments3-answer")
         
-        guard let seq = allDNA.assembleFragments() else {
+        guard let seq = allDNA.assembleGenomes() else {
             XCTFail("No super sequence was found")
             return
         }

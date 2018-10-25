@@ -8,9 +8,12 @@
 
 import Foundation
 
-extension Array where Element == DNA {
+public extension Collection where Element == DNA {
     
-    var highestGCContent: DNA? {
+    /**
+     The DNA with the highest GC content in the collection
+    */
+    public var seqWithHighestGC: DNA? {
         var maxGC: Float = 0.0
         var dna: DNA?
         
