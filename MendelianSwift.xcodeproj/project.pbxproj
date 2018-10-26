@@ -12,6 +12,8 @@
 		0428DBD4214FE8E800C838E4 /* BioSequence+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428DBD3214FE8E800C838E4 /* BioSequence+Test.swift */; };
 		0428DBD7214FEDB600C838E4 /* fasta3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0428DBD6214FEDB600C838E4 /* fasta3.txt */; };
 		0428DBD9214FEE0900C838E4 /* Array+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428DBD8214FEE0900C838E4 /* Array+Test.swift */; };
+		04339DCC2183AC3A002DB131 /* DirectedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04339DCB2183AC3A002DB131 /* DirectedGraph.swift */; };
+		04339DCE2183AC5B002DB131 /* UndirectedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04339DCD2183AC5B002DB131 /* UndirectedGraph.swift */; };
 		044226D62134A234000CBEBC /* RNA+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044226D52134A234000CBEBC /* RNA+Base.swift */; };
 		04AA8E72217E0F1C00BF195C /* BioSequence+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E71217E0F1C00BF195C /* BioSequence+Addition.swift */; };
 		04AA8E74217E155C00BF195C /* Array+Overlap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E73217E155C00BF195C /* Array+Overlap.swift */; };
@@ -97,6 +99,8 @@
 		0428DBD3214FE8E800C838E4 /* BioSequence+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BioSequence+Test.swift"; sourceTree = "<group>"; };
 		0428DBD6214FEDB600C838E4 /* fasta3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = fasta3.txt; sourceTree = "<group>"; };
 		0428DBD8214FEE0900C838E4 /* Array+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Test.swift"; sourceTree = "<group>"; };
+		04339DCB2183AC3A002DB131 /* DirectedGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectedGraph.swift; sourceTree = "<group>"; };
+		04339DCD2183AC5B002DB131 /* UndirectedGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndirectedGraph.swift; sourceTree = "<group>"; };
 		044226D52134A234000CBEBC /* RNA+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RNA+Base.swift"; sourceTree = "<group>"; };
 		04AA8E71217E0F1C00BF195C /* BioSequence+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BioSequence+Addition.swift"; sourceTree = "<group>"; };
 		04AA8E73217E155C00BF195C /* Array+Overlap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Overlap.swift"; sourceTree = "<group>"; };
@@ -478,9 +482,11 @@
 			isa = PBXGroup;
 			children = (
 				494D94171E7621E7007B416C /* BioGraph.swift */,
+				04339DCB2183AC3A002DB131 /* DirectedGraph.swift */,
 				494D94181E7621E7007B416C /* Edge.swift */,
 				494D94191E7621E7007B416C /* Vertex.swift */,
 				494D941F1E762273007B416C /* EdgeList.swift */,
+				04339DCD2183AC5B002DB131 /* UndirectedGraph.swift */,
 			);
 			name = Graph;
 			sourceTree = "<group>";
@@ -648,10 +654,12 @@
 				04AD366E214952EF006662CE /* String+Trim.swift in Sources */,
 				04AD366421494BA5006662CE /* SequenceFileReader.swift in Sources */,
 				494D94201E762273007B416C /* EdgeList.swift in Sources */,
+				04339DCE2183AC5B002DB131 /* UndirectedGraph.swift in Sources */,
 				04AA8E72217E0F1C00BF195C /* BioSequence+Addition.swift in Sources */,
 				04AD367C214C0635006662CE /* Array+Random.swift in Sources */,
 				494D4ED31E738C420068F706 /* FastaService.swift in Sources */,
 				04D79E7C2151330C00D4D1F8 /* Array+BaseCounts.swift in Sources */,
+				04339DCC2183AC3A002DB131 /* DirectedGraph.swift in Sources */,
 				04AD3689214C1270006662CE /* BioSequence+Properties.swift in Sources */,
 				494D4EC51E73894F0068F706 /* Protein.swift in Sources */,
 				04AD366921495063006662CE /* InjectionMap.swift in Sources */,
