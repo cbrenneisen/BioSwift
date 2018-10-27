@@ -25,7 +25,7 @@
 		04AA8E84217F69C200BF195C /* Array+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E83217F69C200BF195C /* Array+Utility.swift */; };
 		04AA8E86217F71F100BF195C /* SequenceGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E85217F71F100BF195C /* SequenceGeneratorTests.swift */; };
 		04AA8E89217FA4BC00BF195C /* Nucleobase+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E88217FA4BC00BF195C /* Nucleobase+Array.swift */; };
-		04AA8E8D218259D400BF195C /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E8C218259D400BF195C /* Graph.swift */; };
+		04AA8E8D218259D400BF195C /* BioGraphInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA8E8C218259D400BF195C /* BioGraphInterface.swift */; };
 		04AD365E2146C1A2006662CE /* dna1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04AD365D2146C1A2006662CE /* dna1.txt */; };
 		04AD366021483764006662CE /* String+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD365F21483764006662CE /* String+File.swift */; };
 		04AD3662214857D5006662CE /* InitDNATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD3661214857D5006662CE /* InitDNATests.swift */; };
@@ -67,11 +67,13 @@
 		494D4ED41E738C420068F706 /* MathService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ED01E738C420068F706 /* MathService.swift */; };
 		494D4EDB1E74436C0068F706 /* fasta1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 494D4ED91E74436C0068F706 /* fasta1.txt */; };
 		494D4EDC1E74436C0068F706 /* fasta2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 494D4EDA1E74436C0068F706 /* fasta2.txt */; };
-		494D941A1E7621E7007B416C /* BioGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D94171E7621E7007B416C /* BioGraph.swift */; };
+		494D941A1E7621E7007B416C /* BioGraphBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D94171E7621E7007B416C /* BioGraphBase.swift */; };
 		494D941B1E7621E7007B416C /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D94181E7621E7007B416C /* Edge.swift */; };
 		494D941C1E7621E7007B416C /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D94191E7621E7007B416C /* Vertex.swift */; };
 		494D94201E762273007B416C /* EdgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D941F1E762273007B416C /* EdgeList.swift */; };
 		911E016D2168F55100D53DCE /* SequenceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E016C2168F55100D53DCE /* SequenceGenerator.swift */; };
+		91535D8A2184D03A00EA7325 /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91535D892184D03A00EA7325 /* GraphTests.swift */; };
+		91535D8C2184F30900EA7325 /* BioGraphFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91535D8B2184F30900EA7325 /* BioGraphFactory.swift */; };
 		916B9727214C2710005C7910 /* InitRNATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916B9726214C2710005C7910 /* InitRNATests.swift */; };
 		916B9729214C2721005C7910 /* InitProteinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916B9728214C2721005C7910 /* InitProteinTests.swift */; };
 		916B972C214C2791005C7910 /* EqualityDNATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916B972B214C2791005C7910 /* EqualityDNATests.swift */; };
@@ -112,7 +114,7 @@
 		04AA8E83217F69C200BF195C /* Array+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utility.swift"; sourceTree = "<group>"; };
 		04AA8E85217F71F100BF195C /* SequenceGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceGeneratorTests.swift; sourceTree = "<group>"; };
 		04AA8E88217FA4BC00BF195C /* Nucleobase+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nucleobase+Array.swift"; sourceTree = "<group>"; };
-		04AA8E8C218259D400BF195C /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		04AA8E8C218259D400BF195C /* BioGraphInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioGraphInterface.swift; sourceTree = "<group>"; };
 		04AD365D2146C1A2006662CE /* dna1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dna1.txt; sourceTree = "<group>"; };
 		04AD365F21483764006662CE /* String+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+File.swift"; sourceTree = "<group>"; };
 		04AD3661214857D5006662CE /* InitDNATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDNATests.swift; sourceTree = "<group>"; };
@@ -157,11 +159,13 @@
 		494D4ED01E738C420068F706 /* MathService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathService.swift; path = "Public Services/MathService.swift"; sourceTree = "<group>"; };
 		494D4ED91E74436C0068F706 /* fasta1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta1.txt; path = Resources/fasta1.txt; sourceTree = "<group>"; };
 		494D4EDA1E74436C0068F706 /* fasta2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta2.txt; path = Resources/fasta2.txt; sourceTree = "<group>"; };
-		494D94171E7621E7007B416C /* BioGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioGraph.swift; path = "Mathematical Models/Graph/BioGraph.swift"; sourceTree = "<group>"; };
+		494D94171E7621E7007B416C /* BioGraphBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioGraphBase.swift; path = "Mathematical Models/Graph/BioGraphBase.swift"; sourceTree = "<group>"; };
 		494D94181E7621E7007B416C /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edge.swift; path = "Mathematical Models/Graph/Edge.swift"; sourceTree = "<group>"; };
 		494D94191E7621E7007B416C /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vertex.swift; path = "Mathematical Models/Graph/Vertex.swift"; sourceTree = "<group>"; };
 		494D941F1E762273007B416C /* EdgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EdgeList.swift; path = "Mathematical Models/Graph/EdgeList.swift"; sourceTree = "<group>"; };
 		911E016C2168F55100D53DCE /* SequenceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceGenerator.swift; sourceTree = "<group>"; };
+		91535D892184D03A00EA7325 /* GraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTests.swift; sourceTree = "<group>"; };
+		91535D8B2184F30900EA7325 /* BioGraphFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioGraphFactory.swift; sourceTree = "<group>"; };
 		916B9726214C2710005C7910 /* InitRNATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitRNATests.swift; sourceTree = "<group>"; };
 		916B9728214C2721005C7910 /* InitProteinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitProteinTests.swift; sourceTree = "<group>"; };
 		916B972B214C2791005C7910 /* EqualityDNATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualityDNATests.swift; sourceTree = "<group>"; };
@@ -278,7 +282,6 @@
 			children = (
 				04AD366821495063006662CE /* InjectionMap.swift */,
 				04AD366321494BA5006662CE /* SequenceFileReader.swift */,
-				04AA8E8C218259D400BF195C /* Graph.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				12628EE81E77429600C44EC1 /* Randomization Tests */,
 				12628EE51E7730BD00C44EC1 /* Sequence Model Tests */,
 				04AA8E87217F721600BF195C /* Generator Tests */,
+				91535D892184D03A00EA7325 /* GraphTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -406,7 +410,7 @@
 				04AD366521494EC4006662CE /* Protocols */,
 				494D4ECB1E738B200068F706 /* Public Services */,
 				494D4ECA1E738B0F0068F706 /* Internal Services */,
-				494D4EC71E7389C80068F706 /* Mathematical Models */,
+				494D94161E76215B007B416C /* Graph */,
 				494D4EBE1E7389370068F706 /* Sequence Models */,
 				494B8C691E6B4D490057030B /* MendelianSwift.h */,
 				494B8C821E6B4DDC0057030B /* Constants.swift */,
@@ -437,14 +441,6 @@
 				494D4EC21E73894F0068F706 /* RNA.swift */,
 			);
 			name = "Sequence Models";
-			sourceTree = "<group>";
-		};
-		494D4EC71E7389C80068F706 /* Mathematical Models */ = {
-			isa = PBXGroup;
-			children = (
-				494D94161E76215B007B416C /* Graph */,
-			);
-			name = "Mathematical Models";
 			sourceTree = "<group>";
 		};
 		494D4ECA1E738B0F0068F706 /* Internal Services */ = {
@@ -481,14 +477,32 @@
 		494D94161E76215B007B416C /* Graph */ = {
 			isa = PBXGroup;
 			children = (
-				494D94171E7621E7007B416C /* BioGraph.swift */,
+				91535D8E2184F3CB00EA7325 /* Components */,
+				91535D8D2184F35300EA7325 /* Implementations */,
+				494D94171E7621E7007B416C /* BioGraphBase.swift */,
+				91535D8B2184F30900EA7325 /* BioGraphFactory.swift */,
+				04AA8E8C218259D400BF195C /* BioGraphInterface.swift */,
+			);
+			name = Graph;
+			sourceTree = "<group>";
+		};
+		91535D8D2184F35300EA7325 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
 				04339DCB2183AC3A002DB131 /* DirectedGraph.swift */,
+				04339DCD2183AC5B002DB131 /* UndirectedGraph.swift */,
+			);
+			name = Implementations;
+			sourceTree = "<group>";
+		};
+		91535D8E2184F3CB00EA7325 /* Components */ = {
+			isa = PBXGroup;
+			children = (
 				494D94181E7621E7007B416C /* Edge.swift */,
 				494D94191E7621E7007B416C /* Vertex.swift */,
 				494D941F1E762273007B416C /* EdgeList.swift */,
-				04339DCD2183AC5B002DB131 /* UndirectedGraph.swift */,
 			);
-			name = Graph;
+			name = Components;
 			sourceTree = "<group>";
 		};
 		916B9725214C267F005C7910 /* Init Tests */ = {
@@ -660,6 +674,7 @@
 				494D4ED31E738C420068F706 /* FastaService.swift in Sources */,
 				04D79E7C2151330C00D4D1F8 /* Array+BaseCounts.swift in Sources */,
 				04339DCC2183AC3A002DB131 /* DirectedGraph.swift in Sources */,
+				91535D8C2184F30900EA7325 /* BioGraphFactory.swift in Sources */,
 				04AD3689214C1270006662CE /* BioSequence+Properties.swift in Sources */,
 				494D4EC51E73894F0068F706 /* Protein.swift in Sources */,
 				04AD366921495063006662CE /* InjectionMap.swift in Sources */,
@@ -675,12 +690,12 @@
 				04AD3683214C09A0006662CE /* BioSequence+Subscripts.swift in Sources */,
 				494D941C1E7621E7007B416C /* Vertex.swift in Sources */,
 				9194A921213191B800C1E696 /* Collection+GCContent.swift in Sources */,
-				04AA8E8D218259D400BF195C /* Graph.swift in Sources */,
+				04AA8E8D218259D400BF195C /* BioGraphInterface.swift in Sources */,
 				494D941B1E7621E7007B416C /* Edge.swift in Sources */,
 				494B8C861E6B4DDC0057030B /* Constants.swift in Sources */,
 				494D4ED41E738C420068F706 /* MathService.swift in Sources */,
 				494D4EC31E73894F0068F706 /* BioSequence.swift in Sources */,
-				494D941A1E7621E7007B416C /* BioGraph.swift in Sources */,
+				494D941A1E7621E7007B416C /* BioGraphBase.swift in Sources */,
 				494D4EC41E73894F0068F706 /* DNA.swift in Sources */,
 				04AD3685214C0A88006662CE /* BioSequence+Hashable.swift in Sources */,
 				04AD367221499D8F006662CE /* Array+SharedMotif.swift in Sources */,
@@ -706,6 +721,7 @@
 				04DB2866215C1D7E00BB45FC /* DNABaseCountTests.swift in Sources */,
 				04AD3662214857D5006662CE /* InitDNATests.swift in Sources */,
 				04AA8E76217E17B700BF195C /* FragmentDNATests.swift in Sources */,
+				91535D8A2184D03A00EA7325 /* GraphTests.swift in Sources */,
 				916B9730214C27D4005C7910 /* EqualityProteinTests.swift in Sources */,
 				0428DBD9214FEE0900C838E4 /* Array+Test.swift in Sources */,
 				12628EEB1E77433900C44EC1 /* BioGraphTests.swift in Sources */,

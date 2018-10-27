@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class DirectedGraph<T: BioSequence>: MendelGraph<T>, MyGraph {
+public class DirectedGraph<T: BioSequence>: BioGraph<T> {
     
-    public var edges: Set<Edge<T>> {
+    public override var edges: Set<Edge<T>> {
         var allEdges = Set<Edge<T>>()
         
         queue.sync(flags: .barrier) {
@@ -23,7 +23,7 @@ public class DirectedGraph<T: BioSequence>: MendelGraph<T>, MyGraph {
         return allEdges
     }
     
-    public func removeVertex(vertex: Vertex<T>) {
+    public override func removeVertex(vertex: Vertex<T>) {
         
         queue.async(flags: .barrier) { [unowned self, unowned vertex] in
             
@@ -42,7 +42,7 @@ public class DirectedGraph<T: BioSequence>: MendelGraph<T>, MyGraph {
     }
     
     //add an edge going from one vertex to another with a set weight
-    public func addEdge(from origin: Vertex<T>, to destination: Vertex<T>, weight: Int? = nil) {
+    public override func addEdge(from origin: Vertex<T>, to destination: Vertex<T>, weight: Int? = nil) {
         
         queue.async(flags: .barrier) { [unowned self] in
             
@@ -64,7 +64,7 @@ public class DirectedGraph<T: BioSequence>: MendelGraph<T>, MyGraph {
     }
     
     //remove the edge going from one vertex to another
-    public func removeEdge(from origin: Vertex<T>, to destination: Vertex<T>) {
+    public override func removeEdge(from origin: Vertex<T>, to destination: Vertex<T>) {
         
         queue.async(flags: .barrier) { [unowned self] in
             //remove the edge that goes to the 'toVertex'
