@@ -129,7 +129,7 @@
 		494B8C6F1E6B4D490057030B /* MendelianSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MendelianSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		494B8C761E6B4D490057030B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		494B8C821E6B4DDC0057030B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		494D4EBF1E73894F0068F706 /* BioSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioSequence.swift; path = "Sequence Models/BioSequence.swift"; sourceTree = "<group>"; };
+		494D4EBF1E73894F0068F706 /* BioSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BioSequence.swift; sourceTree = "<group>"; };
 		494D4EC01E73894F0068F706 /* DNA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DNA.swift; path = "Sequence Models/DNA.swift"; sourceTree = "<group>"; };
 		494D4EC11E73894F0068F706 /* Protein.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protein.swift; path = "Sequence Models/Protein.swift"; sourceTree = "<group>"; };
 		494D4EC21E73894F0068F706 /* RNA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNA.swift; path = "Sequence Models/RNA.swift"; sourceTree = "<group>"; };
@@ -219,7 +219,6 @@
 				912D87D921912FFE00314B63 /* AminoAcid.swift */,
 				912D87DA21912FFE00314B63 /* DNA+Base.swift */,
 				912D87DB21912FFE00314B63 /* RNA+Base.swift */,
-				04C811BC2136D880007DEF54 /* Nucleobase.swift */,
 			);
 			name = Bases;
 			sourceTree = "<group>";
@@ -280,6 +279,8 @@
 		04AD366521494EC4006662CE /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				494D4EBF1E73894F0068F706 /* BioSequence.swift */,
+				04C811BC2136D880007DEF54 /* Nucleobase.swift */,
 				04AD366821495063006662CE /* InjectionMap.swift */,
 				04AD366321494BA5006662CE /* SequenceFileReader.swift */,
 			);
@@ -435,7 +436,6 @@
 		494D4EBE1E7389370068F706 /* Sequence Models */ = {
 			isa = PBXGroup;
 			children = (
-				494D4EBF1E73894F0068F706 /* BioSequence.swift */,
 				494D4EC01E73894F0068F706 /* DNA.swift */,
 				494D4EC11E73894F0068F706 /* Protein.swift */,
 				494D4EC21E73894F0068F706 /* RNA.swift */,
