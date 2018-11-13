@@ -44,4 +44,29 @@ public extension BioSequence {
         }
         return locations
     }
+    
+    /**
+        Find indices that correspond to a spliced motif
+        - parameter subSeq: the sequence whose indices are being searched for
+        - returns: An Int array the size of subSeq. Each element represents where the
+            corresponding character is found in the primary sequence.
+    */
+    public func splicedMotif(of subSeq: Self) -> [Int]? {
+        // - sub sequence must be contained within the primary sequence
+        guard subSeq.length < self.length else { return nil }
+        
+        var i = 0 // - sub sequence index
+        var j = 0 // - primary sequence index
+        var indices: [Int] = []
+        while i < subSeq.length && j < self.length {
+            defer { j += 1 }
+            
+            guard subSeq[i] == self[j] else { continue }
+            
+            indices.append(j)
+            i += 1
+        }
+        // - result is valid only if all elements were found in order
+        return indices.count == subSeq.length ? indices : nil
+    }
 }

@@ -42,7 +42,7 @@ final public class MathService {
     //returns the probability that 2 random offspring from k + m + n will produce an offspring
     //with the dominant allele
     //k = homozygous, m = heterozygous, n = homozygous recessive 
-    public class func dominanceProbability(k: Int, m: Int, n: Int) -> Float{
+    public class func dominanceProbability(k: Int, m: Int, n: Int) -> Float {
         
         let fK = Float(k)
         let fM = Float(m)
