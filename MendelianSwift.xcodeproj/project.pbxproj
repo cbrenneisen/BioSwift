@@ -28,6 +28,25 @@
 		04AD367A214BFCC9006662CE /* RandomProteinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD3679214BFCC9006662CE /* RandomProteinTests.swift */; };
 		04C811BD2136D880007DEF54 /* Nucleobase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C811BC2136D880007DEF54 /* Nucleobase.swift */; };
 		04D79E7E215138BA00D4D1F8 /* fasta4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04D79E7D215138BA00D4D1F8 /* fasta4.txt */; };
+		04D91743219C891C0046669B /* Array+Overlap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9173C219C891C0046669B /* Array+Overlap.swift */; };
+		04D91744219C891C0046669B /* Array+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9173D219C891C0046669B /* Array+Contains.swift */; };
+		04D91745219C891C0046669B /* Array+BaseCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9173E219C891C0046669B /* Array+BaseCounts.swift */; };
+		04D91746219C891C0046669B /* Array+SharedMotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9173F219C891C0046669B /* Array+SharedMotif.swift */; };
+		04D91747219C891C0046669B /* Array+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D91740219C891C0046669B /* Array+Utility.swift */; };
+		04D91748219C891C0046669B /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D91741219C891C0046669B /* Array+Random.swift */; };
+		04D91749219C891C0046669B /* Array+Consensus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D91742219C891C0046669B /* Array+Consensus.swift */; };
+		04D91752219C89B50046669B /* BioSequence+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9174B219C89B50046669B /* BioSequence+Functions.swift */; };
+		04D91753219C89B50046669B /* BioSequence+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9174C219C89B50046669B /* BioSequence+Addition.swift */; };
+		04D91754219C89B50046669B /* BioSequence+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9174D219C89B50046669B /* BioSequence+Random.swift */; };
+		04D91755219C89B50046669B /* BioSequence+Fasta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9174E219C89B50046669B /* BioSequence+Fasta.swift */; };
+		04D91756219C89B50046669B /* BioSequence+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9174F219C89B50046669B /* BioSequence+Properties.swift */; };
+		04D91757219C89B50046669B /* BioSequence+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D91750219C89B50046669B /* BioSequence+Hashable.swift */; };
+		04D91758219C89B50046669B /* BioSequence+Subscripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D91751219C89B50046669B /* BioSequence+Subscripts.swift */; };
+		04D9175C219C89E20046669B /* Collection+Genomes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9175A219C89E20046669B /* Collection+Genomes.swift */; };
+		04D9175D219C89E20046669B /* Collection+GCContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9175B219C89E20046669B /* Collection+GCContent.swift */; };
+		04D9176C219C8A8C0046669B /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9176A219C8A8B0046669B /* String+Trim.swift */; };
+		04D9176D219C8A8C0046669B /* String+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9176B219C8A8B0046669B /* String+File.swift */; };
+		04D9176F219C8BDA0046669B /* Nucleobase+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9176E219C8BDA0046669B /* Nucleobase+Array.swift */; };
 		04DB2866215C1D7E00BB45FC /* DNABaseCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB2865215C1D7E00BB45FC /* DNABaseCountTests.swift */; };
 		12628EE31E77309100C44EC1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EE21E77309100C44EC1 /* Utility.swift */; };
 		12628EEB1E77433900C44EC1 /* BioGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EEA1E77433900C44EC1 /* BioGraphTests.swift */; };
@@ -54,25 +73,6 @@
 		912D87A821912D8100314B63 /* DirectedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87A621912D8100314B63 /* DirectedGraph.swift */; };
 		912D87AB21912DE700314B63 /* BioSequenceFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87A921912DE700314B63 /* BioSequenceFileReader.swift */; };
 		912D87AC21912DE700314B63 /* SequenceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87AA21912DE700314B63 /* SequenceGenerator.swift */; };
-		912D87B421912F5500314B63 /* Nucleobase+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87B321912F5500314B63 /* Nucleobase+Array.swift */; };
-		912D87B721912F7400314B63 /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87B521912F7400314B63 /* String+Trim.swift */; };
-		912D87B821912F7400314B63 /* String+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87B621912F7400314B63 /* String+File.swift */; };
-		912D87C021912F8A00314B63 /* BioSequence+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87B921912F8A00314B63 /* BioSequence+Random.swift */; };
-		912D87C121912F8A00314B63 /* BioSequence+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87BA21912F8A00314B63 /* BioSequence+Hashable.swift */; };
-		912D87C221912F8A00314B63 /* BioSequence+Subscripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87BB21912F8A00314B63 /* BioSequence+Subscripts.swift */; };
-		912D87C321912F8A00314B63 /* BioSequence+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87BC21912F8A00314B63 /* BioSequence+Functions.swift */; };
-		912D87C421912F8A00314B63 /* BioSequence+Fasta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87BD21912F8A00314B63 /* BioSequence+Fasta.swift */; };
-		912D87C521912F8A00314B63 /* BioSequence+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87BE21912F8A00314B63 /* BioSequence+Addition.swift */; };
-		912D87C621912F8A00314B63 /* BioSequence+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87BF21912F8A00314B63 /* BioSequence+Properties.swift */; };
-		912D87CE21912FA200314B63 /* Array+Consensus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87C721912FA200314B63 /* Array+Consensus.swift */; };
-		912D87CF21912FA200314B63 /* Array+SharedMotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87C821912FA200314B63 /* Array+SharedMotif.swift */; };
-		912D87D021912FA200314B63 /* Array+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87C921912FA200314B63 /* Array+Utility.swift */; };
-		912D87D121912FA200314B63 /* Array+BaseCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87CA21912FA200314B63 /* Array+BaseCounts.swift */; };
-		912D87D221912FA200314B63 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87CB21912FA200314B63 /* Array+Random.swift */; };
-		912D87D321912FA200314B63 /* Array+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87CC21912FA200314B63 /* Array+Contains.swift */; };
-		912D87D421912FA200314B63 /* Array+Overlap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87CD21912FA200314B63 /* Array+Overlap.swift */; };
-		912D87D721912FCB00314B63 /* Collection+GCContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87D521912FCB00314B63 /* Collection+GCContent.swift */; };
-		912D87D821912FCB00314B63 /* Collection+Genomes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87D621912FCB00314B63 /* Collection+Genomes.swift */; };
 		912D87DC21912FFE00314B63 /* AminoAcid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87D921912FFE00314B63 /* AminoAcid.swift */; };
 		912D87DD21912FFE00314B63 /* DNA+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87DA21912FFE00314B63 /* DNA+Base.swift */; };
 		912D87DE21912FFE00314B63 /* RNA+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D87DB21912FFE00314B63 /* RNA+Base.swift */; };
@@ -120,6 +120,25 @@
 		04AD3679214BFCC9006662CE /* RandomProteinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomProteinTests.swift; sourceTree = "<group>"; };
 		04C811BC2136D880007DEF54 /* Nucleobase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nucleobase.swift; sourceTree = "<group>"; };
 		04D79E7D215138BA00D4D1F8 /* fasta4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = fasta4.txt; sourceTree = "<group>"; };
+		04D9173C219C891C0046669B /* Array+Overlap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Overlap.swift"; path = "MendelianSwift/Extensions/Array/Array+Overlap.swift"; sourceTree = SOURCE_ROOT; };
+		04D9173D219C891C0046669B /* Array+Contains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Contains.swift"; path = "MendelianSwift/Extensions/Array/Array+Contains.swift"; sourceTree = SOURCE_ROOT; };
+		04D9173E219C891C0046669B /* Array+BaseCounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+BaseCounts.swift"; path = "MendelianSwift/Extensions/Array/Array+BaseCounts.swift"; sourceTree = SOURCE_ROOT; };
+		04D9173F219C891C0046669B /* Array+SharedMotif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+SharedMotif.swift"; path = "MendelianSwift/Extensions/Array/Array+SharedMotif.swift"; sourceTree = SOURCE_ROOT; };
+		04D91740219C891C0046669B /* Array+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Utility.swift"; path = "MendelianSwift/Extensions/Array/Array+Utility.swift"; sourceTree = SOURCE_ROOT; };
+		04D91741219C891C0046669B /* Array+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Random.swift"; path = "MendelianSwift/Extensions/Array/Array+Random.swift"; sourceTree = SOURCE_ROOT; };
+		04D91742219C891C0046669B /* Array+Consensus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Consensus.swift"; path = "MendelianSwift/Extensions/Array/Array+Consensus.swift"; sourceTree = SOURCE_ROOT; };
+		04D9174B219C89B50046669B /* BioSequence+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Functions.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Functions.swift"; sourceTree = SOURCE_ROOT; };
+		04D9174C219C89B50046669B /* BioSequence+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Addition.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Addition.swift"; sourceTree = SOURCE_ROOT; };
+		04D9174D219C89B50046669B /* BioSequence+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Random.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Random.swift"; sourceTree = SOURCE_ROOT; };
+		04D9174E219C89B50046669B /* BioSequence+Fasta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Fasta.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Fasta.swift"; sourceTree = SOURCE_ROOT; };
+		04D9174F219C89B50046669B /* BioSequence+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Properties.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Properties.swift"; sourceTree = SOURCE_ROOT; };
+		04D91750219C89B50046669B /* BioSequence+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Hashable.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Hashable.swift"; sourceTree = SOURCE_ROOT; };
+		04D91751219C89B50046669B /* BioSequence+Subscripts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Subscripts.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Subscripts.swift"; sourceTree = SOURCE_ROOT; };
+		04D9175A219C89E20046669B /* Collection+Genomes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+Genomes.swift"; path = "MendelianSwift/Extensions/Collection/Collection+Genomes.swift"; sourceTree = SOURCE_ROOT; };
+		04D9175B219C89E20046669B /* Collection+GCContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+GCContent.swift"; path = "MendelianSwift/Extensions/Collection/Collection+GCContent.swift"; sourceTree = SOURCE_ROOT; };
+		04D9176A219C8A8B0046669B /* String+Trim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Trim.swift"; path = "MendelianSwift/Extensions/String/String+Trim.swift"; sourceTree = SOURCE_ROOT; };
+		04D9176B219C8A8B0046669B /* String+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+File.swift"; path = "MendelianSwift/Extensions/String/String+File.swift"; sourceTree = SOURCE_ROOT; };
+		04D9176E219C8BDA0046669B /* Nucleobase+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Nucleobase+Array.swift"; path = "MendelianSwift/Extensions/Nucleobase/Nucleobase+Array.swift"; sourceTree = SOURCE_ROOT; };
 		04DB2865215C1D7E00BB45FC /* DNABaseCountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNABaseCountTests.swift; sourceTree = "<group>"; };
 		12628EE21E77309100C44EC1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		12628EEA1E77433900C44EC1 /* BioGraphTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioGraphTests.swift; path = "Math Model Tests/BioGraphTests.swift"; sourceTree = "<group>"; };
@@ -149,25 +168,6 @@
 		912D87A621912D8100314B63 /* DirectedGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectedGraph.swift; path = Graph/Implementations/DirectedGraph.swift; sourceTree = "<group>"; };
 		912D87A921912DE700314B63 /* BioSequenceFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioSequenceFileReader.swift; path = "Internal Services/BioSequenceFileReader.swift"; sourceTree = "<group>"; };
 		912D87AA21912DE700314B63 /* SequenceGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SequenceGenerator.swift; path = "Internal Services/SequenceGenerator.swift"; sourceTree = "<group>"; };
-		912D87B321912F5500314B63 /* Nucleobase+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Nucleobase+Array.swift"; path = "MendelianSwift/Extensions/Nucleobase/Nucleobase+Array.swift"; sourceTree = SOURCE_ROOT; };
-		912D87B521912F7400314B63 /* String+Trim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Trim.swift"; path = "MendelianSwift/Extensions/String/String+Trim.swift"; sourceTree = SOURCE_ROOT; };
-		912D87B621912F7400314B63 /* String+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+File.swift"; path = "MendelianSwift/Extensions/String/String+File.swift"; sourceTree = SOURCE_ROOT; };
-		912D87B921912F8A00314B63 /* BioSequence+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Random.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Random.swift"; sourceTree = SOURCE_ROOT; };
-		912D87BA21912F8A00314B63 /* BioSequence+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Hashable.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Hashable.swift"; sourceTree = SOURCE_ROOT; };
-		912D87BB21912F8A00314B63 /* BioSequence+Subscripts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Subscripts.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Subscripts.swift"; sourceTree = SOURCE_ROOT; };
-		912D87BC21912F8A00314B63 /* BioSequence+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Functions.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Functions.swift"; sourceTree = SOURCE_ROOT; };
-		912D87BD21912F8A00314B63 /* BioSequence+Fasta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Fasta.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Fasta.swift"; sourceTree = SOURCE_ROOT; };
-		912D87BE21912F8A00314B63 /* BioSequence+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Addition.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Addition.swift"; sourceTree = SOURCE_ROOT; };
-		912D87BF21912F8A00314B63 /* BioSequence+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BioSequence+Properties.swift"; path = "MendelianSwift/Extensions/BioSequence/BioSequence+Properties.swift"; sourceTree = SOURCE_ROOT; };
-		912D87C721912FA200314B63 /* Array+Consensus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Consensus.swift"; path = "MendelianSwift/Extensions/Array/Array+Consensus.swift"; sourceTree = SOURCE_ROOT; };
-		912D87C821912FA200314B63 /* Array+SharedMotif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+SharedMotif.swift"; path = "MendelianSwift/Extensions/Array/Array+SharedMotif.swift"; sourceTree = SOURCE_ROOT; };
-		912D87C921912FA200314B63 /* Array+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Utility.swift"; path = "MendelianSwift/Extensions/Array/Array+Utility.swift"; sourceTree = SOURCE_ROOT; };
-		912D87CA21912FA200314B63 /* Array+BaseCounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+BaseCounts.swift"; path = "MendelianSwift/Extensions/Array/Array+BaseCounts.swift"; sourceTree = SOURCE_ROOT; };
-		912D87CB21912FA200314B63 /* Array+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Random.swift"; path = "MendelianSwift/Extensions/Array/Array+Random.swift"; sourceTree = SOURCE_ROOT; };
-		912D87CC21912FA200314B63 /* Array+Contains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Contains.swift"; path = "MendelianSwift/Extensions/Array/Array+Contains.swift"; sourceTree = SOURCE_ROOT; };
-		912D87CD21912FA200314B63 /* Array+Overlap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Overlap.swift"; path = "MendelianSwift/Extensions/Array/Array+Overlap.swift"; sourceTree = SOURCE_ROOT; };
-		912D87D521912FCB00314B63 /* Collection+GCContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+GCContent.swift"; path = "MendelianSwift/Extensions/Collection/Collection+GCContent.swift"; sourceTree = SOURCE_ROOT; };
-		912D87D621912FCB00314B63 /* Collection+Genomes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+Genomes.swift"; path = "MendelianSwift/Extensions/Collection/Collection+Genomes.swift"; sourceTree = SOURCE_ROOT; };
 		912D87D921912FFE00314B63 /* AminoAcid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AminoAcid.swift; path = Bases/AminoAcid.swift; sourceTree = "<group>"; };
 		912D87DA21912FFE00314B63 /* DNA+Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DNA+Base.swift"; path = "Bases/DNA+Base.swift"; sourceTree = "<group>"; };
 		912D87DB21912FFE00314B63 /* RNA+Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RNA+Base.swift"; path = "Bases/RNA+Base.swift"; sourceTree = "<group>"; };
@@ -256,23 +256,6 @@
 			path = "Generator Tests";
 			sourceTree = "<group>";
 		};
-		04AA8E8A217FA4FA00BF195C /* Nucleobase */ = {
-			isa = PBXGroup;
-			children = (
-				912D87B321912F5500314B63 /* Nucleobase+Array.swift */,
-			);
-			path = Nucleobase;
-			sourceTree = "<group>";
-		};
-		04AA8E8B218216A600BF195C /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				912D87D521912FCB00314B63 /* Collection+GCContent.swift */,
-				912D87D621912FCB00314B63 /* Collection+Genomes.swift */,
-			);
-			path = Collection;
-			sourceTree = "<group>";
-		};
 		04AD365A2146C0E5006662CE /* DNA */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,41 +277,58 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		04AD366C214952DA006662CE /* String */ = {
+		04D9173B219C890F0046669B /* Array */ = {
 			isa = PBXGroup;
 			children = (
-				912D87B621912F7400314B63 /* String+File.swift */,
-				912D87B521912F7400314B63 /* String+Trim.swift */,
-			);
-			path = String;
-			sourceTree = "<group>";
-		};
-		04AD367021499D39006662CE /* Array */ = {
-			isa = PBXGroup;
-			children = (
-				912D87CA21912FA200314B63 /* Array+BaseCounts.swift */,
-				912D87C721912FA200314B63 /* Array+Consensus.swift */,
-				912D87CC21912FA200314B63 /* Array+Contains.swift */,
-				912D87CD21912FA200314B63 /* Array+Overlap.swift */,
-				912D87CB21912FA200314B63 /* Array+Random.swift */,
-				912D87C821912FA200314B63 /* Array+SharedMotif.swift */,
-				912D87C921912FA200314B63 /* Array+Utility.swift */,
+				04D9173E219C891C0046669B /* Array+BaseCounts.swift */,
+				04D91742219C891C0046669B /* Array+Consensus.swift */,
+				04D9173D219C891C0046669B /* Array+Contains.swift */,
+				04D9173C219C891C0046669B /* Array+Overlap.swift */,
+				04D91741219C891C0046669B /* Array+Random.swift */,
+				04D9173F219C891C0046669B /* Array+SharedMotif.swift */,
+				04D91740219C891C0046669B /* Array+Utility.swift */,
 			);
 			path = Array;
 			sourceTree = "<group>";
 		};
-		04AD367F214C091B006662CE /* BioSequence */ = {
+		04D9174A219C89940046669B /* BioSequence */ = {
 			isa = PBXGroup;
 			children = (
-				912D87BE21912F8A00314B63 /* BioSequence+Addition.swift */,
-				912D87BD21912F8A00314B63 /* BioSequence+Fasta.swift */,
-				912D87BC21912F8A00314B63 /* BioSequence+Functions.swift */,
-				912D87BA21912F8A00314B63 /* BioSequence+Hashable.swift */,
-				912D87BF21912F8A00314B63 /* BioSequence+Properties.swift */,
-				912D87B921912F8A00314B63 /* BioSequence+Random.swift */,
-				912D87BB21912F8A00314B63 /* BioSequence+Subscripts.swift */,
+				04D9174C219C89B50046669B /* BioSequence+Addition.swift */,
+				04D9174E219C89B50046669B /* BioSequence+Fasta.swift */,
+				04D9174B219C89B50046669B /* BioSequence+Functions.swift */,
+				04D91750219C89B50046669B /* BioSequence+Hashable.swift */,
+				04D9174F219C89B50046669B /* BioSequence+Properties.swift */,
+				04D9174D219C89B50046669B /* BioSequence+Random.swift */,
+				04D91751219C89B50046669B /* BioSequence+Subscripts.swift */,
 			);
 			path = BioSequence;
+			sourceTree = "<group>";
+		};
+		04D91759219C89D10046669B /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				04D9175B219C89E20046669B /* Collection+GCContent.swift */,
+				04D9175A219C89E20046669B /* Collection+Genomes.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		04D9175E219C89F20046669B /* Nucleobase */ = {
+			isa = PBXGroup;
+			children = (
+				04D9176E219C8BDA0046669B /* Nucleobase+Array.swift */,
+			);
+			path = Nucleobase;
+			sourceTree = "<group>";
+		};
+		04D91769219C8A710046669B /* String */ = {
+			isa = PBXGroup;
+			children = (
+				04D9176B219C8A8B0046669B /* String+File.swift */,
+				04D9176A219C8A8B0046669B /* String+Trim.swift */,
+			);
+			path = String;
 			sourceTree = "<group>";
 		};
 		04DB2867215C1D8F00BB45FC /* Base Count Tests */ = {
@@ -535,11 +535,11 @@
 		9194A922213191BD00C1E696 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				04AD367021499D39006662CE /* Array */,
-				04AD367F214C091B006662CE /* BioSequence */,
-				04AA8E8B218216A600BF195C /* Collection */,
-				04AA8E8A217FA4FA00BF195C /* Nucleobase */,
-				04AD366C214952DA006662CE /* String */,
+				04D9173B219C890F0046669B /* Array */,
+				04D9174A219C89940046669B /* BioSequence */,
+				04D91759219C89D10046669B /* Collection */,
+				04D9175E219C89F20046669B /* Nucleobase */,
+				04D91769219C8A710046669B /* String */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -688,47 +688,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				912D87CF21912FA200314B63 /* Array+SharedMotif.swift in Sources */,
-				912D87C321912F8A00314B63 /* BioSequence+Functions.swift in Sources */,
 				912D879E21912D0800314B63 /* Edge.swift in Sources */,
-				912D87D421912FA200314B63 /* Array+Overlap.swift in Sources */,
 				04AD366421494BA5006662CE /* SequenceFileReader.swift in Sources */,
+				04D91745219C891C0046669B /* Array+BaseCounts.swift in Sources */,
 				912D87A721912D8100314B63 /* UndirectedGraph.swift in Sources */,
-				912D87CE21912FA200314B63 /* Array+Consensus.swift in Sources */,
 				912D87DC21912FFE00314B63 /* AminoAcid.swift in Sources */,
-				912D87C121912F8A00314B63 /* BioSequence+Hashable.swift in Sources */,
 				912D87A021912D3700314B63 /* BioGraphBase.swift in Sources */,
 				912D87A321912D5E00314B63 /* BioGraphFactory.swift in Sources */,
-				912D87D721912FCB00314B63 /* Collection+GCContent.swift in Sources */,
 				912D879C21912D0800314B63 /* Vertex.swift in Sources */,
 				912D879D21912D0800314B63 /* EdgeList.swift in Sources */,
+				04D91756219C89B50046669B /* BioSequence+Properties.swift in Sources */,
 				494D4EC51E73894F0068F706 /* Protein.swift in Sources */,
-				912D87D321912FA200314B63 /* Array+Contains.swift in Sources */,
-				912D87D821912FCB00314B63 /* Collection+Genomes.swift in Sources */,
+				04D91749219C891C0046669B /* Array+Consensus.swift in Sources */,
 				04AD366921495063006662CE /* InjectionMap.swift in Sources */,
+				04D9175D219C89E20046669B /* Collection+GCContent.swift in Sources */,
 				912D87A421912D5E00314B63 /* BioGraphInterface.swift in Sources */,
-				912D87C021912F8A00314B63 /* BioSequence+Random.swift in Sources */,
 				494D4EC61E73894F0068F706 /* RNA.swift in Sources */,
-				912D87D021912FA200314B63 /* Array+Utility.swift in Sources */,
-				912D87B821912F7400314B63 /* String+File.swift in Sources */,
+				04D9175C219C89E20046669B /* Collection+Genomes.swift in Sources */,
 				04C811BD2136D880007DEF54 /* Nucleobase.swift in Sources */,
+				04D91757219C89B50046669B /* BioSequence+Hashable.swift in Sources */,
 				912D87DD21912FFE00314B63 /* DNA+Base.swift in Sources */,
-				912D87C221912F8A00314B63 /* BioSequence+Subscripts.swift in Sources */,
 				912D87AB21912DE700314B63 /* BioSequenceFileReader.swift in Sources */,
+				04D91747219C891C0046669B /* Array+Utility.swift in Sources */,
+				04D91755219C89B50046669B /* BioSequence+Fasta.swift in Sources */,
+				04D9176D219C8A8C0046669B /* String+File.swift in Sources */,
 				494B8C861E6B4DDC0057030B /* Constants.swift in Sources */,
 				494D4ED41E738C420068F706 /* MathService.swift in Sources */,
 				494D4EC31E73894F0068F706 /* BioSequence.swift in Sources */,
-				912D87D121912FA200314B63 /* Array+BaseCounts.swift in Sources */,
 				494D4EC41E73894F0068F706 /* DNA.swift in Sources */,
-				912D87D221912FA200314B63 /* Array+Random.swift in Sources */,
+				04D91754219C89B50046669B /* BioSequence+Random.swift in Sources */,
+				04D91743219C891C0046669B /* Array+Overlap.swift in Sources */,
+				04D91746219C891C0046669B /* Array+SharedMotif.swift in Sources */,
 				912D87A821912D8100314B63 /* DirectedGraph.swift in Sources */,
-				912D87C521912F8A00314B63 /* BioSequence+Addition.swift in Sources */,
+				04D91744219C891C0046669B /* Array+Contains.swift in Sources */,
+				04D91748219C891C0046669B /* Array+Random.swift in Sources */,
+				04D91752219C89B50046669B /* BioSequence+Functions.swift in Sources */,
 				912D87DE21912FFE00314B63 /* RNA+Base.swift in Sources */,
 				912D87AC21912DE700314B63 /* SequenceGenerator.swift in Sources */,
-				912D87B421912F5500314B63 /* Nucleobase+Array.swift in Sources */,
-				912D87B721912F7400314B63 /* String+Trim.swift in Sources */,
-				912D87C621912F8A00314B63 /* BioSequence+Properties.swift in Sources */,
-				912D87C421912F8A00314B63 /* BioSequence+Fasta.swift in Sources */,
+				04D91758219C89B50046669B /* BioSequence+Subscripts.swift in Sources */,
+				04D91753219C89B50046669B /* BioSequence+Addition.swift in Sources */,
+				04D9176C219C8A8C0046669B /* String+Trim.swift in Sources */,
+				04D9176F219C8BDA0046669B /* Nucleobase+Array.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,7 +905,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -926,7 +926,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cbrenneisen.MendelianSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -940,7 +940,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cbrenneisen.MendelianSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -954,7 +954,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cbrenneisen.MendelianSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
