@@ -48,7 +48,6 @@
 		04D9176D219C8A8C0046669B /* String+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9176B219C8A8B0046669B /* String+File.swift */; };
 		04D9176F219C8BDA0046669B /* Nucleobase+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9176E219C8BDA0046669B /* Nucleobase+Array.swift */; };
 		04DB2866215C1D7E00BB45FC /* DNABaseCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB2865215C1D7E00BB45FC /* DNABaseCountTests.swift */; };
-		12628EE31E77309100C44EC1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EE21E77309100C44EC1 /* Utility.swift */; };
 		12628EEB1E77433900C44EC1 /* BioGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EEA1E77433900C44EC1 /* BioGraphTests.swift */; };
 		12628EED1E77439000C44EC1 /* DnaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EEC1E77439000C44EC1 /* DnaTests.swift */; };
 		12628EF31E77439A00C44EC1 /* RandomDNATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12628EF01E77439A00C44EC1 /* RandomDNATests.swift */; };
@@ -60,7 +59,6 @@
 		494D4EC41E73894F0068F706 /* DNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4EC01E73894F0068F706 /* DNA.swift */; };
 		494D4EC51E73894F0068F706 /* Protein.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4EC11E73894F0068F706 /* Protein.swift */; };
 		494D4EC61E73894F0068F706 /* RNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4EC21E73894F0068F706 /* RNA.swift */; };
-		494D4ED41E738C420068F706 /* MathService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494D4ED01E738C420068F706 /* MathService.swift */; };
 		494D4EDB1E74436C0068F706 /* fasta1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 494D4ED91E74436C0068F706 /* fasta1.txt */; };
 		494D4EDC1E74436C0068F706 /* fasta2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 494D4EDA1E74436C0068F706 /* fasta2.txt */; };
 		912D879C21912D0800314B63 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D879921912D0800314B63 /* Vertex.swift */; };
@@ -140,7 +138,6 @@
 		04D9176B219C8A8B0046669B /* String+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+File.swift"; path = "MendelianSwift/Extensions/String/String+File.swift"; sourceTree = SOURCE_ROOT; };
 		04D9176E219C8BDA0046669B /* Nucleobase+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Nucleobase+Array.swift"; path = "MendelianSwift/Extensions/Nucleobase/Nucleobase+Array.swift"; sourceTree = SOURCE_ROOT; };
 		04DB2865215C1D7E00BB45FC /* DNABaseCountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNABaseCountTests.swift; sourceTree = "<group>"; };
-		12628EE21E77309100C44EC1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		12628EEA1E77433900C44EC1 /* BioGraphTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BioGraphTests.swift; path = "Math Model Tests/BioGraphTests.swift"; sourceTree = "<group>"; };
 		12628EEC1E77439000C44EC1 /* DnaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DnaTests.swift; path = "Sequence Model Tests/DnaTests.swift"; sourceTree = "<group>"; };
 		12628EF01E77439A00C44EC1 /* RandomDNATests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomDNATests.swift; path = "Service Tests/RandomDNATests.swift"; sourceTree = "<group>"; };
@@ -155,7 +152,6 @@
 		494D4EC01E73894F0068F706 /* DNA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DNA.swift; path = "Sequence Models/DNA.swift"; sourceTree = "<group>"; };
 		494D4EC11E73894F0068F706 /* Protein.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protein.swift; path = "Sequence Models/Protein.swift"; sourceTree = "<group>"; };
 		494D4EC21E73894F0068F706 /* RNA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNA.swift; path = "Sequence Models/RNA.swift"; sourceTree = "<group>"; };
-		494D4ED01E738C420068F706 /* MathService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathService.swift; path = "Public Services/MathService.swift"; sourceTree = "<group>"; };
 		494D4ED91E74436C0068F706 /* fasta1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta1.txt; path = Resources/fasta1.txt; sourceTree = "<group>"; };
 		494D4EDA1E74436C0068F706 /* fasta2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fasta2.txt; path = Resources/fasta2.txt; sourceTree = "<group>"; };
 		912D879921912D0800314B63 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vertex.swift; path = Graph/Components/Vertex.swift; sourceTree = "<group>"; };
@@ -417,7 +413,6 @@
 				044226D42134A224000CBEBC /* Bases */,
 				9194A922213191BD00C1E696 /* Extensions */,
 				04AD366521494EC4006662CE /* Protocols */,
-				494D4ECB1E738B200068F706 /* Public Services */,
 				494D4ECA1E738B0F0068F706 /* Internal Services */,
 				494D94161E76215B007B416C /* Graph */,
 				494D4EBE1E7389370068F706 /* Sequence Models */,
@@ -436,7 +431,6 @@
 				494D4ED81E7443520068F706 /* Resources */,
 				04DB2869215C27DB00BB45FC /* Tests */,
 				494B8C761E6B4D490057030B /* Info.plist */,
-				12628EE21E77309100C44EC1 /* Utility.swift */,
 			);
 			path = MendelianSwiftTests;
 			sourceTree = "<group>";
@@ -458,14 +452,6 @@
 				912D87AA21912DE700314B63 /* SequenceGenerator.swift */,
 			);
 			name = "Internal Services";
-			sourceTree = "<group>";
-		};
-		494D4ECB1E738B200068F706 /* Public Services */ = {
-			isa = PBXGroup;
-			children = (
-				494D4ED01E738C420068F706 /* MathService.swift */,
-			);
-			name = "Public Services";
 			sourceTree = "<group>";
 		};
 		494D4ED81E7443520068F706 /* Resources */ = {
@@ -713,7 +699,6 @@
 				04D91755219C89B50046669B /* BioSequence+Fasta.swift in Sources */,
 				04D9176D219C8A8C0046669B /* String+File.swift in Sources */,
 				494B8C861E6B4DDC0057030B /* Constants.swift in Sources */,
-				494D4ED41E738C420068F706 /* MathService.swift in Sources */,
 				494D4EC31E73894F0068F706 /* BioSequence.swift in Sources */,
 				494D4EC41E73894F0068F706 /* DNA.swift in Sources */,
 				04D91754219C89B50046669B /* BioSequence+Random.swift in Sources */,
@@ -740,7 +725,6 @@
 				12628EF51E7743F400C44EC1 /* MockGraphs.swift in Sources */,
 				916B972E214C27C4005C7910 /* EqualityRNATests.swift in Sources */,
 				04AD367A214BFCC9006662CE /* RandomProteinTests.swift in Sources */,
-				12628EE31E77309100C44EC1 /* Utility.swift in Sources */,
 				04AD3676214BF7D4006662CE /* RandomRNATests.swift in Sources */,
 				916B9727214C2710005C7910 /* InitRNATests.swift in Sources */,
 				12628EED1E77439000C44EC1 /* DnaTests.swift in Sources */,
