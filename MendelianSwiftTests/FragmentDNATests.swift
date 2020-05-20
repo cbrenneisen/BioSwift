@@ -2,8 +2,8 @@
 //  DNAFragmentTests.swift
 //  MendelianSwiftTests
 //
-//  Created by mac on 10/22/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 10/22/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import XCTest

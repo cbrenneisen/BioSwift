@@ -2,8 +2,8 @@
 //  BioSequence+Motifs.swift
 //  MendelianSwift
 //
-//  Created by mac on 9/14/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 9/14/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -13,18 +13,18 @@ public extension BioSequence {
     /**
      Returns true if the other sequence is a subsequence of the base sequence
      */
-    public func contains(_ subsequence: Self) -> Bool {
+    func contains(_ subsequence: Self) -> Bool {
         return sequence.contains(subsequence.sequence)
     }
     
-    public static func permutations(length: Int) -> [[Self.Base]] {
+    static func permutations(length: Int) -> [[Self.Base]] {
         return SequenceGenerator.permutations(of: Self.Base.all, length: length)
     }
     
     /**
      Returns the starting index of all instances of the sub sequence
      */
-    public func motifs(of subSeq: Self) -> [Int] {
+    func motifs(of subSeq: Self) -> [Int] {
         var locations: [Int] = []
         
         (0...(length-1)-subSeq.length).forEach(){ i in
@@ -51,7 +51,7 @@ public extension BioSequence {
         - returns: An Int array the size of subSeq. Each element represents where the
             corresponding character is found in the primary sequence.
     */
-    public func splicedMotif(of subSeq: Self) -> [Int]? {
+    func splicedMotif(of subSeq: Self) -> [Int]? {
         // - sub sequence must be contained within the primary sequence
         guard subSeq.length < self.length else { return nil }
         

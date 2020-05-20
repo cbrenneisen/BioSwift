@@ -2,8 +2,8 @@
 //  Biosequence+Random.swift
 //  MendelianSwift
 //
-//  Created by mac on 9/14/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 9/14/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -15,7 +15,7 @@ public extension BioSequence {
      - parameter min: the guaranteed minimum length (inclusive)
      - parameter max: the guaranteed maximum length (inclusive)
      */
-    public static func random(min: Int, max: Int) -> Self? {
+    static func random(min: Int, max: Int) -> Self? {
         guard validate(min, max) else { return nil }
         
         let randomLength = Int(arc4random_uniform(UInt32((max-min) + 1))) + min

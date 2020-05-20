@@ -2,8 +2,8 @@
 //  Array+Random.swift
 //  MendelianSwift
 //
-//  Created by mac on 9/14/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 9/14/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -16,7 +16,7 @@ public extension Array where Element: BioSequence{
      - parameter max: guaranteed maximum length of each sequence (inclusive)
      - parameter count: number of sequences to generate
      */
-    public static func random(min: Int, max: Int, count: Int) -> [Element]{
+    static func random(min: Int, max: Int, count: Int) -> [Element]{
         guard validate(min, max, count) else { return [] }
         
         return (0..<count).compactMap{ _ in

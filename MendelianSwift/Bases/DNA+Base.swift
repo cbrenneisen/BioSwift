@@ -2,15 +2,15 @@
 //  Nucleobase.swift
 //  MendelianSwift
 //
-//  Created by Carlos Brenneisen on 8/26/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 8/26/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
 
 public extension DNA {
     
-    public enum Base: String, Nucleobase {
+    enum Base: String, Nucleobase {
         
         case A = "adenine"
         case C = "cytosine"

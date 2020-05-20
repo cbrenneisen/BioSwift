@@ -2,8 +2,8 @@
 //  AminoAcid.swift
 //  MendelianSwift
 //
-//  Created by Carlos Brenneisen on 9/2/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 9/2/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,8 @@
 //  Array+AssembleFragments.swift
 //  MendelianSwift
 //
-//  Created by Carlos Brenneisen on 10/20/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 10/20/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,7 @@ public extension Collection where Element: BioSequence {
      Calculate the smallest possible super sequence of the array
      - Returns: The super sequence, if one exists
     */
-    public func assembleGenomes() -> Element? {
+    func assembleGenomes() -> Element? {
         
         // base case - an empty array has no super sequence
         guard count > 0 else { return nil }
@@ -34,7 +34,7 @@ fileprivate extension Array {
      Calculate the smallest possible super sequence of the array of bases
      - Returns: The super sequence
      */
-    fileprivate mutating func shortestSuperSequence<T: Nucleobase>()->[T] where Element == [T] {
+    mutating func shortestSuperSequence<T: Nucleobase>()->[T] where Element == [T] {
        
         var length = count
         while length != 1 {

@@ -3,7 +3,7 @@
 //  MendelianSwift
 //
 //  Created by carlos.brenneisen on 3/13/17.
-//  Copyright © 2017 carlosbrenneisen. All rights reserved.
+//  Copyright © 2017 carlbrenneisen. All rights reserved.
 //
 
 import XCTest

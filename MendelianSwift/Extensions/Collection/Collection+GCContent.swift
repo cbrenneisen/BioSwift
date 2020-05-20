@@ -2,18 +2,18 @@
 //  Array+DNA.swift
 //  MendelianSwift
 //
-//  Created by Carlos Brenneisen on 8/25/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 8/25/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
 
 public extension Collection where Element == DNA {
-    
+
     /**
      The DNA with the highest GC content in the collection
     */
-    public var seqWithHighestGC: DNA? {
+    var seqWithHighestGC: DNA? {
         var maxGC: Float = 0.0
         var dna: DNA?
         

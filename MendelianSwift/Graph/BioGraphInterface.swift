@@ -2,8 +2,8 @@
 //  Graph.swift
 //  MendelianSwift
 //
-//  Created by mac on 10/25/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 10/25/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -32,12 +32,12 @@ public protocol BioGraphInterface {
 
 public extension BioGraphInterface {
     
-    public func addEdge(from origin: Vertex<T>, to destination: Vertex<T>){
+    func addEdge(from origin: Vertex<T>, to destination: Vertex<T>){
         addEdge(from: origin, to: destination, weight: nil)
     }
     
     //returns whether or not an edge exists between two BioSequences
-    public func edgeExists(from origin: T, to destination: T) -> Bool {
+    func edgeExists(from origin: T, to destination: T) -> Bool {
         
         let v1 = Vertex(bioSequence: origin)
         let v2 = Vertex(bioSequence: destination)

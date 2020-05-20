@@ -2,8 +2,8 @@
 //  RNA.swift
 //  BioSwift
 //
-//  Created by Carlos Brenneisen on 01/22/17.
-//  Copyright © 2017 CarlosBrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 01/22/17.
+//  Copyright © 2017 carlbrenneisen. All rights reserved.
 
 import Foundation
 
@@ -45,7 +45,7 @@ public extension RNA {
      Get the codon at the specified index - returns nil if there are not enough bases at this location
      - parameter index: the starting index of the first base of the codon
      */
-    public func codon(at index: Int) -> Codon? {
+    func codon(at index: Int) -> Codon? {
         guard index <= length - 3 else { return nil }
         return (self[index], self[index+1], self[index+2])
     }
@@ -61,7 +61,7 @@ public extension RNA {
     /**
      The current sequence as a sequence of codons
     */
-    public var codons: [Codon] {
+    var codons: [Codon] {
         return stride(from: 0, to: length, by: 3).map(){
             return codon(unsafeAt: $0)
         }
@@ -70,7 +70,7 @@ public extension RNA {
     /**
         Translates the RNA into a Protein object
     */
-    public func translate() -> Protein {
+    func translate() -> Protein {
         
         var seq: [AminoAcid] = []
         for n in stride(from: 0, to: length, by: 3){

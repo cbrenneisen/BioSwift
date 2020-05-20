@@ -2,15 +2,15 @@
 //  Array+BioSequence.swift
 //  MendelianSwift
 //
-//  Created by mac on 9/4/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 9/4/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
 
 public extension Array where Element: BioSequence {
     
-    public typealias BaseCounts = [Element.Base: Int]
+    typealias BaseCounts = [Element.Base: Int]
     
     /**
      Returns a valid consensus sequence for the given array, if one exists
@@ -30,7 +30,7 @@ public extension Array {
     /**
      Returns a valid consensus sequence for the list of base counts, if one exists
     */
-    public func getSequence<T: BioSequence>() -> T? where Element == [T.Base: Int]{
+    func getSequence<T: BioSequence>() -> T? where Element == [T.Base: Int]{
         var sequence: [T.Base] = []
         for count in self {
             // - get the highest occurring base

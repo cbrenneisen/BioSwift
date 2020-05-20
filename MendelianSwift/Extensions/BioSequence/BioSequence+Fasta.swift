@@ -2,8 +2,8 @@
 //  BioSequence+Fasta.swift
 //  MendelianSwift
 //
-//  Created by mac on 9/14/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 9/14/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,7 @@ public extension BioSequence {
      Create an array of sequence objects from the text of a FASTA file
      - parameter file: the complete path to the file
      */
-    public static func from(fasta file: String) -> [Self] {
+    static func from(fasta file: String) -> [Self] {
         
         let lines = Self.fileReader.fastaStrings(from: file)
         

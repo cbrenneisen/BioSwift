@@ -413,6 +413,7 @@
 				044226D42134A224000CBEBC /* Bases */,
 				9194A922213191BD00C1E696 /* Extensions */,
 				04AD366521494EC4006662CE /* Protocols */,
+				04D9175E219C89F20046669B /* Nucleobase */,
 				494D4ECA1E738B0F0068F706 /* Internal Services */,
 				494D94161E76215B007B416C /* Graph */,
 				494D4EBE1E7389370068F706 /* Sequence Models */,
@@ -524,7 +525,6 @@
 				04D9173B219C890F0046669B /* Array */,
 				04D9174A219C89940046669B /* BioSequence */,
 				04D91759219C89D10046669B /* Collection */,
-				04D9175E219C89F20046669B /* Nucleobase */,
 				04D91769219C8A710046669B /* String */,
 			);
 			name = Extensions;
@@ -605,28 +605,29 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = carlosbrenneisen;
 				TargetAttributes = {
 					494B8C651E6B4D490057030B = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
 					494B8C6E1E6B4D490057030B = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9VZ57H5242;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 494B8C601E6B4D490057030B /* Build configuration list for PBXProject "MendelianSwift" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 494B8C5C1E6B4D490057030B;
 			productRefGroup = 494B8C671E6B4D490057030B /* Products */;
@@ -761,6 +762,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -822,6 +824,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -890,7 +893,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -911,7 +914,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -925,7 +928,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cbrenneisen.MendelianSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -939,7 +942,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cbrenneisen.MendelianSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

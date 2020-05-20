@@ -2,8 +2,8 @@
 //  DnaTests.swift
 //  MendelianSwift
 //
-//  Created by Carlos Brenneisen on 3/5/17.
-//  Copyright © 2017 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 3/5/17.
+//  Copyright © 2017 carlbrenneisen. All rights reserved.
 //
 
 import XCTest

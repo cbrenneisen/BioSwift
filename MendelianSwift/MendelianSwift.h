@@ -2,8 +2,8 @@
 //  MendelianSwift.h
 //  MendelianSwift
 //
-//  Created by Carlos Brenneisen on 3/4/17.
-//  Copyright © 2017 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 3/4/17.
+//  Copyright © 2017 carlbrenneisen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

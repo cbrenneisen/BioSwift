@@ -2,8 +2,8 @@
 //  BioGraph.swift
 //  BioSwift
 //
-//  Created by Carlos Brenneisen on 02/22/17.
-//  Copyright © 2017 CarlosBrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 02/22/17.
+//  Copyright © 2017 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -56,7 +56,7 @@ public extension BioGraph {
     /**
      The set of all vertices in the graph
      */
-    public var vertices: Set<Vertex<T>> {
+    var vertices: Set<Vertex<T>> {
         var _vertices: Set<Vertex<T>> = Set()
         queue.sync(flags: .barrier) { [unowned self] in
             _vertices = Set(self.structure.keys)
@@ -64,7 +64,7 @@ public extension BioGraph {
         return _vertices
     }
     
-    public func createVertex(from sequence: T) -> Vertex<T> {
+    func createVertex(from sequence: T) -> Vertex<T> {
         //create vertex and corresponding edgelist
         let newVertex = Vertex(bioSequence: sequence)
         queue.sync(flags: .barrier) { [unowned self] in
@@ -85,7 +85,7 @@ public extension BioGraph {
      - parameter vertex: The origin vertex to search from
      - returns: the set of all vertices that can be reached directly from the origin
      */
-    public func destinations(from vertex: Vertex<T>)  -> Set<Vertex<T>> {
+    func destinations(from vertex: Vertex<T>)  -> Set<Vertex<T>> {
         var vertices: Set<Vertex<T>> = Set()
         queue.sync(flags: .barrier) {
             guard let eList = self.structure[vertex] else { return }
@@ -101,7 +101,7 @@ public extension BioGraph {
 public extension BioGraph {
 
     //returns the set of edges from a given vertex
-    public func edges(from origin: Vertex<T>) -> Set<Edge<T>> {
+    func edges(from origin: Vertex<T>) -> Set<Edge<T>> {
         
         var edges: Set<Edge<T>> = Set()
         queue.sync(flags: .barrier) {
@@ -111,10 +111,9 @@ public extension BioGraph {
         }
         return edges
     }
-    
-    
+
     //returns whether or not an edge exists between two Vertices
-    public func edgeExists(from origin: Vertex<T>, to destination: Vertex<T>) -> Bool {
+    func edgeExists(from origin: Vertex<T>, to destination: Vertex<T>) -> Bool {
         
         var exists = false
         queue.sync {

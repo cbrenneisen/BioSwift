@@ -2,8 +2,8 @@
 //  Protein.swift
 //  BioSwift
 //
-//  Created by Carlos Brenneisen on 01/30/17.
-//  Copyright © 2017 CarlosBrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 01/30/17.
+//  Copyright © 2017 carlbrenneisen. All rights reserved.
 
 import Foundation
 

@@ -2,8 +2,8 @@
 //  GraphTests.swift
 //  MendelianSwiftTests
 //
-//  Created by Carlos Brenneisen on 10/27/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 10/27/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import XCTest

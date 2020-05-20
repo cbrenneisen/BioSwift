@@ -2,8 +2,8 @@
 //  DNA.swift
 //  BioSwift
 //
-//  Created by Carlos Brenneisen on 01/21/17.
-//  Copyright © 2017 CarlosBrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 01/21/17.
+//  Copyright © 2017 carlbrenneisen. All rights reserved.
 
 import Foundation
 
@@ -37,7 +37,7 @@ public extension DNA {
     /**
         Returns the Hamming Distance between two DNA objects
      */
-    public static func hammingDistance(between dna1: DNA, and dna2: DNA) -> Int? {
+    static func hammingDistance(between dna1: DNA, and dna2: DNA) -> Int? {
         return dna1.hammingDistance(of: dna2)
     }
 }
@@ -48,7 +48,7 @@ public extension DNA {
     /**
         Computes and returns the gc content of the DNA
     */
-    public var gcContent: Float {
+    var gcContent: Float {
         var occurrences = 0
         sequence.forEach() {
             switch $0 {
@@ -64,7 +64,7 @@ public extension DNA {
     /**
         Creates a new RNA object by transcribing the DNA
     */
-    public func transcribe() -> RNA {
+    func transcribe() -> RNA {
         let seq = sequence.map{ $0.transcribed }
         return RNA(id: id, sequence: seq)
     }
@@ -72,7 +72,7 @@ public extension DNA {
     /**
         Creates and returns the reverse complement of the DNA
     */
-    public func reverseComplement() -> DNA {
+    func reverseComplement() -> DNA {
         print(sequenceString)
         let seq = sequence.reversed().map{ $0.complement }
         return DNA(id: id, sequence: seq)
@@ -81,7 +81,7 @@ public extension DNA {
     /**
         Returns the Hamming Distance between this and another DNA
     */
-    public func hammingDistance(of otherDNA: DNA) -> Int? {
+    func hammingDistance(of otherDNA: DNA) -> Int? {
         
         guard length == otherDNA.length else {
             print("Attempting to get the hamming distance between two DNA of unequal length")
@@ -102,7 +102,7 @@ public extension DNA {
         Create a protein object by transcribing and translating its exons
         - parameter introns: The subsequences to remove before transcribing and translating
      */
-    public func splice(with introns: [[DNA.Base]]) -> Protein? {
+    func splice(with introns: [[DNA.Base]]) -> Protein? {
         
         var exons = sequence
         introns.forEach(){ intron in

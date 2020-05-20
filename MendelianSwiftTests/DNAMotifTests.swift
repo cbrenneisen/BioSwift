@@ -2,8 +2,8 @@
 //  DNAMotifTests.swift
 //  MendelianSwiftTests
 //
-//  Created by Carlos Brenneisen on 11/12/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 11/12/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import XCTest

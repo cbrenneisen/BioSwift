@@ -2,8 +2,8 @@
 //  RNA+Base.swift
 //  MendelianSwift
 //
-//  Created by mac on 8/27/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 8/27/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ public typealias Codon = (RNA.Base, RNA.Base, RNA.Base)
 
 public extension RNA {
     
-    public enum Base: String, Nucleobase {
+    enum Base: String, Nucleobase {
      
         case A = "adenine"
         case C = "cytosine"

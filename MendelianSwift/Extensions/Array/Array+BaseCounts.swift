@@ -3,8 +3,8 @@
 //  Array.swift
 //  MendelianSwift
 //
-//  Created by mac on 9/18/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 9/18/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -16,7 +16,7 @@ public extension Array where Element: BioSequence {
      All sequences must be the same length.
      - Returns: An array of dictionaries consisting of the number of times a character occurs at a specified index
     */
-    public func getBaseSums() -> [BaseCounts]? {
+    func getBaseSums() -> [BaseCounts]? {
         
         // - make sure there is at least one sequence
         guard let length = first?.length else {

@@ -2,8 +2,8 @@
 //  Array+Overlap.swift
 //  MendelianSwift
 //
-//  Created by mac on 10/22/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 10/22/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -17,7 +17,7 @@ internal extension Array where Element: Nucleobase {
      - returns: A tuple where element 0 is the length of the overlap 
                 and element 1 is the combined sequence using this overlap
     */
-    internal func maxOverlap(with other: [Element]) -> (Int, [Element]) {
+    func maxOverlap(with other: [Element]) -> (Int, [Element]) {
         
         var max = Int.min
         var result: [Element] = []

@@ -2,8 +2,8 @@
 //  InjectionMap.swift
 //  MendelianSwift
 //
-//  Created by mac on 9/12/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 9/12/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation

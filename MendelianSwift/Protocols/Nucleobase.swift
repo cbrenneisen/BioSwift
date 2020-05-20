@@ -2,8 +2,8 @@
 //  Nucleobase.swift
 //  MendelianSwift
 //
-//  Created by mac on 8/29/18.
-//  Copyright © 2018 carlosbrenneisen. All rights reserved.
+//  Created by Carl Brenneisen on 8/29/18.
+//  Copyright © 2018 carlbrenneisen. All rights reserved.
 //
 
 import Foundation
@@ -18,21 +18,21 @@ public extension Nucleobase {
     /**
      Raw string representation of the Nucleobase
     */
-    public var string: String {
+    var string: String {
         return String(describing: self)
     }
     
     /**
      An array containing one of each possible base
     */
-    public static var all: [Self] {
+    static var all: [Self] {
         return Self.allCases.map{ $0 }
     }
         
     /**
      Creates a Nucleobase from a one-letter string
     */
-    public init?(from letter: String) {
+    init?(from letter: String) {
         // - only strings of length one should be accepted
         guard letter.count == 1, let base = letter.first else {
             return nil
@@ -44,7 +44,7 @@ public extension Nucleobase {
     /**
      Creates a sequence from the given string
     */
-    public static func sequence(from string: String) -> [Self]?{
+    static func sequence(from string: String) -> [Self]?{
         var sequence: [Self] = []
         
         // - try to create bases for each character in the string
@@ -61,7 +61,7 @@ public extension Nucleobase {
     /**
      Initialize an empty dictionary to begin counting bases
     */
-    public static var counts: [Self: Int] {
+    static var counts: [Self: Int] {
         return Self.allCases.reduce(into: [Self: Int]()){
             $0[$1] = 0
         }
@@ -73,7 +73,7 @@ internal extension Nucleobase {
     /**
      Creates a Nucleobase from a character with no validation checks
     */
-    internal init(unsafeFrom char: Character){
+    init(unsafeFrom char: Character){
         self.init(from: char)!
     }
 }
