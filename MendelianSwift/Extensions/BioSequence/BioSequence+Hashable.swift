@@ -10,13 +10,10 @@ import Foundation
 
 public extension BioSequence {
     
-    /**
-     The hash value of the sequence
-     */
-    var hashValue: Int {
-        return sequenceString.hashValue
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(sequenceString.hashValue)
     }
-    
+
     /**
      Compare two sequences
      */
@@ -24,4 +21,4 @@ public extension BioSequence {
         return lhs.sequenceString == rhs.sequenceString
     }
 }
- 
+

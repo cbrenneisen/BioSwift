@@ -8,18 +8,24 @@
 
 import Foundation
 
-final public class Vertex<T: BioSequence>: Hashable {
-    
+final public class Vertex<T: BioSequence> {
+
     public let bioSequence: T
-    
+
     internal init(bioSequence: T){
         self.bioSequence = bioSequence
     }
-    
-    public var hashValue: Int {
-        return self.bioSequence.hashValue
+}
+
+extension Vertex: Hashable {
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(bioSequence.hashValue)
     }
-    
+}
+
+extension Vertex: Equatable {
+
     public static func == (lhs: Vertex<T>, rhs: Vertex<T>) -> Bool {
         return lhs.bioSequence.sequenceString == rhs.bioSequence.sequenceString
     }
