@@ -24,7 +24,6 @@ public struct DNA: BioSequence {
 }
 
 //NARK: - Static Properties and Functions
-
 public extension DNA {
     
     /**
@@ -50,7 +49,7 @@ public extension DNA {
     */
     var gcContent: Float {
         var occurrences = 0
-        sequence.forEach() {
+        sequence.forEach {
             switch $0 {
             case .G, .C:
                 occurrences += 1
@@ -73,13 +72,13 @@ public extension DNA {
         Creates and returns the reverse complement of the DNA
     */
     func reverseComplement() -> DNA {
-        print(sequenceString)
         let seq = sequence.reversed().map{ $0.complement }
         return DNA(id: id, sequence: seq)
     }
 
     /**
         Returns the Hamming Distance between this and another DNA
+        - parameter otherDNA: The DNA to compare to the base DNA
     */
     func hammingDistance(of otherDNA: DNA) -> Int? {
         
@@ -90,7 +89,7 @@ public extension DNA {
         
         // - count the number of bases that are different between both sequences
         var difference = 0
-        zip(sequenceString, otherDNA.sequenceString).forEach() {
+        zip(sequenceString, otherDNA.sequenceString).forEach {
             if $0 != $1 {
                 difference += 1
             }
@@ -105,7 +104,7 @@ public extension DNA {
     func splice(with introns: [[DNA.Base]]) -> Protein? {
         
         var exons = sequence
-        introns.forEach(){ intron in
+        introns.forEach { intron in
             if let index = exons.index(of: intron){
                 exons.removeSubrange(index..<intron.count)
             }

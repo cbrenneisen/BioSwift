@@ -22,7 +22,7 @@ public extension BioSequence {
         var currentID = ""
         var currentSeq = ""
         
-        lines.forEach() {
+        lines.forEach {
             process(line: $0, &currentID, &currentSeq, all: &allSequences)
         }
         // - add the last line
